@@ -1,0 +1,2398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Purcell Line Striping - Parking Lot Simulator</title>
+    <link rel="icon" type="image/x-icon" href="https://github.com/TitanBusinessPros/PLS-Games/raw/main/PLS-T-Logo-1.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a3a1a 0%, #2d5a2d 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 15px;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .logo-img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 3px solid #ffcc00;
+            background: linear-gradient(135deg, #2d5a2d 0%, #4a7c4a 100%);
+            padding: 10px;
+        }
+        
+        .game-title {
+            color: #ffcc00;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 10px;
+            text-shadow: 1px 1px 0 #1a3a1a;
+            text-align: center;
+        }
+        
+        .game-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .business-list-container {
+            flex: 1;
+            min-width: 280px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            max-height: 500px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .game-screen-container {
+            flex: 2;
+            min-width: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .panel-title {
+            background: linear-gradient(135deg, #2d5a2d 0%, #4a7c4a 100%);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            background: #e9f5e9;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            margin: 3px 0;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2d5a2d;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .business-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow-y: auto;
+            flex: 1;
+            padding: 5px;
+        }
+        
+        .business-card {
+            background: #f5f9f5;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #c8e6c8;
+        }
+        
+        .business-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            border-color: #2d5a2d;
+        }
+        
+        .business-card.selected {
+            border-color: #2d5a2d;
+            background: #e9f5e9;
+        }
+        
+        .business-name {
+            font-weight: bold;
+            color: #2d5a2d;
+            margin-bottom: 3px;
+            font-size: 1rem;
+        }
+        
+        .business-type {
+            color: #666;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+        
+        .business-reward {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+        }
+        
+        .reward-amount {
+            font-weight: bold;
+            color: #2d5a2d;
+        }
+        
+        .difficulty {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            background: #ffd8b1;
+            color: #805b00;
+        }
+        
+        .difficulty.easy {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .difficulty.medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .difficulty.hard {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        #gameCanvas {
+            background: #8a9a5b;
+            border-radius: 10px;
+            width: 100%;
+            height: 400px;
+            display: block;
+            cursor: crosshair;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+            touch-action: none;
+        }
+        
+        .game-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 12px;
+            background: #e9f5e9;
+            border-radius: 10px;
+        }
+        
+        .control-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            background: #2d5a2d;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            flex: 1;
+            min-width: 120px;
+            justify-content: center;
+        }
+        
+        .control-btn:hover {
+            background: #1e3e1e;
+            transform: translateY(-2px);
+        }
+        
+        .control-btn:active {
+            transform: translateY(0);
+        }
+        
+        .control-btn.restart {
+            background: #dc3545;
+        }
+        
+        .control-btn.restart:hover {
+            background: #c82333;
+        }
+        
+        .control-btn.save {
+            background: #17a2b8;
+        }
+        
+        .control-btn.save:hover {
+            background: #138496;
+        }
+        
+        .paint-tools {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .paint-tool {
+            padding: 6px 10px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            flex: 1;
+            min-width: 100px;
+            justify-content: center;
+        }
+        
+        .paint-tool:hover {
+            border-color: #2d5a2d;
+        }
+        
+        .paint-tool.selected {
+            border-color: #2d5a2d;
+            background: #e9f5e9;
+        }
+        
+        .paint-color {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 1px solid #999;
+        }
+        
+        .white {
+            background: white;
+        }
+        
+        .yellow {
+            background: #ffeb3b;
+        }
+        
+        .blue {
+            background: #2196f3;
+        }
+        
+        .gray {
+            background: #888;
+        }
+        
+        .black {
+            background: #333;
+        }
+        
+        .upgrades-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+        
+        .upgrades-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+        
+        .upgrade-card {
+            background: #f5f9f5;
+            border-radius: 10px;
+            padding: 12px;
+            border: 2px solid #c8e6c8;
+        }
+        
+        .upgrade-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .upgrade-name {
+            font-weight: bold;
+            color: #2d5a2d;
+            font-size: 1rem;
+        }
+        
+        .upgrade-price {
+            font-weight: bold;
+            color: #17a2b8;
+        }
+        
+        .upgrade-desc {
+            color: #666;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+        
+        .upgrade-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            background: #2d5a2d;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        
+        .upgrade-btn:hover {
+            background: #1e3e1e;
+        }
+        
+        .upgrade-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .instructions {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 12px;
+            border-radius: 0 10px 10px 0;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .instructions h3 {
+            color: #856404;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .instructions ul {
+            padding-left: 18px;
+            color: #856404;
+        }
+        
+        .instructions li {
+            margin-bottom: 4px;
+        }
+        
+        .completed {
+            position: relative;
+        }
+        
+        .completed::after {
+            content: "✓";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #28a745;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        .timer-container {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            z-index: 100;
+        }
+        
+        .timer.warning {
+            color: #ffcc00;
+        }
+        
+        .timer.danger {
+            color: #ff4444;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .job-progress {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .progress-item {
+            flex: 1;
+            min-width: 140px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #ddd;
+            border-radius: 4px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #2d5a2d;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        
+        .progress-fill.sealing {
+            background: #888;
+        }
+        
+        .progress-fill.potholes {
+            background: #333;
+        }
+        
+        /* Footer Styles - CENTERED */
+        .footer {
+            background: linear-gradient(135deg, #1a3a1a 0%, #2d5a2d 100%);
+            color: white;
+            padding: 20px 15px;
+            margin-top: 20px;
+            border-top: 3px solid #ffcc00;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .company-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffcc00;
+            margin-bottom: 5px;
+        }
+        
+        .company-name a {
+            color: #ffcc00;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .company-name a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact-info a:hover {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            transition: all 0.3s;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links a:hover {
+            color: #2d5a2d;
+            background: white;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            width: 100%;
+            text-align: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Mobile-specific adjustments */
+        @media (max-width: 1024px) {
+            .game-container {
+                flex-direction: column;
+            }
+            
+            .business-list-container, .game-screen-container {
+                min-width: 100%;
+            }
+            
+            .logo-img {
+                max-width: 350px;
+            }
+            
+            .game-title {
+                font-size: 1.3rem;
+            }
+            
+            #gameCanvas {
+                height: 350px;
+            }
+            
+            .timer-container {
+                top: 10px;
+                right: 10px;
+                font-size: 0.9rem;
+                padding: 6px 10px;
+            }
+            
+            .paint-tool {
+                min-width: 80px;
+                padding: 5px 8px;
+                font-size: 0.75rem;
+            }
+            
+            .control-btn {
+                min-width: 100px;
+                padding: 7px 10px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            #gameCanvas {
+                height: 300px;
+            }
+            
+            .stat-item {
+                min-width: 100px;
+            }
+            
+            .stat-value {
+                font-size: 1.3rem;
+            }
+            
+            .logo-img {
+                max-width: 280px;
+            }
+            
+            .game-title {
+                font-size: 1.1rem;
+            }
+            
+            .upgrades-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .paint-tools {
+                flex-direction: column;
+            }
+            
+            .paint-tool {
+                min-width: 100%;
+            }
+            
+            .control-btn {
+                min-width: 100%;
+            }
+            
+            .game-controls {
+                flex-direction: column;
+            }
+            
+            .footer {
+                padding: 15px 10px;
+            }
+            
+            .company-name {
+                font-size: 1.3rem;
+            }
+            
+            .contact-info a {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #gameCanvas {
+                height: 250px;
+            }
+            
+            .logo-img {
+                max-width: 220px;
+            }
+            
+            .game-title {
+                font-size: 1rem;
+            }
+            
+            .panel-title {
+                font-size: 1rem;
+                padding: 8px 12px;
+            }
+            
+            .stat-value {
+                font-size: 1.1rem;
+            }
+            
+            .stat-label {
+                font-size: 0.7rem;
+            }
+            
+            .timer-container {
+                font-size: 0.8rem;
+                padding: 5px 8px;
+            }
+            
+            .company-name {
+                font-size: 1.1rem;
+            }
+            
+            .contact-info a {
+                font-size: 0.85rem;
+            }
+            
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .control-btn:hover, .paint-tool:hover, .business-card:hover {
+                transform: none;
+            }
+            
+            .control-btn:active, .paint-tool:active, .business-card:active {
+                transform: scale(0.98);
+            }
+            
+            .paint-tool {
+                padding: 8px 10px;
+            }
+            
+            .control-btn {
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://github.com/TitanBusinessPros/PLS-Games/raw/main/PLS-Logo-T.png" alt="Purcell Line Striping Logo" class="logo-img">
+            <div class="game-title">Parking Lot Maintenance Simulator</div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="money">$2,500</div>
+                <div class="stat-label">Available Funds</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="completed">0/30</div>
+                <div class="stat-label">Jobs Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="level">1</div>
+                <div class="stat-label">Business Level</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="equipment">Basic</div>
+                <div class="stat-label">Equipment Level</div>
+            </div>
+        </div>
+        
+        <div class="game-container">
+            <div class="business-list-container">
+                <div class="panel-title">
+                    <span><i class="fas fa-building"></i> Tulsa Businesses</span>
+                    <span id="selected-business">Select a Job</span>
+                </div>
+                <div class="business-list" id="businessList">
+                    <!-- Businesses will be generated here -->
+                </div>
+            </div>
+            
+            <div class="game-screen-container">
+                <div class="panel-title">
+                    <span><i class="fas fa-paint-roller"></i> Parking Lot Canvas</span>
+                    <span>Time: <span id="timer">02:00</span></span>
+                </div>
+                
+                <div style="position: relative;">
+                    <canvas id="gameCanvas" width="800" height="400"></canvas>
+                </div>
+                
+                <div class="job-progress">
+                    <div class="progress-item">
+                        <div>Striping: <span id="striping-coverage">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="striping-progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div>Sealing: <span id="sealing-coverage">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill sealing" id="sealing-progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div>Potholes: <span id="pothole-coverage">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill potholes" id="pothole-progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-controls">
+                    <div class="paint-tools">
+                        <div class="paint-tool selected" id="tool-white">
+                            <div class="paint-color white"></div>
+                            <span>White Lines</span>
+                        </div>
+                        <div class="paint-tool" id="tool-yellow">
+                            <div class="paint-color yellow"></div>
+                            <span>Yellow Lines</span>
+                        </div>
+                        <div class="paint-tool" id="tool-blue">
+                            <div class="paint-color blue"></div>
+                            <span>Handicap</span>
+                        </div>
+                        <div class="paint-tool" id="tool-seal">
+                            <div class="paint-color gray"></div>
+                            <span>Sealant</span>
+                        </div>
+                        <div class="paint-tool" id="tool-pothole">
+                            <div class="paint-color black"></div>
+                            <span>Fix Pothole</span>
+                        </div>
+                        <div class="paint-tool" id="tool-sign">
+                            <i class="fas fa-sign"></i>
+                            <span>Handicap Sign</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 8px; width: 100%; margin-top: 10px;">
+                        <button class="control-btn" id="completeJob">
+                            <i class="fas fa-check-circle"></i> Complete Job
+                        </button>
+                        <button class="control-btn save" id="saveGame">
+                            <i class="fas fa-save"></i> Save
+                        </button>
+                        <button class="control-btn restart" id="restartGame">
+                            <i class="fas fa-redo"></i> Restart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="upgrades-container">
+            <div class="panel-title">
+                <span><i class="fas fa-tools"></i> Equipment & Upgrades</span>
+                <span>Upgrade your business to earn more!</span>
+            </div>
+            
+            <div class="upgrades-list" id="upgradesList">
+                <!-- Upgrades will be generated here -->
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3><i class="fas fa-info-circle"></i> How to Play</h3>
+            <ul>
+                <li><strong>Select a business</strong> to start a 2-minute job</li>
+                <li><strong>Move finger/mouse</strong> to control the painter</li>
+                <li><strong>Tap/hold to use tools:</strong></li>
+                <li><strong>White/Yellow/Blue</strong> - Paint parking lines</li>
+                <li><strong>Sealant</strong> - Seal the parking lot (required!)</li>
+                <li><strong>Fix Pothole</strong> - Repair potholes (required!)</li>
+                <li><strong>Handicap Sign</strong> - Place signs in blue spots</li>
+                <li><strong>Complete all tasks</strong> before time runs out!</li>
+                <li><strong>Note:</strong> Make sure to paint ALL white border lines including top and bottom of the parking lot!</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer Section - CENTERED -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="company-info">
+                <div class="company-name">
+                    Purcell Line Striping
+                </div>
+                <div class="contact-info">
+                    <a href="tel:9188603212"><i class="fas fa-phone"></i> 918-860-3212</a>
+                    <a href="mailto:purcelllinestriping@gmail.com"><i class="fas fa-envelope"></i> purcelllinestriping@gmail.com</a>
+                    <a href="https://www.purcelllinestriping.com" target="_blank"><i class="fas fa-globe"></i> www.purcelllinestriping.com</a>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=100091509630743" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Purcell Line Striping. All rights reserved. | Parking Lot Simulator Game
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Game state
+        const gameState = {
+            money: 2500,
+            level: 1,
+            completedJobs: 0,
+            equipmentLevel: 1,
+            selectedBusiness: null,
+            paintTool: 'white',
+            stripingCoverage: 0,
+            sealingCoverage: 0,
+            potholeCoverage: 0,
+            businesses: [],
+            upgrades: [],
+            player: {
+                x: 400,
+                y: 200,
+                size: 18,
+                speed: 5
+            },
+            canvas: null,
+            ctx: null,
+            mouse: {
+                x: 400,
+                y: 200,
+                down: false
+            },
+            handicapSigns: [],
+            paintedAreas: [],
+            stallLayout: [],
+            borderLayout: [],
+            lastPaintTime: 0,
+            paintInterval: 50,
+            sprayParticles: [],
+            lineSegments: [],
+            potholes: [],
+            sealedAreas: [],
+            timer: 120,
+            timerInterval: null,
+            gameActive: false,
+            sealingRequired: true,
+            potholeRepairRequired: true,
+            // Add this to track parking lot boundaries
+            parkingLotBounds: {
+                x: 0,
+                y: 0,
+                width: 0,
+                height: 0
+            }
+        };
+
+        // Initialize businesses
+        function initializeBusinesses() {
+            const businessTypes = ['Church', 'Restaurant', 'Store', 'Shopping Mall', 'Office Building', 'Hospital', 
+                                  'School', 'Apartment Complex', 'Hotel', 'Sports Arena', 'Grocery Store', 'Movie Theater'];
+            
+            const prefixes = ['Tulsa', 'Green Country', 'River', 'Prairie', 'Oklahoma', 'Sooner', 'Heartland', 'Frontier'];
+            const suffixes = ['Center', 'Plaza', 'Complex', 'Square', 'Mall', 'Hub', 'Park', 'Place'];
+            
+            const businessNames = [];
+            
+            // Generate 30 unique business names
+            for (let i = 0; i < 30; i++) {
+                let name;
+                let type;
+                
+                if (i < 10) {
+                    const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+                    type = businessTypes[Math.floor(Math.random() * businessTypes.length)];
+                    name = `${prefix} ${type}`;
+                } else if (i < 20) {
+                    type = businessTypes[Math.floor(Math.random() * businessTypes.length)];
+                    const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
+                    name = `${type} ${suffix}`;
+                } else {
+                    const creativeNames = [
+                        "Maple Leaf Diner", "Golden Harvest Church", "City Lights Plaza", 
+                        "Sunset Strip Mall", "Oakwood Business Center", "Cedar Point Shopping",
+                        "Midtown Market", "Uptown Grill & Shops", "Pioneer Square", "Heritage Plaza"
+                    ];
+                    name = creativeNames[i - 20];
+                    type = businessTypes[Math.floor(Math.random() * businessTypes.length)];
+                }
+                
+                const difficultyLevel = Math.floor(Math.random() * 3) + 1;
+                const baseReward = [800, 1500, 2500][difficultyLevel - 1];
+                const reward = baseReward + Math.floor(Math.random() * 500);
+                
+                businessNames.push({
+                    id: i,
+                    name: name,
+                    type: type,
+                    difficulty: difficultyLevel,
+                    reward: reward,
+                    completed: false
+                });
+            }
+            
+            return businessNames;
+        }
+
+        // Initialize upgrades
+        function initializeUpgrades() {
+            return [
+                {
+                    id: 1,
+                    name: "Better Paint Sprayer",
+                    description: "Increases paint coverage speed by 50%",
+                    price: 1000,
+                    purchased: false,
+                    effect: "speed",
+                    paintIntervalModifier: 0.5
+                },
+                {
+                    id: 2,
+                    name: "Commercial Line Striper",
+                    description: "Paint lines are straighter and more consistent",
+                    price: 2500,
+                    purchased: false,
+                    effect: "precision",
+                    paintWidthModifier: 2
+                },
+                {
+                    id: 3,
+                    name: "Sealing Machine",
+                    description: "Unlocks parking lot sealing - doubles sealing speed",
+                    price: 5000,
+                    purchased: false,
+                    effect: "sealing",
+                    sealingModifier: 2
+                },
+                {
+                    id: 4,
+                    name: "Pothole Repair Kit",
+                    description: "Fixes potholes 3x faster",
+                    price: 3000,
+                    purchased: false,
+                    effect: "pothole",
+                    potholeModifier: 3
+                },
+                {
+                    id: 5,
+                    name: "Truck-mounted Striper",
+                    description: "Double painting speed and job rewards",
+                    price: 15000,
+                    purchased: false,
+                    effect: "truck",
+                    paintIntervalModifier: 0.3,
+                    rewardModifier: 2
+                },
+                {
+                    id: 6,
+                    name: "Business Expansion",
+                    description: "Unlocks premium contracts across Oklahoma",
+                    price: 25000,
+                    purchased: false,
+                    effect: "expansion"
+                }
+            ];
+        }
+
+        // DOM elements
+        const businessListEl = document.getElementById('businessList');
+        const gameCanvas = document.getElementById('gameCanvas');
+        const ctx = gameCanvas.getContext('2d');
+        const moneyEl = document.getElementById('money');
+        const completedEl = document.getElementById('completed');
+        const levelEl = document.getElementById('level');
+        const equipmentEl = document.getElementById('equipment');
+        const stripingCoverageEl = document.getElementById('striping-coverage');
+        const sealingCoverageEl = document.getElementById('sealing-coverage');
+        const potholeCoverageEl = document.getElementById('pothole-coverage');
+        const stripingProgressEl = document.getElementById('striping-progress');
+        const sealingProgressEl = document.getElementById('sealing-progress');
+        const potholeProgressEl = document.getElementById('pothole-progress');
+        const selectedBusinessEl = document.getElementById('selected-business');
+        const upgradesListEl = document.getElementById('upgradesList');
+        const timerEl = document.getElementById('timer');
+        
+        // Paint tool elements
+        const toolWhite = document.getElementById('tool-white');
+        const toolYellow = document.getElementById('tool-yellow');
+        const toolBlue = document.getElementById('tool-blue');
+        const toolSeal = document.getElementById('tool-seal');
+        const toolPothole = document.getElementById('tool-pothole');
+        const toolSign = document.getElementById('tool-sign');
+        
+        // Button elements
+        const completeJobBtn = document.getElementById('completeJob');
+        const saveGameBtn = document.getElementById('saveGame');
+        const restartGameBtn = document.getElementById('restartGame');
+
+        // Initialize the game
+        function initGame() {
+            // Set canvas context
+            gameState.canvas = gameCanvas;
+            gameState.ctx = ctx;
+            
+            // Set canvas size based on device
+            resizeCanvas();
+            
+            // Initialize businesses and upgrades
+            gameState.businesses = initializeBusinesses();
+            gameState.upgrades = initializeUpgrades();
+            
+            // Render businesses
+            renderBusinesses();
+            
+            // Render upgrades
+            renderUpgrades();
+            
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Start the game loop
+            requestAnimationFrame(gameLoop);
+            
+            // Update UI
+            updateUI();
+            
+            // Handle window resize
+            window.addEventListener('resize', resizeCanvas);
+        }
+
+        // Resize canvas for mobile/tablet
+        function resizeCanvas() {
+            const container = gameCanvas.parentElement;
+            const containerWidth = container.clientWidth;
+            
+            // Set canvas dimensions
+            gameCanvas.width = containerWidth;
+            gameCanvas.height = Math.min(400, containerWidth * 0.5);
+            
+            // Update player position to center
+            gameState.player.x = gameCanvas.width / 2;
+            gameState.player.y = gameCanvas.height / 2;
+            
+            // Redraw if there's a current job
+            if (gameState.selectedBusiness) {
+                generateParkingLotLayout(gameState.selectedBusiness.difficulty);
+                drawParkingLot();
+            }
+        }
+
+        // Render businesses list
+        function renderBusinesses() {
+            businessListEl.innerHTML = '';
+            
+            gameState.businesses.forEach(business => {
+                const businessCard = document.createElement('div');
+                businessCard.className = `business-card ${business.completed ? 'completed' : ''} ${gameState.selectedBusiness?.id === business.id ? 'selected' : ''}`;
+                businessCard.innerHTML = `
+                    <div class="business-name">${business.name}</div>
+                    <div class="business-type">${business.type}</div>
+                    <div class="business-reward">
+                        <div class="reward-amount">$${business.reward}</div>
+                        <div class="difficulty ${['easy', 'medium', 'hard'][business.difficulty - 1]}">
+                            ${['Easy', 'Medium', 'Hard'][business.difficulty - 1]}
+                        </div>
+                    </div>
+                `;
+                
+                businessCard.addEventListener('click', () => selectBusiness(business));
+                businessListEl.appendChild(businessCard);
+            });
+        }
+
+        // Render upgrades list
+        function renderUpgrades() {
+            upgradesListEl.innerHTML = '';
+            
+            gameState.upgrades.forEach(upgrade => {
+                const upgradeCard = document.createElement('div');
+                upgradeCard.className = 'upgrade-card';
+                upgradeCard.innerHTML = `
+                    <div class="upgrade-header">
+                        <div class="upgrade-name">${upgrade.name}</div>
+                        <div class="upgrade-price">$${upgrade.price}</div>
+                    </div>
+                    <div class="upgrade-desc">${upgrade.description}</div>
+                    <button class="upgrade-btn" ${upgrade.purchased || gameState.money < upgrade.price ? 'disabled' : ''}>
+                        ${upgrade.purchased ? 'Purchased' : 'Purchase'}
+                    </button>
+                `;
+                
+                const purchaseBtn = upgradeCard.querySelector('.upgrade-btn');
+                if (!upgrade.purchased) {
+                    purchaseBtn.addEventListener('click', () => purchaseUpgrade(upgrade));
+                }
+                
+                upgradesListEl.appendChild(upgradeCard);
+            });
+        }
+
+        // Select a business
+        function selectBusiness(business) {
+            // Stop any existing timer
+            if (gameState.timerInterval) {
+                clearInterval(gameState.timerInterval);
+                gameState.timerInterval = null;
+            }
+            
+            gameState.selectedBusiness = business;
+            gameState.stripingCoverage = 0;
+            gameState.sealingCoverage = 0;
+            gameState.potholeCoverage = 0;
+            gameState.handicapSigns = [];
+            gameState.paintedAreas = [];
+            gameState.stallLayout = [];
+            gameState.borderLayout = [];
+            gameState.lineSegments = [];
+            gameState.potholes = [];
+            gameState.sealedAreas = [];
+            gameState.timer = 120;
+            gameState.gameActive = true;
+            
+            // Start the timer
+            startTimer();
+            
+            // Generate the parking lot layout for this business
+            generateParkingLotLayout(business.difficulty);
+            
+            // Generate potholes based on difficulty
+            generatePotholes(business.difficulty);
+            
+            // Draw the parking lot
+            drawParkingLot();
+            
+            // Update UI
+            selectedBusinessEl.textContent = business.name;
+            updateProgressBars();
+            updateTimerDisplay();
+            
+            // Update business list UI
+            renderBusinesses();
+        }
+
+        // Start the timer
+        function startTimer() {
+            if (gameState.timerInterval) {
+                clearInterval(gameState.timerInterval);
+            }
+            
+            gameState.timerInterval = setInterval(() => {
+                if (gameState.timer > 0) {
+                    gameState.timer--;
+                    updateTimerDisplay();
+                } else {
+                    // Time's up!
+                    clearInterval(gameState.timerInterval);
+                    gameState.gameActive = false;
+                    alert("Time's up! Job failed. Select a new job to try again.");
+                }
+            }, 1000);
+        }
+
+        // Update timer display
+        function updateTimerDisplay() {
+            const minutes = Math.floor(gameState.timer / 60);
+            const seconds = gameState.timer % 60;
+            timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Add warning/danger classes based on time remaining
+            timerEl.className = '';
+            if (gameState.timer <= 30) {
+                timerEl.classList.add('danger');
+            } else if (gameState.timer <= 60) {
+                timerEl.classList.add('warning');
+            }
+        }
+
+        // Generate parking lot layout with lanes and U-shaped stalls - FIXED VERSION
+        function generateParkingLotLayout(difficulty) {
+            // Clear existing layout
+            gameState.stallLayout = [];
+            gameState.borderLayout = [];
+            gameState.lineSegments = [];
+            
+            const canvasWidth = gameState.canvas.width;
+            const canvasHeight = gameState.canvas.height;
+            
+            // Use smaller dimensions to ensure everything fits
+            const stallWidth = Math.min(30, canvasWidth / 12);
+            const stallDepth = Math.min(40, canvasHeight / 8);
+            const stallSpacing = 8;
+            const laneWidth = 50;
+            
+            // Calculate number of stalls based on difficulty
+            let totalStalls;
+            let rowsPerSide;
+            let stallsPerRow;
+            
+            if (difficulty === 1) {
+                totalStalls = 12;
+                rowsPerSide = 2;
+                stallsPerRow = 3;
+            } else if (difficulty === 2) {
+                totalStalls = 24;
+                rowsPerSide = 3;
+                stallsPerRow = 4;
+            } else {
+                totalStalls = 36;
+                rowsPerSide = 3;
+                stallsPerRow = 6;
+            }
+            
+            // Calculate total layout dimensions
+            const totalWidth = stallsPerRow * stallWidth + (stallsPerRow - 1) * stallSpacing;
+            const totalDepth = rowsPerSide * stallDepth * 2 + laneWidth + stallSpacing * 2;
+            
+            // Center the layout in the canvas with more padding to ensure visibility
+            const margin = 20; // Increased margin for better visibility
+            const maxWidth = canvasWidth - 2 * margin;
+            const maxHeight = canvasHeight - 2 * margin;
+            
+            // Scale if needed
+            let scale = 1;
+            if (totalWidth > maxWidth || totalDepth > maxHeight) {
+                scale = Math.min(maxWidth / totalWidth, maxHeight / totalDepth);
+            }
+            
+            const scaledStallWidth = stallWidth * scale;
+            const scaledStallDepth = stallDepth * scale;
+            const scaledStallSpacing = stallSpacing * scale;
+            const scaledLaneWidth = laneWidth * scale;
+            
+            const scaledTotalWidth = stallsPerRow * scaledStallWidth + (stallsPerRow - 1) * scaledStallSpacing;
+            const scaledTotalDepth = rowsPerSide * scaledStallDepth * 2 + scaledLaneWidth + scaledStallSpacing * 2;
+            
+            const startX = margin + (maxWidth - scaledTotalWidth) / 2;
+            const startY = margin + (maxHeight - scaledTotalDepth) / 2;
+            
+            // Store parking lot bounds for reference
+            gameState.parkingLotBounds = {
+                x: startX - 10,
+                y: startY - 10,
+                width: scaledTotalWidth + 20,
+                height: scaledTotalDepth + 20
+            };
+            
+            // Create border around entire parking lot - MAKE SURE THESE ARE VISIBLE
+            const borderPadding = 10;
+            gameState.lineSegments.push({
+                x1: startX - borderPadding, y1: startY - borderPadding, 
+                x2: startX + scaledTotalWidth + borderPadding, y2: startY - borderPadding,
+                painted: false, color: '#666666', requiredColor: 'white', isBorder: true, lineWidth: 6,
+                description: "Top Border"
+            });
+            
+            gameState.lineSegments.push({
+                x1: startX + scaledTotalWidth + borderPadding, y1: startY - borderPadding, 
+                x2: startX + scaledTotalWidth + borderPadding, y2: startY + scaledTotalDepth + borderPadding,
+                painted: false, color: '#666666', requiredColor: 'white', isBorder: true, lineWidth: 6,
+                description: "Right Border"
+            });
+            
+            gameState.lineSegments.push({
+                x1: startX + scaledTotalWidth + borderPadding, y1: startY + scaledTotalDepth + borderPadding, 
+                x2: startX - borderPadding, y2: startY + scaledTotalDepth + borderPadding,
+                painted: false, color: '#666666', requiredColor: 'white', isBorder: true, lineWidth: 6,
+                description: "Bottom Border"
+            });
+            
+            gameState.lineSegments.push({
+                x1: startX - borderPadding, y1: startY + scaledTotalDepth + borderPadding, 
+                x2: startX - borderPadding, y2: startY - borderPadding,
+                painted: false, color: '#666666', requiredColor: 'white', isBorder: true, lineWidth: 6,
+                description: "Left Border"
+            });
+            
+            // Create stalls on both sides of a central lane
+            // Top section (facing downward)
+            for (let row = 0; row < rowsPerSide; row++) {
+                for (let col = 0; col < stallsPerRow; col++) {
+                    if (row * stallsPerRow + col >= totalStalls / 2) break;
+                    
+                    const x = startX + col * (scaledStallWidth + scaledStallSpacing);
+                    const y = startY + row * scaledStallDepth;
+                    
+                    // Determine if this is a handicap stall (first row, first column on each side)
+                    const isHandicap = (row === 0 && (col === 0 || col === stallsPerRow - 1));
+                    
+                    // Create U-shaped stall (3 sides: left, top, right - NO BOTTOM)
+                    const stallLines = [
+                        {x1: x, y1: y, x2: x, y2: y + scaledStallDepth, painted: false, color: isHandicap ? '#88aaff' : '#666666', requiredColor: isHandicap ? 'blue' : 'yellow', description: "Stall Left Side"}, // left side
+                        {x1: x, y1: y, x2: x + scaledStallWidth, y2: y, painted: false, color: isHandicap ? '#88aaff' : '#666666', requiredColor: isHandicap ? 'blue' : 'yellow', description: "Stall Top Side"}, // top side
+                        {x1: x + scaledStallWidth, y1: y, x2: x + scaledStallWidth, y2: y + scaledStallDepth, painted: false, color: isHandicap ? '#88aaff' : '#666666', requiredColor: isHandicap ? 'blue' : 'yellow', description: "Stall Right Side"} // right side
+                    ];
+                    
+                    // Add to line segments
+                    gameState.lineSegments.push(...stallLines);
+                    
+                    // Track stall for reference
+                    gameState.stallLayout.push({
+                        x: x,
+                        y: y,
+                        width: scaledStallWidth,
+                        depth: scaledStallDepth,
+                        isHandicap: isHandicap,
+                        side: 'top'
+                    });
+                }
+            }
+            
+            // Bottom section (facing upward)
+            const bottomStartY = startY + rowsPerSide * scaledStallDepth + scaledLaneWidth + scaledStallSpacing;
+            for (let row = 0; row < rowsPerSide; row++) {
+                for (let col = 0; col < stallsPerRow; col++) {
+                    if ((rowsPerSide + row) * stallsPerRow + col >= totalStalls) break;
+                    
+                    const x = startX + col * (scaledStallWidth + scaledStallSpacing);
+                    const y = bottomStartY + row * scaledStallDepth;
+                    
+                    // Determine if this is a handicap stall
+                    const isHandicap = (row === rowsPerSide - 1 && (col === 0 || col === stallsPerRow - 1));
+                    
+                    // Create U-shaped stall facing upward (3 sides: left, bottom, right - NO TOP)
+                    const stallLines = [
+                        {x1: x, y1: y, x2: x, y2: y + scaledStallDepth, painted: false, color: isHandicap ? '#88aaff' : '#666666', requiredColor: isHandicap ? 'blue' : 'yellow', description: "Stall Left Side"}, // left side
+                        {x1: x, y1: y + scaledStallDepth, x2: x + scaledStallWidth, y2: y + scaledStallDepth, painted: false, color: isHandicap ? '#88aaff' : '#666666', requiredColor: isHandicap ? 'blue' : 'yellow', description: "Stall Bottom Side"}, // bottom side
+                        {x1: x + scaledStallWidth, y1: y, x2: x + scaledStallWidth, y2: y + scaledStallDepth, painted: false, color: isHandicap ? '#88aaff' : '#666666', requiredColor: isHandicap ? 'blue' : 'yellow', description: "Stall Right Side"} // right side
+                    ];
+                    
+                    // Add to line segments
+                    gameState.lineSegments.push(...stallLines);
+                    
+                    // Track stall for reference
+                    gameState.stallLayout.push({
+                        x: x,
+                        y: y,
+                        width: scaledStallWidth,
+                        depth: scaledStallDepth,
+                        isHandicap: isHandicap,
+                        side: 'bottom'
+                    });
+                }
+            }
+            
+            // Create driving lane lines (center of the parking lot)
+            const laneStartY = startY + rowsPerSide * scaledStallDepth + scaledStallSpacing;
+            const laneEndY = laneStartY + scaledLaneWidth;
+            const laneCenterX = startX + scaledTotalWidth / 2;
+            
+            // Lane boundary lines - make sure these are visible
+            gameState.lineSegments.push({
+                x1: startX - 10, y1: laneStartY, x2: startX + scaledTotalWidth + 10, y2: laneStartY,
+                painted: false, color: '#666666', requiredColor: 'white', isLane: true, lineWidth: 5,
+                description: "Top Lane Line"
+            });
+            
+            gameState.lineSegments.push({
+                x1: startX - 10, y1: laneEndY, x2: startX + scaledTotalWidth + 10, y2: laneEndY,
+                painted: false, color: '#666666', requiredColor: 'white', isLane: true, lineWidth: 5,
+                description: "Bottom Lane Line"
+            });
+        }
+
+        // Generate potholes based on difficulty
+        function generatePotholes(difficulty) {
+            gameState.potholes = [];
+            
+            // Number of potholes based on difficulty
+            const potholeCount = difficulty * 3 + 2; // 5, 8, or 11 potholes
+            
+            // Place potholes within the parking lot bounds
+            const bounds = gameState.parkingLotBounds;
+            
+            for (let i = 0; i < potholeCount; i++) {
+                // Generate random position within the parking lot area
+                let x, y;
+                let validPosition = false;
+                let attempts = 0;
+                
+                while (!validPosition && attempts < 50) {
+                    x = bounds.x + 20 + Math.random() * (bounds.width - 40);
+                    y = bounds.y + 20 + Math.random() * (bounds.height - 40);
+                    
+                    // Check if position is not too close to existing potholes
+                    let tooClose = false;
+                    for (const pothole of gameState.potholes) {
+                        const dx = pothole.x - x;
+                        const dy = pothole.y - y;
+                        if (Math.sqrt(dx * dx + dy * dy) < 40) {
+                            tooClose = true;
+                            break;
+                        }
+                    }
+                    
+                    // Check if position is not on a stall or lane line
+                    let onLine = false;
+                    for (const segment of gameState.lineSegments) {
+                        if (isPointNearLine(x, y, segment.x1, segment.y1, segment.x2, segment.y2, 20)) {
+                            onLine = true;
+                            break;
+                        }
+                    }
+                    
+                    validPosition = !tooClose && !onLine;
+                    attempts++;
+                }
+                
+                if (validPosition) {
+                    const size = 12 + Math.random() * 8;
+                    gameState.potholes.push({
+                        x: x,
+                        y: y,
+                        size: size,
+                        fixed: false
+                    });
+                }
+            }
+        }
+
+        // Draw the parking lot - FIXED to ensure visibility
+        function drawParkingLot() {
+            const ctx = gameState.ctx;
+            const canvas = gameState.canvas;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw parking lot background (asphalt) - fill entire canvas
+            ctx.fillStyle = '#333333';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw a lighter rectangle for the actual parking lot area for better visibility
+            const bounds = gameState.parkingLotBounds;
+            if (bounds.width > 0 && bounds.height > 0) {
+                ctx.fillStyle = '#444444';
+                ctx.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+                
+                // Draw a subtle border around parking lot area
+                ctx.strokeStyle = '#555555';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(bounds.x, bounds.y, bounds.width, bounds.height);
+            }
+            
+            // Draw sealed areas
+            gameState.sealedAreas.forEach(area => {
+                ctx.fillStyle = 'rgba(100, 100, 100, 0.7)';
+                ctx.beginPath();
+                ctx.arc(area.x, area.y, area.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            
+            // Draw potholes
+            gameState.potholes.forEach(pothole => {
+                if (!pothole.fixed) {
+                    // Draw pothole as dark circle with crack effect
+                    ctx.fillStyle = '#222';
+                    ctx.beginPath();
+                    ctx.arc(pothole.x, pothole.y, pothole.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Draw crack lines
+                    ctx.strokeStyle = '#111';
+                    ctx.lineWidth = 2;
+                    for (let i = 0; i < 3; i++) {
+                        const angle = Math.random() * Math.PI * 2;
+                        const length = pothole.size * 0.8;
+                        ctx.beginPath();
+                        ctx.moveTo(pothole.x, pothole.y);
+                        ctx.lineTo(
+                            pothole.x + Math.cos(angle) * length,
+                            pothole.y + Math.sin(angle) * length
+                        );
+                        ctx.stroke();
+                    }
+                } else {
+                    // Draw fixed pothole as patched area
+                    ctx.fillStyle = '#555';
+                    ctx.beginPath();
+                    ctx.arc(pothole.x, pothole.y, pothole.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Draw patch texture
+                    ctx.strokeStyle = '#444';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.arc(pothole.x, pothole.y, pothole.size, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+            });
+            
+            // Draw all line segments - MAKE SURE BORDERS ARE VISIBLE
+            gameState.lineSegments.forEach(segment => {
+                if (!segment.painted) {
+                    // Draw unpainted segment with thicker lines for borders
+                    ctx.strokeStyle = segment.color;
+                    ctx.lineWidth = segment.lineWidth || 3;
+                    ctx.lineCap = 'round'; // Make ends rounded for better visibility
+                    ctx.beginPath();
+                    ctx.moveTo(segment.x1, segment.y1);
+                    ctx.lineTo(segment.x2, segment.y2);
+                    ctx.stroke();
+                } else {
+                    // Draw painted segment
+                    ctx.strokeStyle = segment.paintedColor || getPaintColor(segment.requiredColor);
+                    ctx.lineWidth = (segment.lineWidth || 3) + 1; // Make painted lines slightly thicker
+                    ctx.lineCap = 'round';
+                    ctx.beginPath();
+                    ctx.moveTo(segment.x1, segment.y1);
+                    ctx.lineTo(segment.x2, segment.y2);
+                    ctx.stroke();
+                }
+            });
+            
+            // Draw any handicap signs that have been placed
+            gameState.handicapSigns.forEach(sign => {
+                drawHandicapSign(sign.x, sign.y);
+            });
+            
+            // Draw spray particles
+            drawSprayParticles();
+            
+            // Draw player
+            drawPlayer();
+        }
+
+        // Draw spray paint particles
+        function drawSprayParticles() {
+            const ctx = gameState.ctx;
+            
+            gameState.sprayParticles.forEach((particle, index) => {
+                ctx.fillStyle = particle.color;
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Update particle
+                particle.x += particle.vx;
+                particle.y += particle.vy;
+                particle.size *= 0.95;
+                particle.life--;
+                
+                // Remove dead particles
+                if (particle.life <= 0 || particle.size < 0.5) {
+                    gameState.sprayParticles.splice(index, 1);
+                }
+            });
+        }
+
+        // Draw the player character
+        function drawPlayer() {
+            const ctx = gameState.ctx;
+            const player = gameState.player;
+            
+            // Draw the paint machine (body)
+            ctx.fillStyle = '#ff4444';
+            ctx.fillRect(player.x - player.size/2, player.y - player.size/4, player.size, player.size/2);
+            
+            // Draw the wheels
+            ctx.fillStyle = '#333333';
+            ctx.beginPath();
+            ctx.arc(player.x - player.size/4, player.y + player.size/4, 4, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(player.x + player.size/4, player.y + player.size/4, 4, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Draw the paint hose
+            ctx.strokeStyle = '#333333';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(player.x + player.size/2, player.y);
+            ctx.lineTo(player.x + player.size, player.y);
+            ctx.stroke();
+            
+            // Draw the painter (person)
+            ctx.fillStyle = '#4a86e8';
+            ctx.beginPath();
+            ctx.arc(player.x - player.size/2, player.y - player.size/4, 6, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Draw the paint spray nozzle
+            const sprayColor = getPaintColor(gameState.paintTool);
+            ctx.fillStyle = sprayColor;
+            ctx.beginPath();
+            ctx.arc(player.x + player.size, player.y, 5, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // Get paint color for tool
+        function getPaintColor(tool) {
+            switch(tool) {
+                case 'white': return 'white';
+                case 'yellow': return '#ffeb3b';
+                case 'blue': return '#2196f3';
+                case 'seal': return '#888';
+                case 'pothole': return '#333';
+                default: return 'white';
+            }
+        }
+
+        // Draw a handicap sign
+        function drawHandicapSign(x, y) {
+            const ctx = gameState.ctx;
+            
+            // Draw sign pole
+            ctx.strokeStyle = '#333333';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x, y - 30);
+            ctx.stroke();
+            
+            // Draw sign background
+            ctx.fillStyle = '#2196f3';
+            ctx.beginPath();
+            ctx.arc(x, y - 40, 12, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Draw handicap symbol
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(x, y - 40, 8, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#2196f3';
+            ctx.beginPath();
+            ctx.arc(x, y - 40, 5, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Draw person symbol
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(x, y - 43, 2, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillRect(x - 2, y - 38, 4, 6);
+            
+            // Draw wheelchair
+            ctx.beginPath();
+            ctx.arc(x, y - 35, 6, 0, Math.PI * 2);
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+        }
+
+        // Game loop
+        function gameLoop() {
+            // Only update if game is active
+            if (gameState.gameActive) {
+                // Clear the canvas
+                drawParkingLot();
+                
+                // Move player towards mouse
+                const player = gameState.player;
+                const mouse = gameState.mouse;
+                
+                // Calculate distance to mouse
+                const dx = mouse.x - player.x;
+                const dy = mouse.y - player.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                // Move player if not already at mouse position
+                if (distance > player.speed) {
+                    player.x += (dx / distance) * player.speed;
+                    player.y += (dy / distance) * player.speed;
+                } else {
+                    player.x = mouse.x;
+                    player.y = mouse.y;
+                }
+                
+                // If mouse is down and enough time has passed since last paint, paint
+                const now = Date.now();
+                if (gameState.mouse.down && now - gameState.lastPaintTime > gameState.paintInterval) {
+                    // If sign tool is selected, place a sign directly where clicked
+                    if (gameState.paintTool === 'sign') {
+                        placeHandicapSign(mouse.x, mouse.y);
+                    } else {
+                        paintAtPosition(player.x + player.size, player.y);
+                    }
+                    gameState.lastPaintTime = now;
+                }
+            } else {
+                // Just draw the parking lot without player movement
+                drawParkingLot();
+            }
+            
+            // Continue the game loop
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Paint at a position
+        function paintAtPosition(x, y) {
+            const tool = gameState.paintTool;
+            const paintColor = getPaintColor(tool);
+            
+            // Create spray paint particles for visual effect
+            createSprayParticles(x, y, paintColor);
+            
+            if (tool === 'seal') {
+                // Apply sealant
+                applySealant(x, y);
+            } else if (tool === 'pothole') {
+                // Fix potholes
+                fixPothole(x, y);
+            } else {
+                // Check if we're painting a line segment
+                gameState.lineSegments.forEach(segment => {
+                    if (!segment.painted && tool === segment.requiredColor) {
+                        // Check if point is near the line segment - increased tolerance for easier painting
+                        if (isPointNearLine(x, y, segment.x1, segment.y1, segment.x2, segment.y2, 15)) {
+                            segment.painted = true;
+                            segment.paintedColor = paintColor;
+                        }
+                    }
+                });
+            }
+            
+            // Update progress
+            updateProgress();
+        }
+
+        // Apply sealant to parking lot
+        function applySealant(x, y) {
+            // Check if we're in the parking lot area (not on lines)
+            let onLine = false;
+            for (const segment of gameState.lineSegments) {
+                if (isPointNearLine(x, y, segment.x1, segment.y1, segment.x2, segment.y2, 5)) {
+                    onLine = true;
+                    break;
+                }
+            }
+            
+            if (!onLine) {
+                // Add sealed area
+                gameState.sealedAreas.push({
+                    x: x,
+                    y: y,
+                    radius: 10
+                });
+                
+                // Limit sealed areas to prevent performance issues
+                if (gameState.sealedAreas.length > 200) {
+                    gameState.sealedAreas.splice(0, 50);
+                }
+            }
+        }
+
+        // Fix potholes
+        function fixPothole(x, y) {
+            gameState.potholes.forEach(pothole => {
+                if (!pothole.fixed) {
+                    const dx = pothole.x - x;
+                    const dy = pothole.y - y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < pothole.size + 5) {
+                        pothole.fixed = true;
+                    }
+                }
+            });
+        }
+
+        // Check if a point is near a line segment
+        function isPointNearLine(px, py, x1, y1, x2, y2, tolerance) {
+            const A = px - x1;
+            const B = py - y1;
+            const C = x2 - x1;
+            const D = y2 - y1;
+
+            const dot = A * C + B * D;
+            const lenSq = C * C + D * D;
+            let param = -1;
+            if (lenSq !== 0) param = dot / lenSq;
+
+            let xx, yy;
+
+            if (param < 0) {
+                xx = x1;
+                yy = y1;
+            } else if (param > 1) {
+                xx = x2;
+                yy = y2;
+            } else {
+                xx = x1 + param * C;
+                yy = y1 + param * D;
+            }
+
+            const dx = px - xx;
+            const dy = py - yy;
+            return Math.sqrt(dx * dx + dy * dy) <= tolerance;
+        }
+
+        // Create spray paint particles
+        function createSprayParticles(x, y, color) {
+            const particleCount = 5 + Math.floor(Math.random() * 10);
+            
+            for (let i = 0; i < particleCount; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 1 + Math.random() * 3;
+                const size = 2 + Math.random() * 4;
+                
+                gameState.sprayParticles.push({
+                    x: x,
+                    y: y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    size: size,
+                    color: color,
+                    life: 10 + Math.random() * 20
+                });
+            }
+            
+            // Limit particles to prevent performance issues
+            if (gameState.sprayParticles.length > 200) {
+                gameState.sprayParticles.splice(0, gameState.sprayParticles.length - 150);
+            }
+        }
+
+        // Place a handicap sign
+        function placeHandicapSign(x, y) {
+            // Check if we're within a reasonable area of a handicap stall
+            let nearHandicapStall = false;
+            for (const stall of gameState.stallLayout) {
+                if (stall.isHandicap) {
+                    const dx = stall.x + stall.width/2 - x;
+                    const dy = stall.y + stall.depth/2 - y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 50) {
+                        nearHandicapStall = true;
+                        break;
+                    }
+                }
+            }
+            
+            if (!nearHandicapStall) {
+                return;
+            }
+            
+            // Check if there's already a sign nearby
+            const existingSign = gameState.handicapSigns.find(sign => {
+                const dx = sign.x - x;
+                const dy = sign.y - y;
+                return Math.sqrt(dx * dx + dy * dy) < 30;
+            });
+            
+            if (!existingSign) {
+                gameState.handicapSigns.push({x, y});
+                
+                // Create visual feedback
+                createSprayParticles(x, y, '#2196f3');
+            }
+        }
+
+        // Update progress for all job requirements
+        function updateProgress() {
+            if (!gameState.selectedBusiness) return;
+            
+            // Calculate striping progress (line segments)
+            const totalSegments = gameState.lineSegments.length;
+            const paintedSegments = gameState.lineSegments.filter(segment => segment.painted).length;
+            gameState.stripingCoverage = totalSegments > 0 ? (paintedSegments / totalSegments) * 100 : 0;
+            
+            // Calculate sealing progress (based on number of sealed areas)
+            // For simplicity, we'll assume a fixed number of sealant applications needed
+            const maxSealAreas = 150;
+            gameState.sealingCoverage = Math.min(100, (gameState.sealedAreas.length / maxSealAreas) * 100);
+            
+            // Calculate pothole progress
+            const totalPotholes = gameState.potholes.length;
+            const fixedPotholes = gameState.potholes.filter(pothole => pothole.fixed).length;
+            gameState.potholeCoverage = totalPotholes > 0 ? (fixedPotholes / totalPotholes) * 100 : 0;
+            
+            // Update progress bars
+            updateProgressBars();
+        }
+
+        // Update progress bars display
+        function updateProgressBars() {
+            stripingCoverageEl.textContent = `${Math.floor(gameState.stripingCoverage)}%`;
+            sealingCoverageEl.textContent = `${Math.floor(gameState.sealingCoverage)}%`;
+            potholeCoverageEl.textContent = `${Math.floor(gameState.potholeCoverage)}%`;
+            
+            stripingProgressEl.style.width = `${gameState.stripingCoverage}%`;
+            sealingProgressEl.style.width = `${gameState.sealingCoverage}%`;
+            potholeProgressEl.style.width = `${gameState.potholeCoverage}%`;
+        }
+
+        // Purchase an upgrade
+        function purchaseUpgrade(upgrade) {
+            if (gameState.money >= upgrade.price && !upgrade.purchased) {
+                gameState.money -= upgrade.price;
+                upgrade.purchased = true;
+                
+                // Apply upgrade effect
+                applyUpgradeEffect(upgrade);
+                
+                // Update UI
+                updateUI();
+                renderUpgrades();
+                
+                // Show notification
+                alert(`Purchased: ${upgrade.name}`);
+            }
+        }
+
+        // Apply upgrade effect
+        function applyUpgradeEffect(upgrade) {
+            switch(upgrade.effect) {
+                case 'speed':
+                    gameState.player.speed += 3;
+                    gameState.paintInterval *= (upgrade.paintIntervalModifier || 0.7);
+                    gameState.equipmentLevel++;
+                    break;
+                case 'precision':
+                    gameState.equipmentLevel++;
+                    break;
+                case 'sealing':
+                    // Sealing upgrade makes sealing faster
+                    gameState.sealingRequired = true;
+                    gameState.equipmentLevel++;
+                    break;
+                case 'pothole':
+                    // Pothole repair upgrade
+                    gameState.potholeRepairRequired = true;
+                    gameState.equipmentLevel++;
+                    break;
+                case 'truck':
+                    gameState.player.speed *= 2;
+                    gameState.paintInterval *= (upgrade.paintIntervalModifier || 0.3);
+                    gameState.level++;
+                    gameState.equipmentLevel += 2;
+                    break;
+                case 'expansion':
+                    gameState.level += 2;
+                    break;
+            }
+            
+            equipmentEl.textContent = getEquipmentName(gameState.equipmentLevel);
+        }
+
+        // Get equipment name based on level
+        function getEquipmentName(level) {
+            if (level < 3) return 'Basic';
+            if (level < 5) return 'Intermediate';
+            if (level < 7) return 'Professional';
+            return 'Industrial';
+        }
+
+        // Complete the current job
+        function completeJob() {
+            if (!gameState.selectedBusiness || gameState.selectedBusiness.completed) {
+                alert('Please select an incomplete job first!');
+                return;
+            }
+            
+            // Check if timer has expired
+            if (gameState.timer <= 0) {
+                alert("Time's up! You cannot complete this job anymore.");
+                return;
+            }
+            
+            // Check if all requirements are met
+            let requirementsMet = true;
+            let message = "";
+            
+            if (gameState.stripingCoverage < 80) {
+                requirementsMet = false;
+                message += `• Need at least 80% line striping (Current: ${Math.floor(gameState.stripingCoverage)}%)\n`;
+                message += `  Make sure to paint ALL white border lines including top and bottom of parking lot!\n`;
+            }
+            
+            if (gameState.sealingCoverage < 90) {
+                requirementsMet = false;
+                message += `• Need at least 90% sealing (Current: ${Math.floor(gameState.sealingCoverage)}%)\n`;
+            }
+            
+            if (gameState.potholeCoverage < 100) {
+                requirementsMet = false;
+                message += `• Need to fix ALL potholes (Current: ${Math.floor(gameState.potholeCoverage)}%)\n`;
+            }
+            
+            // Check if handicap signs are placed
+            const handicapStalls = gameState.stallLayout.filter(stall => stall.isHandicap);
+            if (handicapStalls.length > 0 && gameState.handicapSigns.length < handicapStalls.length) {
+                requirementsMet = false;
+                message += `• Need handicap signs for all blue spots (Need ${handicapStalls.length}, have ${gameState.handicapSigns.length})\n`;
+            }
+            
+            if (!requirementsMet) {
+                alert("Job requirements not met:\n\n" + message);
+                return;
+            }
+            
+            // Stop the timer
+            if (gameState.timerInterval) {
+                clearInterval(gameState.timerInterval);
+                gameState.timerInterval = null;
+            }
+            
+            // Mark business as completed
+            gameState.selectedBusiness.completed = true;
+            gameState.completedJobs++;
+            gameState.gameActive = false;
+            
+            // Calculate reward with bonuses
+            let reward = gameState.selectedBusiness.reward;
+            
+            // Bonus for high coverage
+            if (gameState.stripingCoverage > 95) reward = Math.floor(reward * 1.2);
+            else if (gameState.stripingCoverage > 90) reward = Math.floor(reward * 1.1);
+            
+            // Bonus for remaining time (10% bonus per 30 seconds remaining)
+            const timeBonus = Math.floor(gameState.timer / 30) * 0.1;
+            reward = Math.floor(reward * (1 + timeBonus));
+            
+            // Add money
+            gameState.money += reward;
+            
+            // Level up every 5 completed jobs
+            if (gameState.completedJobs % 5 === 0) {
+                gameState.level++;
+            }
+            
+            // Update UI
+            updateUI();
+            renderBusinesses();
+            
+            // Show completion message
+            alert(`Job completed with ${gameState.timer} seconds remaining!\n\nYou earned $${reward}.`);
+            
+            // Deselect business
+            gameState.selectedBusiness = null;
+            selectedBusinessEl.textContent = 'Select a Job';
+        }
+
+        // Update UI elements
+        function updateUI() {
+            moneyEl.textContent = `$${gameState.money}`;
+            completedEl.textContent = `${gameState.completedJobs}/30`;
+            levelEl.textContent = gameState.level;
+            equipmentEl.textContent = getEquipmentName(gameState.equipmentLevel);
+        }
+
+        // Save game to localStorage
+        function saveGame() {
+            const saveData = {
+                money: gameState.money,
+                level: gameState.level,
+                completedJobs: gameState.completedJobs,
+                equipmentLevel: gameState.equipmentLevel,
+                businesses: gameState.businesses,
+                upgrades: gameState.upgrades
+            };
+            
+            localStorage.setItem('parkingLotSimulatorSave', JSON.stringify(saveData));
+            alert('Game saved successfully!');
+        }
+
+        // Load game from localStorage
+        function loadGame() {
+            const saveData = localStorage.getItem('parkingLotSimulatorSave');
+            
+            if (saveData) {
+                try {
+                    const loadedData = JSON.parse(saveData);
+                    
+                    gameState.money = loadedData.money;
+                    gameState.level = loadedData.level;
+                    gameState.completedJobs = loadedData.completedJobs;
+                    gameState.equipmentLevel = loadedData.equipmentLevel;
+                    gameState.businesses = loadedData.businesses;
+                    gameState.upgrades = loadedData.upgrades;
+                    
+                    // Update UI
+                    updateUI();
+                    renderBusinesses();
+                    renderUpgrades();
+                    
+                    alert('Game loaded successfully!');
+                } catch (e) {
+                    alert('Failed to load saved game. Starting fresh.');
+                }
+            } else {
+                alert('No saved game found.');
+            }
+        }
+
+        // Restart the game
+        function restartGame() {
+            if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+                // Reset game state
+                gameState.money = 2500;
+                gameState.level = 1;
+                gameState.completedJobs = 0;
+                gameState.equipmentLevel = 1;
+                gameState.selectedBusiness = null;
+                gameState.stripingCoverage = 0;
+                gameState.sealingCoverage = 0;
+                gameState.potholeCoverage = 0;
+                gameState.sprayParticles = [];
+                gameState.handicapSigns = [];
+                gameState.paintedAreas = [];
+                gameState.lineSegments = [];
+                gameState.potholes = [];
+                gameState.sealedAreas = [];
+                gameState.timer = 120;
+                gameState.gameActive = false;
+                
+                // Stop timer
+                if (gameState.timerInterval) {
+                    clearInterval(gameState.timerInterval);
+                    gameState.timerInterval = null;
+                }
+                
+                // Reinitialize businesses and upgrades
+                gameState.businesses = initializeBusinesses();
+                gameState.upgrades = initializeUpgrades();
+                
+                // Reset player position
+                gameState.player.x = gameCanvas.width / 2;
+                gameState.player.y = gameCanvas.height / 2;
+                
+                // Update UI
+                updateUI();
+                renderBusinesses();
+                renderUpgrades();
+                updateProgressBars();
+                updateTimerDisplay();
+                
+                // Clear canvas
+                drawParkingLot();
+                
+                selectedBusinessEl.textContent = 'Select a Job';
+                
+                alert('Game restarted!');
+            }
+        }
+
+        // Set up event listeners with mobile/tablet support
+        function setupEventListeners() {
+            // Mouse movement on canvas
+            gameCanvas.addEventListener('mousemove', (e) => {
+                const rect = gameCanvas.getBoundingClientRect();
+                gameState.mouse.x = e.clientX - rect.left;
+                gameState.mouse.y = e.clientY - rect.top;
+            });
+            
+            // Touch movement on canvas
+            gameCanvas.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                const rect = gameCanvas.getBoundingClientRect();
+                gameState.mouse.x = e.touches[0].clientX - rect.left;
+                gameState.mouse.y = e.touches[0].clientY - rect.top;
+            }, {passive: false});
+            
+            // Mouse down for painting
+            gameCanvas.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                gameState.mouse.down = true;
+                
+                // If sign tool is selected, place a sign immediately on click
+                if (gameState.paintTool === 'sign') {
+                    const rect = gameCanvas.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    placeHandicapSign(x, y);
+                }
+            });
+            
+            gameCanvas.addEventListener('mouseup', () => {
+                gameState.mouse.down = false;
+            });
+            
+            // Touch for painting
+            gameCanvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                gameState.mouse.down = true;
+                
+                // Also update position on touch start
+                const rect = gameCanvas.getBoundingClientRect();
+                gameState.mouse.x = e.touches[0].clientX - rect.left;
+                gameState.mouse.y = e.touches[0].clientY - rect.top;
+                
+                // If sign tool is selected, place a sign immediately on touch
+                if (gameState.paintTool === 'sign') {
+                    placeHandicapSign(gameState.mouse.x, gameState.mouse.y);
+                }
+            }, {passive: false});
+            
+            gameCanvas.addEventListener('touchend', () => {
+                gameState.mouse.down = false;
+            });
+            
+            // Paint tool selection
+            toolWhite.addEventListener('click', () => {
+                setActiveTool('white', toolWhite);
+            });
+            
+            toolYellow.addEventListener('click', () => {
+                setActiveTool('yellow', toolYellow);
+            });
+            
+            toolBlue.addEventListener('click', () => {
+                setActiveTool('blue', toolBlue);
+            });
+            
+            toolSeal.addEventListener('click', () => {
+                setActiveTool('seal', toolSeal);
+            });
+            
+            toolPothole.addEventListener('click', () => {
+                setActiveTool('pothole', toolPothole);
+            });
+            
+            toolSign.addEventListener('click', () => {
+                setActiveTool('sign', toolSign);
+            });
+            
+            // Button event listeners
+            completeJobBtn.addEventListener('click', completeJob);
+            saveGameBtn.addEventListener('click', saveGame);
+            restartGameBtn.addEventListener('click', restartGame);
+            
+            // Load game on startup if available
+            window.addEventListener('load', () => {
+                // Auto-load saved game if available
+                if (localStorage.getItem('parkingLotSimulatorSave')) {
+                    if (confirm('A saved game was found. Would you like to load it?')) {
+                        loadGame();
+                    }
+                }
+            });
+            
+            // Prevent context menu on canvas
+            gameCanvas.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+            });
+        }
+
+        // Set active paint tool
+        function setActiveTool(tool, element) {
+            gameState.paintTool = tool;
+            
+            // Remove selected class from all tools
+            document.querySelectorAll('.paint-tool').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            // Add selected class to active tool
+            element.classList.add('selected');
+        }
+
+        // Initialize the game when the page loads
+        window.addEventListener('DOMContentLoaded', initGame);
+    </script>
+</body>
+</html>
