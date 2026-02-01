@@ -615,6 +615,41 @@
             color: rgba(255, 255, 255, 0.9);
         }
         
+        /* Sound Controls */
+        .sound-controls {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .sound-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .sound-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .crack {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
         /* Mobile-specific adjustments */
         @media (max-width: 1024px) {
             .game-container {
@@ -825,6 +860,12 @@
                 </div>
                 
                 <div style="position: relative;">
+                    <div class="sound-controls">
+                        <button class="sound-toggle" id="soundToggle">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                    </div>
+                    
                     <canvas id="gameCanvas" width="800" height="400"></canvas>
                 </div>
                 
@@ -929,7 +970,7 @@
                 <div class="contact-info">
                     <a href="tel:9188603212"><i class="fas fa-phone"></i> 918-860-3212</a>
                     <a href="mailto:purcelllinestriping@gmail.com"><i class="fas fa-envelope"></i> purcelllinestriping@gmail.com</a>
-                    <a href="https://www.purcelllinestriping.com" target="_blank"><i class="fas fa-globe"></i> www.purcelllinestriping.com</a>
+                    <a href="https://www.purcelllinestripingllc.com" target="_blank"><i class="fas fa-globe"></i> www.purcelllinestripingllc.com</a>
                 </div>
             </div>
             <div class="social-links">
@@ -938,10 +979,27 @@
                 </a>
             </div>
             <div class="copyright">
-                &copy; 2023 Purcell Line Striping. All rights reserved. | Parking Lot Simulator Game
+                &copy; 2026 Purcell Line Striping LLC. All rights reserved. | Parking Lot Simulator Game
             </div>
         </div>
     </footer>
+
+    <!-- Audio elements -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://github.com/TitanBusinessPros/Line-Striper/raw/main/Puck%20and%20Roll.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="paintSound">
+        <source src="https://assets.mixkit.co/active_storage/sfx/258/258-preview.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sealSound">
+        <source src="https://assets.mixkit.co/active_storage/sfx/247/247-preview.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="potholeSound">
+        <source src="https://assets.mixkit.co/active_storage/sfx/265/265-preview.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="signSound">
+        <source src="https://assets.mixkit.co/active_storage/sfx/285/285-preview.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
         // Game state
@@ -980,6 +1038,7 @@
             lineSegments: [],
             potholes: [],
             sealedAreas: [],
+            cracks: [], // NEW: Array to store cracks
             timer: 120,
             timerInterval: null,
             gameActive: false,
@@ -991,8 +1050,18 @@
                 y: 0,
                 width: 0,
                 height: 0
-            }
+            },
+            // Sound state
+            soundEnabled: true
         };
+
+        // Audio elements
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const paintSound = document.getElementById('paintSound');
+        const sealSound = document.getElementById('sealSound');
+        const potholeSound = document.getElementById('potholeSound');
+        const signSound = document.getElementById('signSound');
+        const soundToggle = document.getElementById('soundToggle');
 
         // Initialize businesses
         function initializeBusinesses() {
@@ -1157,6 +1226,9 @@
             // Set up event listeners
             setupEventListeners();
             
+            // Set up sound toggle
+            setupSoundControls();
+            
             // Start the game loop
             requestAnimationFrame(gameLoop);
             
@@ -1165,6 +1237,201 @@
             
             // Handle window resize
             window.addEventListener('resize', resizeCanvas);
+        }
+
+        // Set up sound controls
+        function setupSoundControls() {
+            soundToggle.addEventListener('click', toggleSound);
+            
+            // Initialize sound state from localStorage or default to true
+            const savedSoundState = localStorage.getItem('parkingLotSoundEnabled');
+            if (savedSoundState !== null) {
+                gameState.soundEnabled = savedSoundState === 'true';
+            }
+            
+            updateSoundIcon();
+        }
+
+        // Toggle sound on/off
+        function toggleSound() {
+            gameState.soundEnabled = !gameState.soundEnabled;
+            updateSoundIcon();
+            
+            // Save sound state to localStorage
+            localStorage.setItem('parkingLotSoundEnabled', gameState.soundEnabled);
+            
+            // If turning sound off, pause background music
+            if (!gameState.soundEnabled) {
+                backgroundMusic.pause();
+            } else if (gameState.gameActive) {
+                // If turning sound on and game is active, play background music
+                playBackgroundMusic();
+            }
+        }
+
+        // Update sound icon based on current state
+        function updateSoundIcon() {
+            const icon = soundToggle.querySelector('i');
+            if (gameState.soundEnabled) {
+                icon.className = 'fas fa-volume-up';
+            } else {
+                icon.className = 'fas fa-volume-mute';
+            }
+        }
+
+        // Play a sound if sound is enabled
+        function playSound(audioElement) {
+            if (gameState.soundEnabled) {
+                audioElement.currentTime = 0;
+                audioElement.play().catch(e => {
+                    console.log("Audio play failed:", e);
+                });
+            }
+        }
+
+        // Play background music
+        function playBackgroundMusic() {
+            if (gameState.soundEnabled && gameState.gameActive) {
+                backgroundMusic.play().catch(e => {
+                    console.log("Background music play failed:", e);
+                });
+            }
+        }
+
+        // Generate cracks in the parking lot
+        function generateCracks(difficulty) {
+            gameState.cracks = [];
+            
+            // Number of cracks based on difficulty
+            const crackCount = difficulty * 5 + 3; // 8, 13, or 18 cracks
+            
+            // Place cracks within the parking lot bounds
+            const bounds = gameState.parkingLotBounds;
+            
+            for (let i = 0; i < crackCount; i++) {
+                // Generate random position within the parking lot area
+                let x, y;
+                let validPosition = false;
+                let attempts = 0;
+                
+                while (!validPosition && attempts < 50) {
+                    x = bounds.x + 20 + Math.random() * (bounds.width - 40);
+                    y = bounds.y + 20 + Math.random() * (bounds.height - 40);
+                    
+                    // Check if position is not too close to existing cracks
+                    let tooClose = false;
+                    for (const crack of gameState.cracks) {
+                        const dx = crack.x - x;
+                        const dy = crack.y - y;
+                        if (Math.sqrt(dx * dx + dy * dy) < 40) {
+                            tooClose = true;
+                            break;
+                        }
+                    }
+                    
+                    // Check if position is not on a stall or lane line
+                    let onLine = false;
+                    for (const segment of gameState.lineSegments) {
+                        if (isPointNearLine(x, y, segment.x1, segment.y1, segment.x2, segment.y2, 15)) {
+                            onLine = true;
+                            break;
+                        }
+                    }
+                    
+                    validPosition = !tooClose && !onLine;
+                    attempts++;
+                }
+                
+                if (validPosition) {
+                    // Create crack with multiple segments for a realistic look
+                    const segments = Math.floor(Math.random() * 3) + 2; // 2-4 segments
+                    const crack = {
+                        x: x,
+                        y: y,
+                        segments: [],
+                        fixed: false
+                    };
+                    
+                    // Generate crack segments
+                    let currentX = x;
+                    let currentY = y;
+                    
+                    for (let s = 0; s < segments; s++) {
+                        const angle = Math.random() * Math.PI * 2;
+                        const length = 15 + Math.random() * 20;
+                        const endX = currentX + Math.cos(angle) * length;
+                        const endY = currentY + Math.sin(angle) * length;
+                        
+                        crack.segments.push({
+                            x1: currentX,
+                            y1: currentY,
+                            x2: endX,
+                            y2: endY
+                        });
+                        
+                        currentX = endX;
+                        currentY = endY;
+                    }
+                    
+                    gameState.cracks.push(crack);
+                }
+            }
+        }
+
+        // Draw cracks on the parking lot
+        function drawCracks() {
+            const ctx = gameState.ctx;
+            
+            gameState.cracks.forEach(crack => {
+                if (!crack.fixed) {
+                    ctx.strokeStyle = '#111';
+                    ctx.lineWidth = 2;
+                    ctx.lineCap = 'round';
+                    
+                    crack.segments.forEach(segment => {
+                        ctx.beginPath();
+                        ctx.moveTo(segment.x1, segment.y1);
+                        ctx.lineTo(segment.x2, segment.y2);
+                        ctx.stroke();
+                        
+                        // Add some jagged edges to make cracks look more realistic
+                        for (let i = 0; i < 3; i++) {
+                            const t = Math.random();
+                            const midX = segment.x1 + (segment.x2 - segment.x1) * t;
+                            const midY = segment.y1 + (segment.y2 - segment.y1) * t;
+                            const angle = Math.atan2(segment.y2 - segment.y1, segment.x2 - segment.x1) + Math.PI/2;
+                            const offset = (Math.random() - 0.5) * 4;
+                            const jagX = midX + Math.cos(angle) * offset;
+                            const jagY = midY + Math.sin(angle) * offset;
+                            
+                            ctx.beginPath();
+                            ctx.moveTo(midX, midY);
+                            ctx.lineTo(jagX, jagY);
+                            ctx.stroke();
+                        }
+                    });
+                }
+            });
+        }
+
+        // Check if sealer fixes cracks
+        function fixCracks(x, y) {
+            let fixedAny = false;
+            
+            gameState.cracks.forEach(crack => {
+                if (!crack.fixed) {
+                    // Check if sealant is near any segment of the crack
+                    for (const segment of crack.segments) {
+                        if (isPointNearLine(x, y, segment.x1, segment.y1, segment.x2, segment.y2, 10)) {
+                            crack.fixed = true;
+                            fixedAny = true;
+                            break;
+                        }
+                    }
+                }
+            });
+            
+            return fixedAny;
         }
 
         // Resize canvas for mobile/tablet
@@ -1256,14 +1523,21 @@
             gameState.lineSegments = [];
             gameState.potholes = [];
             gameState.sealedAreas = [];
+            gameState.cracks = [];
             gameState.timer = 120;
             gameState.gameActive = true;
             
             // Start the timer
             startTimer();
             
+            // Start background music
+            playBackgroundMusic();
+            
             // Generate the parking lot layout for this business
             generateParkingLotLayout(business.difficulty);
+            
+            // Generate cracks based on difficulty
+            generateCracks(business.difficulty);
             
             // Generate potholes based on difficulty
             generatePotholes(business.difficulty);
@@ -1294,6 +1568,7 @@
                     // Time's up!
                     clearInterval(gameState.timerInterval);
                     gameState.gameActive = false;
+                    backgroundMusic.pause();
                     alert("Time's up! Job failed. Select a new job to try again.");
                 }
             }, 1000);
@@ -1580,6 +1855,9 @@
                 ctx.strokeRect(bounds.x, bounds.y, bounds.width, bounds.height);
             }
             
+            // Draw cracks
+            drawCracks();
+            
             // Draw sealed areas
             gameState.sealedAreas.forEach(area => {
                 ctx.fillStyle = 'rgba(100, 100, 100, 0.7)';
@@ -1813,7 +2091,7 @@
                 if (gameState.mouse.down && now - gameState.lastPaintTime > gameState.paintInterval) {
                     // If sign tool is selected, place a sign directly where clicked
                     if (gameState.paintTool === 'sign') {
-                        placeHandicapSign(mouse.x, mouse.y);
+                        placeHandicapSign(player.x + player.size, player.y);
                     } else {
                         paintAtPosition(player.x + player.size, player.y);
                     }
@@ -1844,15 +2122,22 @@
                 fixPothole(x, y);
             } else {
                 // Check if we're painting a line segment
+                let paintedSomething = false;
                 gameState.lineSegments.forEach(segment => {
                     if (!segment.painted && tool === segment.requiredColor) {
                         // Check if point is near the line segment - increased tolerance for easier painting
                         if (isPointNearLine(x, y, segment.x1, segment.y1, segment.x2, segment.y2, 15)) {
                             segment.painted = true;
                             segment.paintedColor = paintColor;
+                            paintedSomething = true;
                         }
                     }
                 });
+                
+                // Play paint sound if something was painted
+                if (paintedSomething) {
+                    playSound(paintSound);
+                }
             }
             
             // Update progress
@@ -1878,15 +2163,25 @@
                     radius: 10
                 });
                 
+                // Check if we fixed any cracks
+                if (fixCracks(x, y)) {
+                    playSound(sealSound);
+                }
+                
                 // Limit sealed areas to prevent performance issues
                 if (gameState.sealedAreas.length > 200) {
                     gameState.sealedAreas.splice(0, 50);
                 }
+                
+                // Play seal sound
+                playSound(sealSound);
             }
         }
 
         // Fix potholes
         function fixPothole(x, y) {
+            let fixedSomething = false;
+            
             gameState.potholes.forEach(pothole => {
                 if (!pothole.fixed) {
                     const dx = pothole.x - x;
@@ -1895,9 +2190,15 @@
                     
                     if (distance < pothole.size + 5) {
                         pothole.fixed = true;
+                        fixedSomething = true;
                     }
                 }
             });
+            
+            // Play pothole sound if something was fixed
+            if (fixedSomething) {
+                playSound(potholeSound);
+            }
         }
 
         // Check if a point is near a line segment
@@ -1989,6 +2290,9 @@
                 
                 // Create visual feedback
                 createSprayParticles(x, y, '#2196f3');
+                
+                // Play sign placement sound
+                playSound(signSound);
             }
         }
 
@@ -2001,10 +2305,15 @@
             const paintedSegments = gameState.lineSegments.filter(segment => segment.painted).length;
             gameState.stripingCoverage = totalSegments > 0 ? (paintedSegments / totalSegments) * 100 : 0;
             
-            // Calculate sealing progress (based on number of sealed areas)
-            // For simplicity, we'll assume a fixed number of sealant applications needed
+            // Calculate sealing progress (based on number of sealed areas and cracks fixed)
             const maxSealAreas = 150;
-            gameState.sealingCoverage = Math.min(100, (gameState.sealedAreas.length / maxSealAreas) * 100);
+            const sealedAreaProgress = (gameState.sealedAreas.length / maxSealAreas) * 100;
+            const totalCracks = gameState.cracks.length;
+            const fixedCracks = gameState.cracks.filter(crack => crack.fixed).length;
+            const crackFixProgress = totalCracks > 0 ? (fixedCracks / totalCracks) * 100 : 100;
+            
+            // Combine sealed area progress and crack fixing progress
+            gameState.sealingCoverage = (sealedAreaProgress + crackFixProgress) / 2;
             
             // Calculate pothole progress
             const totalPotholes = gameState.potholes.length;
@@ -2138,6 +2447,9 @@
                 gameState.timerInterval = null;
             }
             
+            // Stop background music
+            backgroundMusic.pause();
+            
             // Mark business as completed
             gameState.selectedBusiness.completed = true;
             gameState.completedJobs++;
@@ -2190,7 +2502,8 @@
                 completedJobs: gameState.completedJobs,
                 equipmentLevel: gameState.equipmentLevel,
                 businesses: gameState.businesses,
-                upgrades: gameState.upgrades
+                upgrades: gameState.upgrades,
+                soundEnabled: gameState.soundEnabled
             };
             
             localStorage.setItem('parkingLotSimulatorSave', JSON.stringify(saveData));
@@ -2211,6 +2524,12 @@
                     gameState.equipmentLevel = loadedData.equipmentLevel;
                     gameState.businesses = loadedData.businesses;
                     gameState.upgrades = loadedData.upgrades;
+                    
+                    // Load sound state if it exists
+                    if (loadedData.soundEnabled !== undefined) {
+                        gameState.soundEnabled = loadedData.soundEnabled;
+                        updateSoundIcon();
+                    }
                     
                     // Update UI
                     updateUI();
@@ -2244,6 +2563,7 @@
                 gameState.lineSegments = [];
                 gameState.potholes = [];
                 gameState.sealedAreas = [];
+                gameState.cracks = [];
                 gameState.timer = 120;
                 gameState.gameActive = false;
                 
@@ -2252,6 +2572,9 @@
                     clearInterval(gameState.timerInterval);
                     gameState.timerInterval = null;
                 }
+                
+                // Stop background music
+                backgroundMusic.pause();
                 
                 // Reinitialize businesses and upgrades
                 gameState.businesses = initializeBusinesses();
