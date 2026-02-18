@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Purcell Line Striping - Parking Lot Simulator</title>
+    <title>Your Company Name Here - Parking Lot Simulator</title>
     <link rel="icon" type="image/x-icon" href="https://github.com/TitanBusinessPros/PLS-Games/raw/main/PLS-T-Logo-1.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -208,7 +208,7 @@
         }
         
         #gameCanvas {
-            background: #8a9a5b;
+            background: #3a3a3a;
             border-radius: 10px;
             width: 100%;
             height: 400px;
@@ -302,6 +302,14 @@
         .paint-tool.selected {
             border-color: #2d5a2d;
             background: #e9f5e9;
+        }
+
+        /* Disabled tool style */
+        .paint-tool.disabled-tool {
+            opacity: 0.45;
+            cursor: not-allowed;
+            border-color: #ccc !important;
+            background: #f0f0f0 !important;
         }
         
         .paint-color {
@@ -444,7 +452,7 @@
             font-weight: bold;
             font-size: 0.8rem;
         }
-        
+
         .timer-container {
             position: absolute;
             top: 15px;
@@ -509,10 +517,27 @@
         }
         
         .progress-fill.potholes {
-            background: #333;
+            background: #555;
+        }
+
+        /* Step requirement notice */
+        .step-notice {
+            display: none;
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #856404;
+            font-weight: bold;
+            text-align: center;
+        }
+        .step-notice.visible {
+            display: block;
         }
         
-        /* Footer Styles - CENTERED */
+        /* Footer Styles */
         .footer {
             background: linear-gradient(135deg, #1a3a1a 0%, #2d5a2d 100%);
             color: white;
@@ -644,182 +669,40 @@
             background: rgba(255, 255, 255, 0.2);
         }
         
-        .crack {
-            position: absolute;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        /* Mobile-specific adjustments */
         @media (max-width: 1024px) {
-            .game-container {
-                flex-direction: column;
-            }
-            
-            .business-list-container, .game-screen-container {
-                min-width: 100%;
-            }
-            
-            .logo-img {
-                max-width: 350px;
-            }
-            
-            .game-title {
-                font-size: 1.3rem;
-            }
-            
-            #gameCanvas {
-                height: 350px;
-            }
-            
-            .timer-container {
-                top: 10px;
-                right: 10px;
-                font-size: 0.9rem;
-                padding: 6px 10px;
-            }
-            
-            .paint-tool {
-                min-width: 80px;
-                padding: 5px 8px;
-                font-size: 0.75rem;
-            }
-            
-            .control-btn {
-                min-width: 100px;
-                padding: 7px 10px;
-                font-size: 0.85rem;
-            }
+            .game-container { flex-direction: column; }
+            .business-list-container, .game-screen-container { min-width: 100%; }
+            .logo-img { max-width: 350px; }
+            #gameCanvas { height: 350px; }
         }
         
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            #gameCanvas {
-                height: 300px;
-            }
-            
-            .stat-item {
-                min-width: 100px;
-            }
-            
-            .stat-value {
-                font-size: 1.3rem;
-            }
-            
-            .logo-img {
-                max-width: 280px;
-            }
-            
-            .game-title {
-                font-size: 1.1rem;
-            }
-            
-            .upgrades-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .paint-tools {
-                flex-direction: column;
-            }
-            
-            .paint-tool {
-                min-width: 100%;
-            }
-            
-            .control-btn {
-                min-width: 100%;
-            }
-            
-            .game-controls {
-                flex-direction: column;
-            }
-            
-            .footer {
-                padding: 15px 10px;
-            }
-            
-            .company-name {
-                font-size: 1.3rem;
-            }
-            
-            .contact-info a {
-                font-size: 0.9rem;
-            }
+            body { padding: 10px; }
+            #gameCanvas { height: 300px; }
+            .stat-item { min-width: 100px; }
+            .upgrades-list { grid-template-columns: 1fr; }
+            .paint-tools { flex-direction: column; }
+            .paint-tool, .control-btn { min-width: 100%; }
+            .game-controls { flex-direction: column; }
         }
         
         @media (max-width: 480px) {
-            #gameCanvas {
-                height: 250px;
-            }
-            
-            .logo-img {
-                max-width: 220px;
-            }
-            
-            .game-title {
-                font-size: 1rem;
-            }
-            
-            .panel-title {
-                font-size: 1rem;
-                padding: 8px 12px;
-            }
-            
-            .stat-value {
-                font-size: 1.1rem;
-            }
-            
-            .stat-label {
-                font-size: 0.7rem;
-            }
-            
-            .timer-container {
-                font-size: 0.8rem;
-                padding: 5px 8px;
-            }
-            
-            .company-name {
-                font-size: 1.1rem;
-            }
-            
-            .contact-info a {
-                font-size: 0.85rem;
-            }
-            
-            .social-links a {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
+            #gameCanvas { height: 250px; }
+            .logo-img { max-width: 220px; }
         }
         
-        /* Touch device optimizations */
         @media (hover: none) and (pointer: coarse) {
-            .control-btn:hover, .paint-tool:hover, .business-card:hover {
-                transform: none;
-            }
-            
-            .control-btn:active, .paint-tool:active, .business-card:active {
-                transform: scale(0.98);
-            }
-            
-            .paint-tool {
-                padding: 8px 10px;
-            }
-            
-            .control-btn {
-                padding: 10px 12px;
-            }
+            .control-btn:hover, .paint-tool:hover, .business-card:hover { transform: none; }
+            .control-btn:active, .paint-tool:active, .business-card:active { transform: scale(0.98); }
+            .paint-tool { padding: 8px 10px; }
+            .control-btn { padding: 10px 12px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="logo-container">
-            <img src="https://github.com/TitanBusinessPros/PLS-Games/raw/main/PLS-Logo-T.png" alt="Purcell Line Striping Logo" class="logo-img">
+            <img src="https://github.com/TitanBusinessPros/Line-Striper/raw/main/Line-Striping-Logo.png" class="logo-img">
             <div class="game-title">Parking Lot Maintenance Simulator</div>
         </div>
         
@@ -848,9 +731,7 @@
                     <span><i class="fas fa-building"></i> Tulsa Businesses</span>
                     <span id="selected-business">Select a Job</span>
                 </div>
-                <div class="business-list" id="businessList">
-                    <!-- Businesses will be generated here -->
-                </div>
+                <div class="business-list" id="businessList"></div>
             </div>
             
             <div class="game-screen-container">
@@ -865,8 +746,11 @@
                             <i class="fas fa-volume-up"></i>
                         </button>
                     </div>
-                    
                     <canvas id="gameCanvas" width="800" height="400"></canvas>
+                </div>
+
+                <div id="stepNotice" class="step-notice">
+                    ⚠️ Fix all potholes BEFORE applying sealant!
                 </div>
                 
                 <div class="job-progress">
@@ -877,15 +761,15 @@
                         </div>
                     </div>
                     <div class="progress-item">
-                        <div>Sealing: <span id="sealing-coverage">0%</span></div>
-                        <div class="progress-bar">
-                            <div class="progress-fill sealing" id="sealing-progress" style="width: 0%"></div>
-                        </div>
-                    </div>
-                    <div class="progress-item">
                         <div>Potholes: <span id="pothole-coverage">0%</span></div>
                         <div class="progress-bar">
                             <div class="progress-fill potholes" id="pothole-progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div>Sealing: <span id="sealing-coverage">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill sealing" id="sealing-progress" style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
@@ -904,13 +788,13 @@
                             <div class="paint-color blue"></div>
                             <span>Handicap</span>
                         </div>
-                        <div class="paint-tool" id="tool-seal">
-                            <div class="paint-color gray"></div>
-                            <span>Sealant</span>
-                        </div>
                         <div class="paint-tool" id="tool-pothole">
                             <div class="paint-color black"></div>
                             <span>Fix Pothole</span>
+                        </div>
+                        <div class="paint-tool" id="tool-seal">
+                            <div class="paint-color gray"></div>
+                            <span>Sealant</span>
                         </div>
                         <div class="paint-tool" id="tool-sign">
                             <i class="fas fa-sign"></i>
@@ -938,53 +822,43 @@
                 <span><i class="fas fa-tools"></i> Equipment & Upgrades</span>
                 <span>Upgrade your business to earn more!</span>
             </div>
-            
-            <div class="upgrades-list" id="upgradesList">
-                <!-- Upgrades will be generated here -->
-            </div>
+            <div class="upgrades-list" id="upgradesList"></div>
         </div>
         
         <div class="instructions">
             <h3><i class="fas fa-info-circle"></i> How to Play</h3>
             <ul>
                 <li><strong>Select a business</strong> to start a 2-minute job</li>
-                <li><strong>Move finger/mouse</strong> to control the painter</li>
-                <li><strong>Tap/hold to use tools:</strong></li>
-                <li><strong>White/Yellow/Blue</strong> - Paint parking lines</li>
-                <li><strong>Sealant</strong> - Seal the parking lot (required!)</li>
-                <li><strong>Fix Pothole</strong> - Repair potholes (required!)</li>
-                <li><strong>Handicap Sign</strong> - Place signs in blue spots</li>
+                <li><strong>Step 1:</strong> Fix all potholes using the <strong>Fix Pothole</strong> tool first!</li>
+                <li><strong>Step 2:</strong> Apply <strong>Sealant</strong> over the entire lot (only available after potholes are fixed)</li>
+                <li><strong>Step 3:</strong> Paint all parking lines — <strong>White</strong> for borders &amp; lanes, <strong>Yellow</strong> for stall dividers, <strong>Blue</strong> for handicap stalls</li>
+                <li><strong>Step 4:</strong> Place <strong>Handicap Signs</strong> near blue handicap spaces</li>
                 <li><strong>Complete all tasks</strong> before time runs out!</li>
-                <li><strong>Note:</strong> Make sure to paint ALL white border lines including top and bottom of the parking lot!</li>
             </ul>
         </div>
     </div>
 
-    <!-- Footer Section - CENTERED -->
     <footer class="footer">
         <div class="footer-content">
             <div class="company-info">
-                <div class="company-name">
-                    Purcell Line Striping
-                </div>
+                <div class="company-name">Your Company Name Here</div>
                 <div class="contact-info">
-                    <a href="tel:9188603212"><i class="fas fa-phone"></i> 918-860-3212</a>
-                    <a href="mailto:purcelllinestriping@gmail.com"><i class="fas fa-envelope"></i> purcelllinestriping@gmail.com</a>
-                    <a href="https://www.purcelllinestripingllc.com" target="_blank"><i class="fas fa-globe"></i> www.purcelllinestripingllc.com</a>
+                    <a href="Your Phone Number Here"><i class="fas fa-phone"></i> Your Phone Number Here!</a>
+                    <a href="mailto:@gmail.com"><i class="fas fa-envelope"></i> Your Email Here!</a>
+                    <a href="Your Website Here!" target="_blank"><i class="fas fa-globe"></i> Your Website Here</a>
                 </div>
             </div>
             <div class="social-links">
-                <a href="https://www.facebook.com/profile.php?id=100091509630743" target="_blank" title="Facebook">
+                <a href="https://www.facebook.com/TitanBusinessPros/" target="_blank" title="Facebook">
                     <i class="fab fa-facebook-f"></i>
                 </a>
             </div>
             <div class="copyright">
-                &copy; 2026 Purcell Line Striping LLC. All rights reserved. | Parking Lot Simulator Game
+                &copy; 2026 Your Company Name. All rights reserved. | Parking Lot Simulator Game
             </div>
         </div>
     </footer>
 
-    <!-- Audio elements -->
     <audio id="backgroundMusic" loop>
         <source src="https://github.com/TitanBusinessPros/Line-Striper/raw/main/Puck%20and%20Roll.mp3" type="audio/mpeg">
     </audio>
@@ -1002,1720 +876,1021 @@
     </audio>
 
     <script>
-        // Game state
-        const gameState = {
-            money: 2500,
-            level: 1,
-            completedJobs: 0,
-            equipmentLevel: 1,
-            selectedBusiness: null,
-            paintTool: 'white',
-            stripingCoverage: 0,
-            sealingCoverage: 0,
-            potholeCoverage: 0,
-            businesses: [],
-            upgrades: [],
-            player: {
-                x: 400,
-                y: 200,
-                size: 18,
-                speed: 5
-            },
-            canvas: null,
-            ctx: null,
-            mouse: {
-                x: 400,
-                y: 200,
-                down: false
-            },
-            handicapSigns: [],
-            paintedAreas: [],
-            stallLayout: [],
-            borderLayout: [],
-            lastPaintTime: 0,
-            paintInterval: 50,
-            sprayParticles: [],
-            lineSegments: [],
-            potholes: [],
-            sealedAreas: [],
-            cracks: [], // NEW: Array to store cracks
-            timer: 120,
-            timerInterval: null,
-            gameActive: false,
-            sealingRequired: true,
-            potholeRepairRequired: true,
-            // Add this to track parking lot boundaries
-            parkingLotBounds: {
-                x: 0,
-                y: 0,
-                width: 0,
-                height: 0
-            },
-            // Sound state
-            soundEnabled: true
-        };
+    // ─────────────────────────────────────────────────────────────────────────
+    // GAME STATE
+    // ─────────────────────────────────────────────────────────────────────────
+    const gameState = {
+        money: 2500,
+        level: 1,
+        completedJobs: 0,
+        equipmentLevel: 1,
+        selectedBusiness: null,
+        paintTool: 'white',
+        stripingCoverage: 0,
+        sealingCoverage: 0,
+        potholeCoverage: 0,
+        businesses: [],
+        upgrades: [],
+        player: { x: 400, y: 200, size: 18, speed: 5 },
+        canvas: null,
+        ctx: null,
+        mouse: { x: 400, y: 200, down: false },
+        handicapSigns: [],
+        lineSegments: [],
+        stallLayout: [],
+        potholes: [],
+        sealedAreas: [],
+        cracks: [],
+        sprayParticles: [],
+        timer: 120,
+        timerInterval: null,
+        gameActive: false,
+        lastPaintTime: 0,
+        paintInterval: 50,
+        parkingLotBounds: { x: 0, y: 0, width: 0, height: 0 },
+        soundEnabled: true,
+        // Pothole-before-sealant enforcement
+        allPotholeFixed: false
+    };
 
-        // Audio elements
-        const backgroundMusic = document.getElementById('backgroundMusic');
-        const paintSound = document.getElementById('paintSound');
-        const sealSound = document.getElementById('sealSound');
-        const potholeSound = document.getElementById('potholeSound');
-        const signSound = document.getElementById('signSound');
-        const soundToggle = document.getElementById('soundToggle');
+    // ─────────────────────────────────────────────────────────────────────────
+    // AUDIO
+    // ─────────────────────────────────────────────────────────────────────────
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const paintSound      = document.getElementById('paintSound');
+    const sealSound       = document.getElementById('sealSound');
+    const potholeSound    = document.getElementById('potholeSound');
+    const signSound       = document.getElementById('signSound');
+    const soundToggle     = document.getElementById('soundToggle');
+    const stepNotice      = document.getElementById('stepNotice');
 
-        // Initialize businesses
-        function initializeBusinesses() {
-            const businessTypes = ['Church', 'Restaurant', 'Store', 'Shopping Mall', 'Office Building', 'Hospital', 
-                                  'School', 'Apartment Complex', 'Hotel', 'Sports Arena', 'Grocery Store', 'Movie Theater'];
-            
-            const prefixes = ['Tulsa', 'Green Country', 'River', 'Prairie', 'Oklahoma', 'Sooner', 'Heartland', 'Frontier'];
-            const suffixes = ['Center', 'Plaza', 'Complex', 'Square', 'Mall', 'Hub', 'Park', 'Place'];
-            
-            const businessNames = [];
-            
-            // Generate 30 unique business names
-            for (let i = 0; i < 30; i++) {
-                let name;
-                let type;
-                
-                if (i < 10) {
-                    const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
-                    type = businessTypes[Math.floor(Math.random() * businessTypes.length)];
-                    name = `${prefix} ${type}`;
-                } else if (i < 20) {
-                    type = businessTypes[Math.floor(Math.random() * businessTypes.length)];
-                    const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
-                    name = `${type} ${suffix}`;
-                } else {
-                    const creativeNames = [
-                        "Maple Leaf Diner", "Golden Harvest Church", "City Lights Plaza", 
-                        "Sunset Strip Mall", "Oakwood Business Center", "Cedar Point Shopping",
-                        "Midtown Market", "Uptown Grill & Shops", "Pioneer Square", "Heritage Plaza"
-                    ];
-                    name = creativeNames[i - 20];
-                    type = businessTypes[Math.floor(Math.random() * businessTypes.length)];
-                }
-                
-                const difficultyLevel = Math.floor(Math.random() * 3) + 1;
-                const baseReward = [800, 1500, 2500][difficultyLevel - 1];
-                const reward = baseReward + Math.floor(Math.random() * 500);
-                
-                businessNames.push({
-                    id: i,
-                    name: name,
-                    type: type,
-                    difficulty: difficultyLevel,
-                    reward: reward,
-                    completed: false
-                });
-            }
-            
-            return businessNames;
+    function playSound(el) {
+        if (!gameState.soundEnabled) return;
+        el.currentTime = 0;
+        el.play().catch(() => {});
+    }
+    function playBackgroundMusic() {
+        if (gameState.soundEnabled && gameState.gameActive) backgroundMusic.play().catch(() => {});
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // BUSINESSES & UPGRADES INIT
+    // ─────────────────────────────────────────────────────────────────────────
+    function initializeBusinesses() {
+        const businessTypes = ['Church','Restaurant','Store','Shopping Mall','Office Building','Hospital',
+                               'School','Apartment Complex','Hotel','Sports Arena','Grocery Store','Movie Theater'];
+        const prefixes = ['Tulsa','Green Country','River','Prairie','Oklahoma','Sooner','Heartland','Frontier'];
+        const suffixes = ['Center','Plaza','Complex','Square','Mall','Hub','Park','Place'];
+        const creativeNames = [
+            "Maple Leaf Diner","Golden Harvest Church","City Lights Plaza","Sunset Strip Mall",
+            "Oakwood Business Center","Cedar Point Shopping","Midtown Market","Uptown Grill & Shops",
+            "Pioneer Square","Heritage Plaza"
+        ];
+        const out = [];
+        for (let i = 0; i < 30; i++) {
+            let name, type = businessTypes[Math.floor(Math.random()*businessTypes.length)];
+            if (i < 10)       name = prefixes[Math.floor(Math.random()*prefixes.length)] + ' ' + type;
+            else if (i < 20)  name = type + ' ' + suffixes[Math.floor(Math.random()*suffixes.length)];
+            else              name = creativeNames[i-20];
+            const diff = Math.floor(Math.random()*3)+1;
+            const base = [800,1500,2500][diff-1];
+            out.push({ id:i, name, type, difficulty:diff, reward: base + Math.floor(Math.random()*500), completed:false });
         }
+        return out;
+    }
 
-        // Initialize upgrades
-        function initializeUpgrades() {
-            return [
-                {
-                    id: 1,
-                    name: "Better Paint Sprayer",
-                    description: "Increases paint coverage speed by 50%",
-                    price: 1000,
-                    purchased: false,
-                    effect: "speed",
-                    paintIntervalModifier: 0.5
-                },
-                {
-                    id: 2,
-                    name: "Commercial Line Striper",
-                    description: "Paint lines are straighter and more consistent",
-                    price: 2500,
-                    purchased: false,
-                    effect: "precision",
-                    paintWidthModifier: 2
-                },
-                {
-                    id: 3,
-                    name: "Sealing Machine",
-                    description: "Unlocks parking lot sealing - doubles sealing speed",
-                    price: 5000,
-                    purchased: false,
-                    effect: "sealing",
-                    sealingModifier: 2
-                },
-                {
-                    id: 4,
-                    name: "Pothole Repair Kit",
-                    description: "Fixes potholes 3x faster",
-                    price: 3000,
-                    purchased: false,
-                    effect: "pothole",
-                    potholeModifier: 3
-                },
-                {
-                    id: 5,
-                    name: "Truck-mounted Striper",
-                    description: "Double painting speed and job rewards",
-                    price: 15000,
-                    purchased: false,
-                    effect: "truck",
-                    paintIntervalModifier: 0.3,
-                    rewardModifier: 2
-                },
-                {
-                    id: 6,
-                    name: "Business Expansion",
-                    description: "Unlocks premium contracts across Oklahoma",
-                    price: 25000,
-                    purchased: false,
-                    effect: "expansion"
-                }
-            ];
-        }
+    function initializeUpgrades() {
+        return [
+            { id:1, name:"Better Paint Sprayer",   description:"Increases paint coverage speed by 50%",         price:1000,  purchased:false, effect:"speed",     paintIntervalModifier:0.5 },
+            { id:2, name:"Commercial Line Striper", description:"Paint lines are straighter and more consistent", price:2500,  purchased:false, effect:"precision"  },
+            { id:3, name:"Sealing Machine",         description:"Unlocks parking lot sealing – doubles speed",    price:5000,  purchased:false, effect:"sealing"    },
+            { id:4, name:"Pothole Repair Kit",      description:"Fixes potholes 3× faster",                      price:3000,  purchased:false, effect:"pothole"    },
+            { id:5, name:"Truck-mounted Striper",   description:"Double painting speed and job rewards",          price:15000, purchased:false, effect:"truck",     paintIntervalModifier:0.3, rewardModifier:2 },
+            { id:6, name:"Business Expansion",      description:"Unlocks premium contracts across Oklahoma",      price:25000, purchased:false, effect:"expansion"  }
+        ];
+    }
 
-        // DOM elements
-        const businessListEl = document.getElementById('businessList');
-        const gameCanvas = document.getElementById('gameCanvas');
-        const ctx = gameCanvas.getContext('2d');
-        const moneyEl = document.getElementById('money');
-        const completedEl = document.getElementById('completed');
-        const levelEl = document.getElementById('level');
-        const equipmentEl = document.getElementById('equipment');
-        const stripingCoverageEl = document.getElementById('striping-coverage');
-        const sealingCoverageEl = document.getElementById('sealing-coverage');
-        const potholeCoverageEl = document.getElementById('pothole-coverage');
-        const stripingProgressEl = document.getElementById('striping-progress');
-        const sealingProgressEl = document.getElementById('sealing-progress');
-        const potholeProgressEl = document.getElementById('pothole-progress');
-        const selectedBusinessEl = document.getElementById('selected-business');
-        const upgradesListEl = document.getElementById('upgradesList');
-        const timerEl = document.getElementById('timer');
-        
-        // Paint tool elements
-        const toolWhite = document.getElementById('tool-white');
-        const toolYellow = document.getElementById('tool-yellow');
-        const toolBlue = document.getElementById('tool-blue');
-        const toolSeal = document.getElementById('tool-seal');
-        const toolPothole = document.getElementById('tool-pothole');
-        const toolSign = document.getElementById('tool-sign');
-        
-        // Button elements
-        const completeJobBtn = document.getElementById('completeJob');
-        const saveGameBtn = document.getElementById('saveGame');
-        const restartGameBtn = document.getElementById('restartGame');
+    // ─────────────────────────────────────────────────────────────────────────
+    // DOM REFS
+    // ─────────────────────────────────────────────────────────────────────────
+    const businessListEl     = document.getElementById('businessList');
+    const gameCanvas          = document.getElementById('gameCanvas');
+    const ctx                 = gameCanvas.getContext('2d');
+    const moneyEl             = document.getElementById('money');
+    const completedEl         = document.getElementById('completed');
+    const levelEl             = document.getElementById('level');
+    const equipmentEl         = document.getElementById('equipment');
+    const stripingCoverageEl  = document.getElementById('striping-coverage');
+    const sealingCoverageEl   = document.getElementById('sealing-coverage');
+    const potholeCoverageEl   = document.getElementById('pothole-coverage');
+    const stripingProgressEl  = document.getElementById('striping-progress');
+    const sealingProgressEl   = document.getElementById('sealing-progress');
+    const potholeProgressEl   = document.getElementById('pothole-progress');
+    const selectedBusinessEl  = document.getElementById('selected-business');
+    const upgradesListEl      = document.getElementById('upgradesList');
+    const timerEl             = document.getElementById('timer');
 
-        // Initialize the game
-        function initGame() {
-            // Set canvas context
-            gameState.canvas = gameCanvas;
-            gameState.ctx = ctx;
-            
-            // Set canvas size based on device
-            resizeCanvas();
-            
-            // Initialize businesses and upgrades
-            gameState.businesses = initializeBusinesses();
-            gameState.upgrades = initializeUpgrades();
-            
-            // Render businesses
-            renderBusinesses();
-            
-            // Render upgrades
-            renderUpgrades();
-            
-            // Set up event listeners
-            setupEventListeners();
-            
-            // Set up sound toggle
-            setupSoundControls();
-            
-            // Start the game loop
-            requestAnimationFrame(gameLoop);
-            
-            // Update UI
-            updateUI();
-            
-            // Handle window resize
-            window.addEventListener('resize', resizeCanvas);
-        }
-
-        // Set up sound controls
-        function setupSoundControls() {
-            soundToggle.addEventListener('click', toggleSound);
-            
-            // Initialize sound state from localStorage or default to true
-            const savedSoundState = localStorage.getItem('parkingLotSoundEnabled');
-            if (savedSoundState !== null) {
-                gameState.soundEnabled = savedSoundState === 'true';
-            }
-            
-            updateSoundIcon();
-        }
-
-        // Toggle sound on/off
-        function toggleSound() {
-            gameState.soundEnabled = !gameState.soundEnabled;
-            updateSoundIcon();
-            
-            // Save sound state to localStorage
-            localStorage.setItem('parkingLotSoundEnabled', gameState.soundEnabled);
-            
-            // If turning sound off, pause background music
-            if (!gameState.soundEnabled) {
-                backgroundMusic.pause();
-            } else if (gameState.gameActive) {
-                // If turning sound on and game is active, play background music
-                playBackgroundMusic();
-            }
-        }
-
-        // Update sound icon based on current state
-        function updateSoundIcon() {
-            const icon = soundToggle.querySelector('i');
-            if (gameState.soundEnabled) {
-                icon.className = 'fas fa-volume-up';
-            } else {
-                icon.className = 'fas fa-volume-mute';
-            }
-        }
-
-        // Play a sound if sound is enabled
-        function playSound(audioElement) {
-            if (gameState.soundEnabled) {
-                audioElement.currentTime = 0;
-                audioElement.play().catch(e => {
-                    console.log("Audio play failed:", e);
-                });
-            }
-        }
-
-        // Play background music
-        function playBackgroundMusic() {
-            if (gameState.soundEnabled && gameState.gameActive) {
-                backgroundMusic.play().catch(e => {
-                    console.log("Background music play failed:", e);
-                });
-            }
-        }
-
-        // Generate cracks in the parking lot
-        function generateCracks(difficulty) {
-            gameState.cracks = [];
-            
-            // Number of cracks based on difficulty
-            const crackCount = difficulty * 5 + 3; // 8, 13, or 18 cracks
-            
-            // Place cracks within the parking lot bounds
-            const bounds = gameState.parkingLotBounds;
-            
-            for (let i = 0; i < crackCount; i++) {
-                // Generate random position within the parking lot area
-                let x, y;
-                let validPosition = false;
-                let attempts = 0;
-                
-                while (!validPosition && attempts < 50) {
-                    x = bounds.x + 20 + Math.random() * (bounds.width - 40);
-                    y = bounds.y + 20 + Math.random() * (bounds.height - 40);
-                    
-                    // Check if position is not too close to existing cracks
-                    let tooClose = false;
-                    for (const crack of gameState.cracks) {
-                        const dx = crack.x - x;
-                        const dy = crack.y - y;
-                        if (Math.sqrt(dx * dx + dy * dy) < 40) {
-                            tooClose = true;
-                            break;
-                        }
-                    }
-                    
-                    // Check if position is not on a stall or lane line
-                    let onLine = false;
-                    for (const segment of gameState.lineSegments) {
-                        if (isPointNearLine(x, y, segment.x1, segment.y1, segment.x2, segment.y2, 15)) {
-                            onLine = true;
-                            break;
-                        }
-                    }
-                    
-                    validPosition = !tooClose && !onLine;
-                    attempts++;
-                }
-                
-                if (validPosition) {
-                    // Create crack with multiple segments for a realistic look
-                    const segments = Math.floor(Math.random() * 3) + 2; // 2-4 segments
-                    const crack = {
-                        x: x,
-                        y: y,
-                        segments: [],
-                        fixed: false
-                    };
-                    
-                    // Generate crack segments
-                    let currentX = x;
-                    let currentY = y;
-                    
-                    for (let s = 0; s < segments; s++) {
-                        const angle = Math.random() * Math.PI * 2;
-                        const length = 15 + Math.random() * 20;
-                        const endX = currentX + Math.cos(angle) * length;
-                        const endY = currentY + Math.sin(angle) * length;
-                        
-                        crack.segments.push({
-                            x1: currentX,
-                            y1: currentY,
-                            x2: endX,
-                            y2: endY
-                        });
-                        
-                        currentX = endX;
-                        currentY = endY;
-                    }
-                    
-                    gameState.cracks.push(crack);
-                }
-            }
-        }
-
-        // Draw cracks on the parking lot
-        function drawCracks() {
-            const ctx = gameState.ctx;
-            
-            gameState.cracks.forEach(crack => {
-                if (!crack.fixed) {
-                    ctx.strokeStyle = '#111';
-                    ctx.lineWidth = 2;
-                    ctx.lineCap = 'round';
-                    
-                    crack.segments.forEach(segment => {
-                        ctx.beginPath();
-                        ctx.moveTo(segment.x1, segment.y1);
-                        ctx.lineTo(segment.x2, segment.y2);
-                        ctx.stroke();
-                        
-                        // Add some jagged edges to make cracks look more realistic
-                        for (let i = 0; i < 3; i++) {
-                            const t = Math.random();
-                            const midX = segment.x1 + (segment.x2 - segment.x1) * t;
-                            const midY = segment.y1 + (segment.y2 - segment.y1) * t;
-                            const angle = Math.atan2(segment.y2 - segment.y1, segment.x2 - segment.x1) + Math.PI/2;
-                            const offset = (Math.random() - 0.5) * 4;
-                            const jagX = midX + Math.cos(angle) * offset;
-                            const jagY = midY + Math.sin(angle) * offset;
-                            
-                            ctx.beginPath();
-                            ctx.moveTo(midX, midY);
-                            ctx.lineTo(jagX, jagY);
-                            ctx.stroke();
-                        }
-                    });
-                }
-            });
-        }
-
-        // Check if sealer fixes cracks
-        function fixCracks(x, y) {
-            let fixedAny = false;
-            
-            gameState.cracks.forEach(crack => {
-                if (!crack.fixed) {
-                    // Check if sealant is near any segment of the crack
-                    for (const segment of crack.segments) {
-                        if (isPointNearLine(x, y, segment.x1, segment.y1, segment.x2, segment.y2, 10)) {
-                            crack.fixed = true;
-                            fixedAny = true;
-                            break;
-                        }
-                    }
-                }
-            });
-            
-            return fixedAny;
-        }
-
-        // Resize canvas for mobile/tablet
-        function resizeCanvas() {
-            const container = gameCanvas.parentElement;
-            const containerWidth = container.clientWidth;
-            
-            // Set canvas dimensions
-            gameCanvas.width = containerWidth;
-            gameCanvas.height = Math.min(400, containerWidth * 0.5);
-            
-            // Update player position to center
-            gameState.player.x = gameCanvas.width / 2;
-            gameState.player.y = gameCanvas.height / 2;
-            
-            // Redraw if there's a current job
-            if (gameState.selectedBusiness) {
-                generateParkingLotLayout(gameState.selectedBusiness.difficulty);
-                drawParkingLot();
-            }
-        }
-
-        // Render businesses list
-        function renderBusinesses() {
-            businessListEl.innerHTML = '';
-            
-            gameState.businesses.forEach(business => {
-                const businessCard = document.createElement('div');
-                businessCard.className = `business-card ${business.completed ? 'completed' : ''} ${gameState.selectedBusiness?.id === business.id ? 'selected' : ''}`;
-                businessCard.innerHTML = `
-                    <div class="business-name">${business.name}</div>
-                    <div class="business-type">${business.type}</div>
-                    <div class="business-reward">
-                        <div class="reward-amount">$${business.reward}</div>
-                        <div class="difficulty ${['easy', 'medium', 'hard'][business.difficulty - 1]}">
-                            ${['Easy', 'Medium', 'Hard'][business.difficulty - 1]}
-                        </div>
-                    </div>
-                `;
-                
-                businessCard.addEventListener('click', () => selectBusiness(business));
-                businessListEl.appendChild(businessCard);
-            });
-        }
-
-        // Render upgrades list
-        function renderUpgrades() {
-            upgradesListEl.innerHTML = '';
-            
-            gameState.upgrades.forEach(upgrade => {
-                const upgradeCard = document.createElement('div');
-                upgradeCard.className = 'upgrade-card';
-                upgradeCard.innerHTML = `
-                    <div class="upgrade-header">
-                        <div class="upgrade-name">${upgrade.name}</div>
-                        <div class="upgrade-price">$${upgrade.price}</div>
-                    </div>
-                    <div class="upgrade-desc">${upgrade.description}</div>
-                    <button class="upgrade-btn" ${upgrade.purchased || gameState.money < upgrade.price ? 'disabled' : ''}>
-                        ${upgrade.purchased ? 'Purchased' : 'Purchase'}
-                    </button>
-                `;
-                
-                const purchaseBtn = upgradeCard.querySelector('.upgrade-btn');
-                if (!upgrade.purchased) {
-                    purchaseBtn.addEventListener('click', () => purchaseUpgrade(upgrade));
-                }
-                
-                upgradesListEl.appendChild(upgradeCard);
-            });
-        }
-
-        // Select a business
-        function selectBusiness(business) {
-            // Stop any existing timer
-            if (gameState.timerInterval) {
-                clearInterval(gameState.timerInterval);
-                gameState.timerInterval = null;
-            }
-            
-            gameState.selectedBusiness = business;
-            gameState.stripingCoverage = 0;
-            gameState.sealingCoverage = 0;
-            gameState.potholeCoverage = 0;
-            gameState.handicapSigns = [];
-            gameState.paintedAreas = [];
-            gameState.stallLayout = [];
-            gameState.borderLayout = [];
-            gameState.lineSegments = [];
-            gameState.potholes = [];
-            gameState.sealedAreas = [];
-            gameState.cracks = [];
-            gameState.timer = 120;
-            gameState.gameActive = true;
-            
-            // Start the timer
-            startTimer();
-            
-            // Start background music
-            playBackgroundMusic();
-            
-            // Generate the parking lot layout for this business
-            generateParkingLotLayout(business.difficulty);
-            
-            // Generate cracks based on difficulty
-            generateCracks(business.difficulty);
-            
-            // Generate potholes based on difficulty
-            generatePotholes(business.difficulty);
-            
-            // Draw the parking lot
+    // ─────────────────────────────────────────────────────────────────────────
+    // CANVAS RESIZE
+    // ─────────────────────────────────────────────────────────────────────────
+    function resizeCanvas() {
+        const w = gameCanvas.parentElement.clientWidth;
+        gameCanvas.width  = w;
+        gameCanvas.height = Math.min(400, w * 0.5);
+        gameState.player.x = gameCanvas.width  / 2;
+        gameState.player.y = gameCanvas.height / 2;
+        if (gameState.selectedBusiness) {
+            generateParkingLotLayout(gameState.selectedBusiness.difficulty);
             drawParkingLot();
-            
-            // Update UI
-            selectedBusinessEl.textContent = business.name;
-            updateProgressBars();
-            updateTimerDisplay();
-            
-            // Update business list UI
-            renderBusinesses();
         }
+    }
 
-        // Start the timer
-        function startTimer() {
-            if (gameState.timerInterval) {
-                clearInterval(gameState.timerInterval);
-            }
-            
-            gameState.timerInterval = setInterval(() => {
-                if (gameState.timer > 0) {
-                    gameState.timer--;
-                    updateTimerDisplay();
-                } else {
-                    // Time's up!
-                    clearInterval(gameState.timerInterval);
-                    gameState.gameActive = false;
-                    backgroundMusic.pause();
-                    alert("Time's up! Job failed. Select a new job to try again.");
-                }
-            }, 1000);
-        }
+    // ─────────────────────────────────────────────────────────────────────────
+    // REALISTIC PARKING LOT LAYOUT
+    // A real lot: asphalt rectangle → outer white border → row(s) of stalls
+    // separated by yellow divider lines only (no box per stall).
+    // Stall proportions: ~9 ft wide × 18 ft deep  → ratio ~1:2
+    // Lane between rows:  ~24 ft  → ratio ~2.7× stall width
+    // ─────────────────────────────────────────────────────────────────────────
+    function generateParkingLotLayout(difficulty) {
+        gameState.lineSegments = [];
 
-        // Update timer display
-        function updateTimerDisplay() {
-            const minutes = Math.floor(gameState.timer / 60);
-            const seconds = gameState.timer % 60;
-            timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            // Add warning/danger classes based on time remaining
-            timerEl.className = '';
-            if (gameState.timer <= 30) {
-                timerEl.classList.add('danger');
-            } else if (gameState.timer <= 60) {
-                timerEl.classList.add('warning');
-            }
-        }
+        const cw = gameState.canvas.width;
+        const ch = gameState.canvas.height;
 
-        // Generate parking lot layout with lanes and U-shaped stalls - FIXED VERSION
-        function generateParkingLotLayout(difficulty) {
-            // Clear existing layout
-            gameState.stallLayout = [];
-            gameState.borderLayout = [];
-            gameState.lineSegments = [];
-            
-            const canvasWidth = gameState.canvas.width;
-            const canvasHeight = gameState.canvas.height;
-            
-            // Use smaller dimensions to ensure everything fits
-            const stallWidth = Math.min(30, canvasWidth / 12);
-            const stallDepth = Math.min(40, canvasHeight / 8);
-            const stallSpacing = 8;
-            const laneWidth = 50;
-            
-            // Calculate number of stalls based on difficulty
-            let totalStalls;
-            let rowsPerSide;
-            let stallsPerRow;
-            
-            if (difficulty === 1) {
-                totalStalls = 12;
-                rowsPerSide = 2;
-                stallsPerRow = 3;
-            } else if (difficulty === 2) {
-                totalStalls = 24;
-                rowsPerSide = 3;
-                stallsPerRow = 4;
-            } else {
-                totalStalls = 36;
-                rowsPerSide = 3;
-                stallsPerRow = 6;
-            }
-            
-            // Calculate total layout dimensions
-            const totalWidth = stallsPerRow * stallWidth + (stallsPerRow - 1) * stallSpacing;
-            const totalDepth = rowsPerSide * stallDepth * 2 + laneWidth + stallSpacing * 2;
-            
-            // Center the layout in the canvas with more padding to ensure visibility
-            const margin = 20; // Increased margin for better visibility
-            const maxWidth = canvasWidth - 2 * margin;
-            const maxHeight = canvasHeight - 2 * margin;
-            
-            // Scale if needed
-            let scale = 1;
-            if (totalWidth > maxWidth || totalDepth > maxHeight) {
-                scale = Math.min(maxWidth / totalWidth, maxHeight / totalDepth);
-            }
-            
-            const scaledStallWidth = stallWidth * scale;
-            const scaledStallDepth = stallDepth * scale;
-            const scaledStallSpacing = stallSpacing * scale;
-            const scaledLaneWidth = laneWidth * scale;
-            
-            const scaledTotalWidth = stallsPerRow * scaledStallWidth + (stallsPerRow - 1) * scaledStallSpacing;
-            const scaledTotalDepth = rowsPerSide * scaledStallDepth * 2 + scaledLaneWidth + scaledStallSpacing * 2;
-            
-            const startX = margin + (maxWidth - scaledTotalWidth) / 2;
-            const startY = margin + (maxHeight - scaledTotalDepth) / 2;
-            
-            // Store parking lot bounds for reference
-            gameState.parkingLotBounds = {
-                x: startX - 10,
-                y: startY - 10,
-                width: scaledTotalWidth + 20,
-                height: scaledTotalDepth + 20
-            };
-            
-            // Create border around entire parking lot - MAKE SURE THESE ARE VISIBLE
-            const borderPadding = 10;
+        // How many stalls per row
+        const stallsPerRow = difficulty === 1 ? 6 : difficulty === 2 ? 9 : 12;
+        // Number of double-row sections stacked vertically
+        const sections     = difficulty === 1 ? 1 : difficulty === 2 ? 2 : 2;
+
+        // Raw stall dimensions (9 wide, 18 deep, 24 lane) – scale to fit canvas
+        const STALL_W_RAW  = 9;
+        const STALL_D_RAW  = 18;
+        const LANE_W_RAW   = 24;
+        const BORDER_PAD   = 12; // pixels of outer border padding
+
+        // Total raw width & height
+        const rawW = stallsPerRow * STALL_W_RAW;
+        // Each section = 2 rows of stalls + 1 lane between them
+        const rawH = sections * (2 * STALL_D_RAW + LANE_W_RAW);
+
+        // Available canvas space minus border padding
+        const availW = cw  - 2 * BORDER_PAD - 4;
+        const availH = ch  - 2 * BORDER_PAD - 4;
+
+        const scale  = Math.min(availW / rawW, availH / rawH);
+
+        const STALL_W = STALL_W_RAW  * scale;
+        const STALL_D = STALL_D_RAW  * scale;
+        const LANE_W  = LANE_W_RAW   * scale;
+        const SECTION_H = 2 * STALL_D + LANE_W;
+
+        const lotW = stallsPerRow * STALL_W;
+        const lotH = sections * SECTION_H;
+
+        // Center lot on canvas
+        const ox = (cw - lotW) / 2;
+        const oy = (ch - lotH) / 2;
+
+        gameState.parkingLotBounds = { x: ox, y: oy, width: lotW, height: lotH };
+
+        // ── Helper to push a line segment ──────────────────────────────────
+        function seg(x1, y1, x2, y2, reqColor, lineWidth = 4, isBorder = false, isLane = false) {
             gameState.lineSegments.push({
-                x1: startX - borderPadding, y1: startY - borderPadding, 
-                x2: startX + scaledTotalWidth + borderPadding, y2: startY - borderPadding,
-                painted: false, color: '#666666', requiredColor: 'white', isBorder: true, lineWidth: 6,
-                description: "Top Border"
+                x1, y1, x2, y2,
+                painted: false,
+                color: '#555',
+                requiredColor: reqColor,
+                lineWidth,
+                isBorder,
+                isLane
             });
-            
-            gameState.lineSegments.push({
-                x1: startX + scaledTotalWidth + borderPadding, y1: startY - borderPadding, 
-                x2: startX + scaledTotalWidth + borderPadding, y2: startY + scaledTotalDepth + borderPadding,
-                painted: false, color: '#666666', requiredColor: 'white', isBorder: true, lineWidth: 6,
-                description: "Right Border"
-            });
-            
-            gameState.lineSegments.push({
-                x1: startX + scaledTotalWidth + borderPadding, y1: startY + scaledTotalDepth + borderPadding, 
-                x2: startX - borderPadding, y2: startY + scaledTotalDepth + borderPadding,
-                painted: false, color: '#666666', requiredColor: 'white', isBorder: true, lineWidth: 6,
-                description: "Bottom Border"
-            });
-            
-            gameState.lineSegments.push({
-                x1: startX - borderPadding, y1: startY + scaledTotalDepth + borderPadding, 
-                x2: startX - borderPadding, y2: startY - borderPadding,
-                painted: false, color: '#666666', requiredColor: 'white', isBorder: true, lineWidth: 6,
-                description: "Left Border"
-            });
-            
-            // Create stalls on both sides of a central lane
-            // Top section (facing downward)
-            for (let row = 0; row < rowsPerSide; row++) {
-                for (let col = 0; col < stallsPerRow; col++) {
-                    if (row * stallsPerRow + col >= totalStalls / 2) break;
-                    
-                    const x = startX + col * (scaledStallWidth + scaledStallSpacing);
-                    const y = startY + row * scaledStallDepth;
-                    
-                    // Determine if this is a handicap stall (first row, first column on each side)
-                    const isHandicap = (row === 0 && (col === 0 || col === stallsPerRow - 1));
-                    
-                    // Create U-shaped stall (3 sides: left, top, right - NO BOTTOM)
-                    const stallLines = [
-                        {x1: x, y1: y, x2: x, y2: y + scaledStallDepth, painted: false, color: isHandicap ? '#88aaff' : '#666666', requiredColor: isHandicap ? 'blue' : 'yellow', description: "Stall Left Side"}, // left side
-                        {x1: x, y1: y, x2: x + scaledStallWidth, y2: y, painted: false, color: isHandicap ? '#88aaff' : '#666666', requiredColor: isHandicap ? 'blue' : 'yellow', description: "Stall Top Side"}, // top side
-                        {x1: x + scaledStallWidth, y1: y, x2: x + scaledStallWidth, y2: y + scaledStallDepth, painted: false, color: isHandicap ? '#88aaff' : '#666666', requiredColor: isHandicap ? 'blue' : 'yellow', description: "Stall Right Side"} // right side
-                    ];
-                    
-                    // Add to line segments
-                    gameState.lineSegments.push(...stallLines);
-                    
-                    // Track stall for reference
-                    gameState.stallLayout.push({
-                        x: x,
-                        y: y,
-                        width: scaledStallWidth,
-                        depth: scaledStallDepth,
-                        isHandicap: isHandicap,
-                        side: 'top'
-                    });
+        }
+
+        // ── Outer border (4 sides) – WHITE ─────────────────────────────────
+        seg(ox,        oy,        ox+lotW,   oy,        'white', 6, true);  // top
+        seg(ox+lotW,   oy,        ox+lotW,   oy+lotH,   'white', 6, true);  // right
+        seg(ox+lotW,   oy+lotH,   ox,        oy+lotH,   'white', 6, true);  // bottom
+        seg(ox,        oy+lotH,   ox,        oy,        'white', 6, true);  // left
+
+        // ── For each section (pair of rows + lane) ─────────────────────────
+        for (let s = 0; s < sections; s++) {
+            const sY = oy + s * SECTION_H;   // top of this section
+
+            // Row A top line (shared with outer border for section 0)
+            // Row A bottom line = top of lane
+            const rowA_top    = sY;
+            const rowA_bottom = sY + STALL_D;
+            const lane_top    = rowA_bottom;
+            const lane_bottom = lane_top + LANE_W;
+            const rowB_top    = lane_bottom;
+            const rowB_bottom = rowB_top + STALL_D;
+
+            // ── Horizontal lines bounding the stall rows (WHITE) ───────────
+            // Row A bottom / lane top
+            seg(ox, rowA_bottom, ox+lotW, rowA_bottom, 'white', 4, false, true);
+            // Lane bottom / Row B top
+            seg(ox, lane_bottom, ox+lotW, lane_bottom, 'white', 4, false, true);
+
+            // ── Stall divider lines (YELLOW) ───────────────────────────────
+            // Real parking lots use only vertical dividers between stalls.
+            // No lines at the open end (cars drive in/out).
+            // Also, first and last column line are the outer border – skip painting them yellow.
+            for (let col = 0; col <= stallsPerRow; col++) {
+                const x = ox + col * STALL_W;
+                const isEdge = (col === 0 || col === stallsPerRow);
+
+                // Determine if this column is a handicap stall edge
+                // Handicap stalls: first 1 or 2 stalls per row per side
+                const handicapCols = difficulty === 1 ? [0, 1] : difficulty === 2 ? [0, 1, 2] : [0, 1, 2];
+                const isHandicap = !isEdge && (col <= handicapCols[handicapCols.length-1]);
+
+                // Row A dividers (top row – stalls face downward; open end at bottom)
+                if (!isEdge) {
+                    seg(x, rowA_top, x, rowA_bottom,
+                        isHandicap ? 'blue' : 'yellow', 3);
+                }
+
+                // Row B dividers (bottom row – stalls face upward; open end at top)
+                if (!isEdge) {
+                    seg(x, rowB_top, x, rowB_bottom,
+                        isHandicap ? 'blue' : 'yellow', 3);
                 }
             }
-            
-            // Bottom section (facing upward)
-            const bottomStartY = startY + rowsPerSide * scaledStallDepth + scaledLaneWidth + scaledStallSpacing;
-            for (let row = 0; row < rowsPerSide; row++) {
-                for (let col = 0; col < stallsPerRow; col++) {
-                    if ((rowsPerSide + row) * stallsPerRow + col >= totalStalls) break;
-                    
-                    const x = startX + col * (scaledStallWidth + scaledStallSpacing);
-                    const y = bottomStartY + row * scaledStallDepth;
-                    
-                    // Determine if this is a handicap stall
-                    const isHandicap = (row === rowsPerSide - 1 && (col === 0 || col === stallsPerRow - 1));
-                    
-                    // Create U-shaped stall facing upward (3 sides: left, bottom, right - NO TOP)
-                    const stallLines = [
-                        {x1: x, y1: y, x2: x, y2: y + scaledStallDepth, painted: false, color: isHandicap ? '#88aaff' : '#666666', requiredColor: isHandicap ? 'blue' : 'yellow', description: "Stall Left Side"}, // left side
-                        {x1: x, y1: y + scaledStallDepth, x2: x + scaledStallWidth, y2: y + scaledStallDepth, painted: false, color: isHandicap ? '#88aaff' : '#666666', requiredColor: isHandicap ? 'blue' : 'yellow', description: "Stall Bottom Side"}, // bottom side
-                        {x1: x + scaledStallWidth, y1: y, x2: x + scaledStallWidth, y2: y + scaledStallDepth, painted: false, color: isHandicap ? '#88aaff' : '#666666', requiredColor: isHandicap ? 'blue' : 'yellow', description: "Stall Right Side"} // right side
-                    ];
-                    
-                    // Add to line segments
-                    gameState.lineSegments.push(...stallLines);
-                    
-                    // Track stall for reference
-                    gameState.stallLayout.push({
-                        x: x,
-                        y: y,
-                        width: scaledStallWidth,
-                        depth: scaledStallDepth,
-                        isHandicap: isHandicap,
-                        side: 'bottom'
-                    });
-                }
-            }
-            
-            // Create driving lane lines (center of the parking lot)
-            const laneStartY = startY + rowsPerSide * scaledStallDepth + scaledStallSpacing;
-            const laneEndY = laneStartY + scaledLaneWidth;
-            const laneCenterX = startX + scaledTotalWidth / 2;
-            
-            // Lane boundary lines - make sure these are visible
-            gameState.lineSegments.push({
-                x1: startX - 10, y1: laneStartY, x2: startX + scaledTotalWidth + 10, y2: laneStartY,
-                painted: false, color: '#666666', requiredColor: 'white', isLane: true, lineWidth: 5,
-                description: "Top Lane Line"
-            });
-            
-            gameState.lineSegments.push({
-                x1: startX - 10, y1: laneEndY, x2: startX + scaledTotalWidth + 10, y2: laneEndY,
-                painted: false, color: '#666666', requiredColor: 'white', isLane: true, lineWidth: 5,
-                description: "Bottom Lane Line"
-            });
+
+            // ── Horizontal line at top of Row A for stall boxes (not outer border) ──
+            // In real lots, the stall "box" has a back line across the full row.
+            // Row A: back line = top (= outer border already), open end = bottom near lane. ✓
+            // Row B: back line = bottom (= section bottom / outer border). ✓
+            // Both already handled by outer border or lane lines. Good.
+
         }
 
-        // Generate potholes based on difficulty
-        function generatePotholes(difficulty) {
-            gameState.potholes = [];
-            
-            // Number of potholes based on difficulty
-            const potholeCount = difficulty * 3 + 2; // 5, 8, or 11 potholes
-            
-            // Place potholes within the parking lot bounds
-            const bounds = gameState.parkingLotBounds;
-            
-            for (let i = 0; i < potholeCount; i++) {
-                // Generate random position within the parking lot area
-                let x, y;
-                let validPosition = false;
-                let attempts = 0;
-                
-                while (!validPosition && attempts < 50) {
-                    x = bounds.x + 20 + Math.random() * (bounds.width - 40);
-                    y = bounds.y + 20 + Math.random() * (bounds.height - 40);
-                    
-                    // Check if position is not too close to existing potholes
-                    let tooClose = false;
-                    for (const pothole of gameState.potholes) {
-                        const dx = pothole.x - x;
-                        const dy = pothole.y - y;
-                        if (Math.sqrt(dx * dx + dy * dy) < 40) {
-                            tooClose = true;
-                            break;
-                        }
-                    }
-                    
-                    // Check if position is not on a stall or lane line
-                    let onLine = false;
-                    for (const segment of gameState.lineSegments) {
-                        if (isPointNearLine(x, y, segment.x1, segment.y1, segment.x2, segment.y2, 20)) {
-                            onLine = true;
-                            break;
-                        }
-                    }
-                    
-                    validPosition = !tooClose && !onLine;
-                    attempts++;
-                }
-                
-                if (validPosition) {
-                    const size = 12 + Math.random() * 8;
-                    gameState.potholes.push({
-                        x: x,
-                        y: y,
-                        size: size,
-                        fixed: false
-                    });
-                }
-            }
-        }
+        // Track stall info for handicap sign placement
+        gameState.stallLayout = [];
+        for (let s = 0; s < sections; s++) {
+            const sY = oy + s * SECTION_H;
+            const rowA_top = sY, rowA_bottom = sY + STALL_D;
+            const lane_bottom = sY + STALL_D + LANE_W;
+            const rowB_top = lane_bottom, rowB_bottom = rowB_top + STALL_D;
 
-        // Draw the parking lot - FIXED to ensure visibility
-        function drawParkingLot() {
-            const ctx = gameState.ctx;
-            const canvas = gameState.canvas;
-            
-            // Clear canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw parking lot background (asphalt) - fill entire canvas
-            ctx.fillStyle = '#333333';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw a lighter rectangle for the actual parking lot area for better visibility
-            const bounds = gameState.parkingLotBounds;
-            if (bounds.width > 0 && bounds.height > 0) {
-                ctx.fillStyle = '#444444';
-                ctx.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
-                
-                // Draw a subtle border around parking lot area
-                ctx.strokeStyle = '#555555';
-                ctx.lineWidth = 2;
-                ctx.strokeRect(bounds.x, bounds.y, bounds.width, bounds.height);
-            }
-            
-            // Draw cracks
-            drawCracks();
-            
-            // Draw sealed areas
-            gameState.sealedAreas.forEach(area => {
-                ctx.fillStyle = 'rgba(100, 100, 100, 0.7)';
-                ctx.beginPath();
-                ctx.arc(area.x, area.y, area.radius, 0, Math.PI * 2);
-                ctx.fill();
-            });
-            
-            // Draw potholes
-            gameState.potholes.forEach(pothole => {
-                if (!pothole.fixed) {
-                    // Draw pothole as dark circle with crack effect
-                    ctx.fillStyle = '#222';
-                    ctx.beginPath();
-                    ctx.arc(pothole.x, pothole.y, pothole.size, 0, Math.PI * 2);
-                    ctx.fill();
-                    
-                    // Draw crack lines
-                    ctx.strokeStyle = '#111';
-                    ctx.lineWidth = 2;
-                    for (let i = 0; i < 3; i++) {
-                        const angle = Math.random() * Math.PI * 2;
-                        const length = pothole.size * 0.8;
-                        ctx.beginPath();
-                        ctx.moveTo(pothole.x, pothole.y);
-                        ctx.lineTo(
-                            pothole.x + Math.cos(angle) * length,
-                            pothole.y + Math.sin(angle) * length
-                        );
-                        ctx.stroke();
-                    }
-                } else {
-                    // Draw fixed pothole as patched area
-                    ctx.fillStyle = '#555';
-                    ctx.beginPath();
-                    ctx.arc(pothole.x, pothole.y, pothole.size, 0, Math.PI * 2);
-                    ctx.fill();
-                    
-                    // Draw patch texture
-                    ctx.strokeStyle = '#444';
-                    ctx.lineWidth = 1;
-                    ctx.beginPath();
-                    ctx.arc(pothole.x, pothole.y, pothole.size, 0, Math.PI * 2);
-                    ctx.stroke();
-                }
-            });
-            
-            // Draw all line segments - MAKE SURE BORDERS ARE VISIBLE
-            gameState.lineSegments.forEach(segment => {
-                if (!segment.painted) {
-                    // Draw unpainted segment with thicker lines for borders
-                    ctx.strokeStyle = segment.color;
-                    ctx.lineWidth = segment.lineWidth || 3;
-                    ctx.lineCap = 'round'; // Make ends rounded for better visibility
-                    ctx.beginPath();
-                    ctx.moveTo(segment.x1, segment.y1);
-                    ctx.lineTo(segment.x2, segment.y2);
-                    ctx.stroke();
-                } else {
-                    // Draw painted segment
-                    ctx.strokeStyle = segment.paintedColor || getPaintColor(segment.requiredColor);
-                    ctx.lineWidth = (segment.lineWidth || 3) + 1; // Make painted lines slightly thicker
-                    ctx.lineCap = 'round';
-                    ctx.beginPath();
-                    ctx.moveTo(segment.x1, segment.y1);
-                    ctx.lineTo(segment.x2, segment.y2);
-                    ctx.stroke();
-                }
-            });
-            
-            // Draw any handicap signs that have been placed
-            gameState.handicapSigns.forEach(sign => {
-                drawHandicapSign(sign.x, sign.y);
-            });
-            
-            // Draw spray particles
-            drawSprayParticles();
-            
-            // Draw player
-            drawPlayer();
-        }
-
-        // Draw spray paint particles
-        function drawSprayParticles() {
-            const ctx = gameState.ctx;
-            
-            gameState.sprayParticles.forEach((particle, index) => {
-                ctx.fillStyle = particle.color;
-                ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                ctx.fill();
-                
-                // Update particle
-                particle.x += particle.vx;
-                particle.y += particle.vy;
-                particle.size *= 0.95;
-                particle.life--;
-                
-                // Remove dead particles
-                if (particle.life <= 0 || particle.size < 0.5) {
-                    gameState.sprayParticles.splice(index, 1);
-                }
-            });
-        }
-
-        // Draw the player character
-        function drawPlayer() {
-            const ctx = gameState.ctx;
-            const player = gameState.player;
-            
-            // Draw the paint machine (body)
-            ctx.fillStyle = '#ff4444';
-            ctx.fillRect(player.x - player.size/2, player.y - player.size/4, player.size, player.size/2);
-            
-            // Draw the wheels
-            ctx.fillStyle = '#333333';
-            ctx.beginPath();
-            ctx.arc(player.x - player.size/4, player.y + player.size/4, 4, 0, Math.PI * 2);
-            ctx.fill();
-            
-            ctx.beginPath();
-            ctx.arc(player.x + player.size/4, player.y + player.size/4, 4, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Draw the paint hose
-            ctx.strokeStyle = '#333333';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(player.x + player.size/2, player.y);
-            ctx.lineTo(player.x + player.size, player.y);
-            ctx.stroke();
-            
-            // Draw the painter (person)
-            ctx.fillStyle = '#4a86e8';
-            ctx.beginPath();
-            ctx.arc(player.x - player.size/2, player.y - player.size/4, 6, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Draw the paint spray nozzle
-            const sprayColor = getPaintColor(gameState.paintTool);
-            ctx.fillStyle = sprayColor;
-            ctx.beginPath();
-            ctx.arc(player.x + player.size, player.y, 5, 0, Math.PI * 2);
-            ctx.fill();
-        }
-
-        // Get paint color for tool
-        function getPaintColor(tool) {
-            switch(tool) {
-                case 'white': return 'white';
-                case 'yellow': return '#ffeb3b';
-                case 'blue': return '#2196f3';
-                case 'seal': return '#888';
-                case 'pothole': return '#333';
-                default: return 'white';
-            }
-        }
-
-        // Draw a handicap sign
-        function drawHandicapSign(x, y) {
-            const ctx = gameState.ctx;
-            
-            // Draw sign pole
-            ctx.strokeStyle = '#333333';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.lineTo(x, y - 30);
-            ctx.stroke();
-            
-            // Draw sign background
-            ctx.fillStyle = '#2196f3';
-            ctx.beginPath();
-            ctx.arc(x, y - 40, 12, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Draw handicap symbol
-            ctx.fillStyle = 'white';
-            ctx.beginPath();
-            ctx.arc(x, y - 40, 8, 0, Math.PI * 2);
-            ctx.fill();
-            
-            ctx.fillStyle = '#2196f3';
-            ctx.beginPath();
-            ctx.arc(x, y - 40, 5, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Draw person symbol
-            ctx.fillStyle = 'white';
-            ctx.beginPath();
-            ctx.arc(x, y - 43, 2, 0, Math.PI * 2);
-            ctx.fill();
-            
-            ctx.fillRect(x - 2, y - 38, 4, 6);
-            
-            // Draw wheelchair
-            ctx.beginPath();
-            ctx.arc(x, y - 35, 6, 0, Math.PI * 2);
-            ctx.strokeStyle = 'white';
-            ctx.lineWidth = 1.5;
-            ctx.stroke();
-        }
-
-        // Game loop
-        function gameLoop() {
-            // Only update if game is active
-            if (gameState.gameActive) {
-                // Clear the canvas
-                drawParkingLot();
-                
-                // Move player towards mouse
-                const player = gameState.player;
-                const mouse = gameState.mouse;
-                
-                // Calculate distance to mouse
-                const dx = mouse.x - player.x;
-                const dy = mouse.y - player.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                // Move player if not already at mouse position
-                if (distance > player.speed) {
-                    player.x += (dx / distance) * player.speed;
-                    player.y += (dy / distance) * player.speed;
-                } else {
-                    player.x = mouse.x;
-                    player.y = mouse.y;
-                }
-                
-                // If mouse is down and enough time has passed since last paint, paint
-                const now = Date.now();
-                if (gameState.mouse.down && now - gameState.lastPaintTime > gameState.paintInterval) {
-                    // If sign tool is selected, place a sign directly where clicked
-                    if (gameState.paintTool === 'sign') {
-                        placeHandicapSign(player.x + player.size, player.y);
-                    } else {
-                        paintAtPosition(player.x + player.size, player.y);
-                    }
-                    gameState.lastPaintTime = now;
-                }
-            } else {
-                // Just draw the parking lot without player movement
-                drawParkingLot();
-            }
-            
-            // Continue the game loop
-            requestAnimationFrame(gameLoop);
-        }
-
-        // Paint at a position
-        function paintAtPosition(x, y) {
-            const tool = gameState.paintTool;
-            const paintColor = getPaintColor(tool);
-            
-            // Create spray paint particles for visual effect
-            createSprayParticles(x, y, paintColor);
-            
-            if (tool === 'seal') {
-                // Apply sealant
-                applySealant(x, y);
-            } else if (tool === 'pothole') {
-                // Fix potholes
-                fixPothole(x, y);
-            } else {
-                // Check if we're painting a line segment
-                let paintedSomething = false;
-                gameState.lineSegments.forEach(segment => {
-                    if (!segment.painted && tool === segment.requiredColor) {
-                        // Check if point is near the line segment - increased tolerance for easier painting
-                        if (isPointNearLine(x, y, segment.x1, segment.y1, segment.x2, segment.y2, 15)) {
-                            segment.painted = true;
-                            segment.paintedColor = paintColor;
-                            paintedSomething = true;
-                        }
-                    }
+            const handicapCount = difficulty === 1 ? 2 : 3;
+            for (let col = 0; col < stallsPerRow; col++) {
+                const isHandicap = col < handicapCount;
+                // Row A
+                gameState.stallLayout.push({
+                    x: ox + col * STALL_W,
+                    y: rowA_top,
+                    width: STALL_W,
+                    depth: STALL_D,
+                    isHandicap,
+                    side: 'top'
                 });
-                
-                // Play paint sound if something was painted
-                if (paintedSomething) {
-                    playSound(paintSound);
-                }
-            }
-            
-            // Update progress
-            updateProgress();
-        }
-
-        // Apply sealant to parking lot
-        function applySealant(x, y) {
-            // Check if we're in the parking lot area (not on lines)
-            let onLine = false;
-            for (const segment of gameState.lineSegments) {
-                if (isPointNearLine(x, y, segment.x1, segment.y1, segment.x2, segment.y2, 5)) {
-                    onLine = true;
-                    break;
-                }
-            }
-            
-            if (!onLine) {
-                // Add sealed area
-                gameState.sealedAreas.push({
-                    x: x,
-                    y: y,
-                    radius: 10
-                });
-                
-                // Check if we fixed any cracks
-                if (fixCracks(x, y)) {
-                    playSound(sealSound);
-                }
-                
-                // Limit sealed areas to prevent performance issues
-                if (gameState.sealedAreas.length > 200) {
-                    gameState.sealedAreas.splice(0, 50);
-                }
-                
-                // Play seal sound
-                playSound(sealSound);
-            }
-        }
-
-        // Fix potholes
-        function fixPothole(x, y) {
-            let fixedSomething = false;
-            
-            gameState.potholes.forEach(pothole => {
-                if (!pothole.fixed) {
-                    const dx = pothole.x - x;
-                    const dy = pothole.y - y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < pothole.size + 5) {
-                        pothole.fixed = true;
-                        fixedSomething = true;
-                    }
-                }
-            });
-            
-            // Play pothole sound if something was fixed
-            if (fixedSomething) {
-                playSound(potholeSound);
-            }
-        }
-
-        // Check if a point is near a line segment
-        function isPointNearLine(px, py, x1, y1, x2, y2, tolerance) {
-            const A = px - x1;
-            const B = py - y1;
-            const C = x2 - x1;
-            const D = y2 - y1;
-
-            const dot = A * C + B * D;
-            const lenSq = C * C + D * D;
-            let param = -1;
-            if (lenSq !== 0) param = dot / lenSq;
-
-            let xx, yy;
-
-            if (param < 0) {
-                xx = x1;
-                yy = y1;
-            } else if (param > 1) {
-                xx = x2;
-                yy = y2;
-            } else {
-                xx = x1 + param * C;
-                yy = y1 + param * D;
-            }
-
-            const dx = px - xx;
-            const dy = py - yy;
-            return Math.sqrt(dx * dx + dy * dy) <= tolerance;
-        }
-
-        // Create spray paint particles
-        function createSprayParticles(x, y, color) {
-            const particleCount = 5 + Math.floor(Math.random() * 10);
-            
-            for (let i = 0; i < particleCount; i++) {
-                const angle = Math.random() * Math.PI * 2;
-                const speed = 1 + Math.random() * 3;
-                const size = 2 + Math.random() * 4;
-                
-                gameState.sprayParticles.push({
-                    x: x,
-                    y: y,
-                    vx: Math.cos(angle) * speed,
-                    vy: Math.sin(angle) * speed,
-                    size: size,
-                    color: color,
-                    life: 10 + Math.random() * 20
+                // Row B
+                gameState.stallLayout.push({
+                    x: ox + col * STALL_W,
+                    y: rowB_top,
+                    width: STALL_W,
+                    depth: STALL_D,
+                    isHandicap,
+                    side: 'bottom'
                 });
             }
-            
-            // Limit particles to prevent performance issues
-            if (gameState.sprayParticles.length > 200) {
-                gameState.sprayParticles.splice(0, gameState.sprayParticles.length - 150);
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // POTHOLES
+    // ─────────────────────────────────────────────────────────────────────────
+    function generatePotholes(difficulty) {
+        gameState.potholes = [];
+        const count  = difficulty * 3 + 2;
+        const bounds = gameState.parkingLotBounds;
+
+        for (let i = 0; i < count; i++) {
+            let x, y, valid = false, tries = 0;
+            while (!valid && tries < 60) {
+                x = bounds.x + 20 + Math.random() * (bounds.width  - 40);
+                y = bounds.y + 20 + Math.random() * (bounds.height - 40);
+                let tooClose = gameState.potholes.some(p => dist(p.x, p.y, x, y) < 40);
+                let onLine   = gameState.lineSegments.some(seg => isPointNearLine(x, y, seg.x1, seg.y1, seg.x2, seg.y2, 18));
+                valid = !tooClose && !onLine;
+                tries++;
+            }
+            if (valid) {
+                gameState.potholes.push({ x, y, size: 10 + Math.random() * 8, fixed: false });
             }
         }
+    }
 
-        // Place a handicap sign
-        function placeHandicapSign(x, y) {
-            // Check if we're within a reasonable area of a handicap stall
-            let nearHandicapStall = false;
-            for (const stall of gameState.stallLayout) {
-                if (stall.isHandicap) {
-                    const dx = stall.x + stall.width/2 - x;
-                    const dy = stall.y + stall.depth/2 - y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 50) {
-                        nearHandicapStall = true;
+    // ─────────────────────────────────────────────────────────────────────────
+    // CRACKS
+    // ─────────────────────────────────────────────────────────────────────────
+    function generateCracks(difficulty) {
+        gameState.cracks = [];
+        const count  = difficulty * 5 + 3;
+        const bounds = gameState.parkingLotBounds;
+
+        for (let i = 0; i < count; i++) {
+            let x, y, valid = false, tries = 0;
+            while (!valid && tries < 50) {
+                x = bounds.x + 20 + Math.random() * (bounds.width  - 40);
+                y = bounds.y + 20 + Math.random() * (bounds.height - 40);
+                let tooClose = gameState.cracks.some(c => dist(c.x, c.y, x, y) < 40);
+                let onLine   = gameState.lineSegments.some(seg => isPointNearLine(x, y, seg.x1, seg.y1, seg.x2, seg.y2, 15));
+                valid = !tooClose && !onLine;
+                tries++;
+            }
+            if (!valid) continue;
+
+            const segs = [];
+            let cx = x, cy = y;
+            for (let s = 0; s < Math.floor(Math.random()*3)+2; s++) {
+                const angle  = Math.random() * Math.PI * 2;
+                const length = 15 + Math.random() * 20;
+                const ex = cx + Math.cos(angle) * length;
+                const ey = cy + Math.sin(angle) * length;
+                segs.push({ x1: cx, y1: cy, x2: ex, y2: ey });
+                cx = ex; cy = ey;
+            }
+            gameState.cracks.push({ x, y, segments: segs, fixed: false });
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // DRAW FUNCTIONS
+    // ─────────────────────────────────────────────────────────────────────────
+
+    // Draw asphalt texture (grain noise)
+    let asphaltCanvas = null;
+    function buildAsphaltTexture(w, h) {
+        asphaltCanvas = document.createElement('canvas');
+        asphaltCanvas.width  = w;
+        asphaltCanvas.height = h;
+        const ac = asphaltCanvas.getContext('2d');
+
+        // Base asphalt color
+        ac.fillStyle = '#2e2e2e';
+        ac.fillRect(0, 0, w, h);
+
+        // Subtle aggregate grain
+        for (let i = 0; i < 4000; i++) {
+            const gx = Math.random() * w;
+            const gy = Math.random() * h;
+            const gr = Math.random() * 1.5;
+            const bright = 40 + Math.floor(Math.random() * 30);
+            ac.fillStyle = `rgb(${bright},${bright},${bright})`;
+            ac.beginPath();
+            ac.arc(gx, gy, gr, 0, Math.PI * 2);
+            ac.fill();
+        }
+    }
+
+    function drawParkingLot() {
+        const c   = gameState.ctx;
+        const w   = gameState.canvas.width;
+        const h   = gameState.canvas.height;
+
+        c.clearRect(0, 0, w, h);
+
+        // Background asphalt texture
+        if (!asphaltCanvas || asphaltCanvas.width !== w || asphaltCanvas.height !== h) {
+            buildAsphaltTexture(w, h);
+        }
+        c.drawImage(asphaltCanvas, 0, 0);
+
+        // Draw cracks
+        drawCracks(c);
+
+        // Draw sealed areas
+        gameState.sealedAreas.forEach(a => {
+            c.fillStyle = 'rgba(80,80,80,0.6)';
+            c.beginPath();
+            c.arc(a.x, a.y, a.radius, 0, Math.PI * 2);
+            c.fill();
+        });
+
+        // Draw potholes
+        gameState.potholes.forEach(p => {
+            if (!p.fixed) {
+                // Dark irregular shape
+                c.fillStyle = '#111';
+                c.beginPath();
+                for (let a = 0; a < Math.PI*2; a += 0.4) {
+                    const r = p.size * (0.8 + Math.sin(a * 3 + p.x) * 0.2);
+                    const px = p.x + Math.cos(a) * r;
+                    const py = p.y + Math.sin(a) * r;
+                    a === 0 ? c.moveTo(px, py) : c.lineTo(px, py);
+                }
+                c.closePath();
+                c.fill();
+                // Shadow ring
+                c.strokeStyle = '#333';
+                c.lineWidth = 2;
+                c.stroke();
+            } else {
+                // Patched – slightly lighter circle with hash
+                c.fillStyle = '#4a4a4a';
+                c.beginPath();
+                c.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                c.fill();
+                c.strokeStyle = '#555';
+                c.lineWidth = 1;
+                c.stroke();
+            }
+        });
+
+        // Draw line segments
+        gameState.lineSegments.forEach(seg => {
+            c.strokeStyle = seg.painted ? getPaintColor(seg.requiredColor) : '#555';
+            c.lineWidth   = seg.painted ? (seg.lineWidth || 3) + 1 : (seg.lineWidth || 3);
+            c.lineCap     = 'square';
+            c.beginPath();
+            c.moveTo(seg.x1, seg.y1);
+            c.lineTo(seg.x2, seg.y2);
+            c.stroke();
+        });
+
+        // Handicap symbols in painted blue stalls
+        drawHandicapSymbols(c);
+
+        // Handicap signs
+        gameState.handicapSigns.forEach(s => drawHandicapSign(c, s.x, s.y));
+
+        // Spray particles
+        drawSprayParticles(c);
+
+        // Player (line striper machine)
+        drawPlayer(c);
+    }
+
+    function drawCracks(c) {
+        gameState.cracks.forEach(crack => {
+            if (crack.fixed) return;
+            c.strokeStyle = '#1a1a1a';
+            c.lineWidth   = 1.5;
+            c.lineCap     = 'round';
+            crack.segments.forEach(sg => {
+                c.beginPath();
+                c.moveTo(sg.x1, sg.y1);
+                c.lineTo(sg.x2, sg.y2);
+                c.stroke();
+            });
+        });
+    }
+
+    function drawHandicapSymbols(c) {
+        if (!gameState.stallLayout || gameState.stallLayout.length === 0) return;
+        gameState.stallLayout.filter(s => s.isHandicap).forEach(stall => {
+            c.fillStyle = 'rgba(33,150,243,0.15)';
+            c.fillRect(stall.x, stall.y, stall.width, stall.depth);
+        });
+    }
+
+    function drawHandicapSign(c, x, y) {
+        // Pole
+        c.strokeStyle = '#666';
+        c.lineWidth   = 2;
+        c.beginPath(); c.moveTo(x, y); c.lineTo(x, y - 28); c.stroke();
+        // Sign body
+        c.fillStyle = '#1565c0';
+        c.beginPath(); c.arc(x, y - 36, 10, 0, Math.PI * 2); c.fill();
+        // Wheelchair icon (simplified)
+        c.fillStyle = 'white';
+        c.beginPath(); c.arc(x, y - 42, 2.5, 0, Math.PI * 2); c.fill();
+        c.fillRect(x - 2, y - 39, 4, 5);
+        c.beginPath();
+        c.arc(x + 1, y - 34, 4, 0, Math.PI);
+        c.strokeStyle = 'white'; c.lineWidth = 1.5; c.stroke();
+    }
+
+    function drawSprayParticles(c) {
+        gameState.sprayParticles.forEach((p, i) => {
+            c.fillStyle = p.color;
+            c.globalAlpha = p.life / p.maxLife;
+            c.beginPath(); c.arc(p.x, p.y, p.size, 0, Math.PI * 2); c.fill();
+            p.x += p.vx; p.y += p.vy;
+            p.size  *= 0.92;
+            p.life--;
+        });
+        c.globalAlpha = 1;
+        gameState.sprayParticles = gameState.sprayParticles.filter(p => p.life > 0 && p.size > 0.3);
+    }
+
+    function drawPlayer(c) {
+        const p = gameState.player;
+        // Machine body
+        c.fillStyle = '#cc2200';
+        c.fillRect(p.x - p.size/2, p.y - p.size/4, p.size, p.size/2);
+        // Wheels
+        c.fillStyle = '#222';
+        [[p.x - p.size/4, p.y + p.size/4], [p.x + p.size/4, p.y + p.size/4]].forEach(([wx,wy]) => {
+            c.beginPath(); c.arc(wx, wy, 4, 0, Math.PI*2); c.fill();
+        });
+        // Hose
+        c.strokeStyle = '#444'; c.lineWidth = 2;
+        c.beginPath(); c.moveTo(p.x + p.size/2, p.y); c.lineTo(p.x + p.size, p.y); c.stroke();
+        // Operator
+        c.fillStyle = '#3a7bd5';
+        c.beginPath(); c.arc(p.x - p.size/2, p.y - p.size/4, 6, 0, Math.PI * 2); c.fill();
+        // Nozzle with current paint color
+        c.fillStyle = getPaintColor(gameState.paintTool);
+        c.beginPath(); c.arc(p.x + p.size, p.y, 5, 0, Math.PI * 2); c.fill();
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // COLOR HELPER
+    // ─────────────────────────────────────────────────────────────────────────
+    function getPaintColor(tool) {
+        return { white:'#ffffff', yellow:'#f5d000', blue:'#2196f3', seal:'#888', pothole:'#444', sign:'#2196f3' }[tool] || '#ffffff';
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // TOOL ENABLE / DISABLE (sealant locked until potholes done)
+    // ─────────────────────────────────────────────────────────────────────────
+    function updateToolAvailability() {
+        const allFixed = gameState.potholes.length === 0 || gameState.potholes.every(p => p.fixed);
+        gameState.allPotholeFixed = allFixed;
+        const sealEl = document.getElementById('tool-seal');
+        if (allFixed) {
+            sealEl.classList.remove('disabled-tool');
+            stepNotice.classList.remove('visible');
+        } else {
+            sealEl.classList.add('disabled-tool');
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // PAINTING
+    // ─────────────────────────────────────────────────────────────────────────
+    function paintAtPosition(x, y) {
+        const tool  = gameState.paintTool;
+        const color = getPaintColor(tool);
+        createSprayParticles(x, y, color);
+
+        if (tool === 'seal') {
+            if (!gameState.allPotholeFixed) {
+                stepNotice.classList.add('visible');
+                return;
+            }
+            applySealant(x, y);
+        } else if (tool === 'pothole') {
+            fixPothole(x, y);
+        } else if (tool === 'sign') {
+            placeHandicapSign(x, y);
+        } else {
+            let painted = false;
+            gameState.lineSegments.forEach(seg => {
+                if (!seg.painted && tool === seg.requiredColor) {
+                    if (isPointNearLine(x, y, seg.x1, seg.y1, seg.x2, seg.y2, 15)) {
+                        seg.painted      = true;
+                        seg.paintedColor = color;
+                        painted          = true;
+                    }
+                }
+            });
+            if (painted) playSound(paintSound);
+        }
+
+        updateProgress();
+    }
+
+    function applySealant(x, y) {
+        let onLine = gameState.lineSegments.some(seg => isPointNearLine(x, y, seg.x1, seg.y1, seg.x2, seg.y2, 5));
+        if (!onLine) {
+            gameState.sealedAreas.push({ x, y, radius: 12 });
+            fixCracks(x, y);
+            playSound(sealSound);
+            if (gameState.sealedAreas.length > 250) gameState.sealedAreas.splice(0, 50);
+        }
+    }
+
+    function fixPothole(x, y) {
+        let fixed = false;
+        gameState.potholes.forEach(p => {
+            if (!p.fixed && dist(p.x, p.y, x, y) < p.size + 8) {
+                p.fixed = true;
+                fixed   = true;
+            }
+        });
+        if (fixed) {
+            playSound(potholeSound);
+            updateToolAvailability();
+        }
+    }
+
+    function fixCracks(x, y) {
+        gameState.cracks.forEach(crack => {
+            if (!crack.fixed) {
+                for (const s of crack.segments) {
+                    if (isPointNearLine(x, y, s.x1, s.y1, s.x2, s.y2, 12)) {
+                        crack.fixed = true;
                         break;
                     }
                 }
             }
-            
-            if (!nearHandicapStall) {
-                return;
-            }
-            
-            // Check if there's already a sign nearby
-            const existingSign = gameState.handicapSigns.find(sign => {
-                const dx = sign.x - x;
-                const dy = sign.y - y;
-                return Math.sqrt(dx * dx + dy * dy) < 30;
+        });
+    }
+
+    function placeHandicapSign(x, y) {
+        const near = gameState.stallLayout.some(s => {
+            if (!s.isHandicap) return false;
+            return dist(s.x + s.width/2, s.y + s.depth/2, x, y) < 55;
+        });
+        if (!near) return;
+        const exists = gameState.handicapSigns.some(s => dist(s.x, s.y, x, y) < 30);
+        if (!exists) {
+            gameState.handicapSigns.push({ x, y });
+            createSprayParticles(x, y, '#2196f3');
+            playSound(signSound);
+        }
+    }
+
+    function createSprayParticles(x, y, color) {
+        for (let i = 0; i < 8; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = 1 + Math.random() * 3;
+            const life  = 12 + Math.floor(Math.random() * 15);
+            gameState.sprayParticles.push({
+                x, y,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                size: 2 + Math.random() * 3,
+                color,
+                life,
+                maxLife: life
             });
-            
-            if (!existingSign) {
-                gameState.handicapSigns.push({x, y});
-                
-                // Create visual feedback
-                createSprayParticles(x, y, '#2196f3');
-                
-                // Play sign placement sound
-                playSound(signSound);
-            }
         }
+        if (gameState.sprayParticles.length > 300) gameState.sprayParticles.splice(0, 100);
+    }
 
-        // Update progress for all job requirements
-        function updateProgress() {
-            if (!gameState.selectedBusiness) return;
-            
-            // Calculate striping progress (line segments)
-            const totalSegments = gameState.lineSegments.length;
-            const paintedSegments = gameState.lineSegments.filter(segment => segment.painted).length;
-            gameState.stripingCoverage = totalSegments > 0 ? (paintedSegments / totalSegments) * 100 : 0;
-            
-            // Calculate sealing progress (based on number of sealed areas and cracks fixed)
-            const maxSealAreas = 150;
-            const sealedAreaProgress = (gameState.sealedAreas.length / maxSealAreas) * 100;
-            const totalCracks = gameState.cracks.length;
-            const fixedCracks = gameState.cracks.filter(crack => crack.fixed).length;
-            const crackFixProgress = totalCracks > 0 ? (fixedCracks / totalCracks) * 100 : 100;
-            
-            // Combine sealed area progress and crack fixing progress
-            gameState.sealingCoverage = (sealedAreaProgress + crackFixProgress) / 2;
-            
-            // Calculate pothole progress
-            const totalPotholes = gameState.potholes.length;
-            const fixedPotholes = gameState.potholes.filter(pothole => pothole.fixed).length;
-            gameState.potholeCoverage = totalPotholes > 0 ? (fixedPotholes / totalPotholes) * 100 : 0;
-            
-            // Update progress bars
-            updateProgressBars();
-        }
+    // ─────────────────────────────────────────────────────────────────────────
+    // PROGRESS
+    // ─────────────────────────────────────────────────────────────────────────
+    function updateProgress() {
+        const total   = gameState.lineSegments.length;
+        const painted = gameState.lineSegments.filter(s => s.painted).length;
+        gameState.stripingCoverage = total > 0 ? (painted / total) * 100 : 0;
 
-        // Update progress bars display
-        function updateProgressBars() {
-            stripingCoverageEl.textContent = `${Math.floor(gameState.stripingCoverage)}%`;
-            sealingCoverageEl.textContent = `${Math.floor(gameState.sealingCoverage)}%`;
-            potholeCoverageEl.textContent = `${Math.floor(gameState.potholeCoverage)}%`;
-            
-            stripingProgressEl.style.width = `${gameState.stripingCoverage}%`;
-            sealingProgressEl.style.width = `${gameState.sealingCoverage}%`;
-            potholeProgressEl.style.width = `${gameState.potholeCoverage}%`;
-        }
+        const totalP  = gameState.potholes.length;
+        const fixedP  = gameState.potholes.filter(p => p.fixed).length;
+        gameState.potholeCoverage = totalP > 0 ? (fixedP / totalP) * 100 : 100;
 
-        // Purchase an upgrade
-        function purchaseUpgrade(upgrade) {
-            if (gameState.money >= upgrade.price && !upgrade.purchased) {
-                gameState.money -= upgrade.price;
-                upgrade.purchased = true;
-                
-                // Apply upgrade effect
-                applyUpgradeEffect(upgrade);
-                
-                // Update UI
-                updateUI();
-                renderUpgrades();
-                
-                // Show notification
-                alert(`Purchased: ${upgrade.name}`);
-            }
-        }
+        const sealTarget   = 150;
+        const sealProgress = Math.min(gameState.sealedAreas.length / sealTarget, 1) * 100;
+        const totalC  = gameState.cracks.length;
+        const fixedC  = gameState.cracks.filter(c => c.fixed).length;
+        const crackP  = totalC > 0 ? (fixedC / totalC) * 100 : 100;
+        gameState.sealingCoverage = (sealProgress + crackP) / 2;
 
-        // Apply upgrade effect
-        function applyUpgradeEffect(upgrade) {
-            switch(upgrade.effect) {
-                case 'speed':
-                    gameState.player.speed += 3;
-                    gameState.paintInterval *= (upgrade.paintIntervalModifier || 0.7);
-                    gameState.equipmentLevel++;
-                    break;
-                case 'precision':
-                    gameState.equipmentLevel++;
-                    break;
-                case 'sealing':
-                    // Sealing upgrade makes sealing faster
-                    gameState.sealingRequired = true;
-                    gameState.equipmentLevel++;
-                    break;
-                case 'pothole':
-                    // Pothole repair upgrade
-                    gameState.potholeRepairRequired = true;
-                    gameState.equipmentLevel++;
-                    break;
-                case 'truck':
-                    gameState.player.speed *= 2;
-                    gameState.paintInterval *= (upgrade.paintIntervalModifier || 0.3);
-                    gameState.level++;
-                    gameState.equipmentLevel += 2;
-                    break;
-                case 'expansion':
-                    gameState.level += 2;
-                    break;
-            }
-            
-            equipmentEl.textContent = getEquipmentName(gameState.equipmentLevel);
-        }
+        updateProgressBars();
+    }
 
-        // Get equipment name based on level
-        function getEquipmentName(level) {
-            if (level < 3) return 'Basic';
-            if (level < 5) return 'Intermediate';
-            if (level < 7) return 'Professional';
-            return 'Industrial';
-        }
+    function updateProgressBars() {
+        stripingCoverageEl.textContent = Math.floor(gameState.stripingCoverage) + '%';
+        sealingCoverageEl.textContent  = Math.floor(gameState.sealingCoverage)  + '%';
+        potholeCoverageEl.textContent  = Math.floor(gameState.potholeCoverage)  + '%';
+        stripingProgressEl.style.width = gameState.stripingCoverage + '%';
+        sealingProgressEl.style.width  = gameState.sealingCoverage  + '%';
+        potholeProgressEl.style.width  = gameState.potholeCoverage  + '%';
+    }
 
-        // Complete the current job
-        function completeJob() {
-            if (!gameState.selectedBusiness || gameState.selectedBusiness.completed) {
-                alert('Please select an incomplete job first!');
-                return;
-            }
-            
-            // Check if timer has expired
+    // ─────────────────────────────────────────────────────────────────────────
+    // SELECT BUSINESS / TIMER
+    // ─────────────────────────────────────────────────────────────────────────
+    function selectBusiness(business) {
+        if (gameState.timerInterval) clearInterval(gameState.timerInterval);
+        Object.assign(gameState, {
+            selectedBusiness: business,
+            stripingCoverage: 0, sealingCoverage: 0, potholeCoverage: 0,
+            handicapSigns: [], lineSegments: [], stallLayout: [], potholes: [], sealedAreas: [], cracks: [], sprayParticles: [],
+            timer: 120, gameActive: true, allPotholeFixed: false
+        });
+        stepNotice.classList.remove('visible');
+        generateParkingLotLayout(business.difficulty);
+        generatePotholes(business.difficulty);
+        generateCracks(business.difficulty);
+        updateToolAvailability();
+        drawParkingLot();
+        selectedBusinessEl.textContent = business.name;
+        updateProgressBars();
+        updateTimerDisplay();
+        renderBusinesses();
+        startTimer();
+        playBackgroundMusic();
+    }
+
+    function startTimer() {
+        if (gameState.timerInterval) clearInterval(gameState.timerInterval);
+        gameState.timerInterval = setInterval(() => {
+            gameState.timer--;
+            updateTimerDisplay();
             if (gameState.timer <= 0) {
-                alert("Time's up! You cannot complete this job anymore.");
-                return;
-            }
-            
-            // Check if all requirements are met
-            let requirementsMet = true;
-            let message = "";
-            
-            if (gameState.stripingCoverage < 80) {
-                requirementsMet = false;
-                message += `• Need at least 80% line striping (Current: ${Math.floor(gameState.stripingCoverage)}%)\n`;
-                message += `  Make sure to paint ALL white border lines including top and bottom of parking lot!\n`;
-            }
-            
-            if (gameState.sealingCoverage < 90) {
-                requirementsMet = false;
-                message += `• Need at least 90% sealing (Current: ${Math.floor(gameState.sealingCoverage)}%)\n`;
-            }
-            
-            if (gameState.potholeCoverage < 100) {
-                requirementsMet = false;
-                message += `• Need to fix ALL potholes (Current: ${Math.floor(gameState.potholeCoverage)}%)\n`;
-            }
-            
-            // Check if handicap signs are placed
-            const handicapStalls = gameState.stallLayout.filter(stall => stall.isHandicap);
-            if (handicapStalls.length > 0 && gameState.handicapSigns.length < handicapStalls.length) {
-                requirementsMet = false;
-                message += `• Need handicap signs for all blue spots (Need ${handicapStalls.length}, have ${gameState.handicapSigns.length})\n`;
-            }
-            
-            if (!requirementsMet) {
-                alert("Job requirements not met:\n\n" + message);
-                return;
-            }
-            
-            // Stop the timer
-            if (gameState.timerInterval) {
                 clearInterval(gameState.timerInterval);
-                gameState.timerInterval = null;
-            }
-            
-            // Stop background music
-            backgroundMusic.pause();
-            
-            // Mark business as completed
-            gameState.selectedBusiness.completed = true;
-            gameState.completedJobs++;
-            gameState.gameActive = false;
-            
-            // Calculate reward with bonuses
-            let reward = gameState.selectedBusiness.reward;
-            
-            // Bonus for high coverage
-            if (gameState.stripingCoverage > 95) reward = Math.floor(reward * 1.2);
-            else if (gameState.stripingCoverage > 90) reward = Math.floor(reward * 1.1);
-            
-            // Bonus for remaining time (10% bonus per 30 seconds remaining)
-            const timeBonus = Math.floor(gameState.timer / 30) * 0.1;
-            reward = Math.floor(reward * (1 + timeBonus));
-            
-            // Add money
-            gameState.money += reward;
-            
-            // Level up every 5 completed jobs
-            if (gameState.completedJobs % 5 === 0) {
-                gameState.level++;
-            }
-            
-            // Update UI
-            updateUI();
-            renderBusinesses();
-            
-            // Show completion message
-            alert(`Job completed with ${gameState.timer} seconds remaining!\n\nYou earned $${reward}.`);
-            
-            // Deselect business
-            gameState.selectedBusiness = null;
-            selectedBusinessEl.textContent = 'Select a Job';
-        }
-
-        // Update UI elements
-        function updateUI() {
-            moneyEl.textContent = `$${gameState.money}`;
-            completedEl.textContent = `${gameState.completedJobs}/30`;
-            levelEl.textContent = gameState.level;
-            equipmentEl.textContent = getEquipmentName(gameState.equipmentLevel);
-        }
-
-        // Save game to localStorage
-        function saveGame() {
-            const saveData = {
-                money: gameState.money,
-                level: gameState.level,
-                completedJobs: gameState.completedJobs,
-                equipmentLevel: gameState.equipmentLevel,
-                businesses: gameState.businesses,
-                upgrades: gameState.upgrades,
-                soundEnabled: gameState.soundEnabled
-            };
-            
-            localStorage.setItem('parkingLotSimulatorSave', JSON.stringify(saveData));
-            alert('Game saved successfully!');
-        }
-
-        // Load game from localStorage
-        function loadGame() {
-            const saveData = localStorage.getItem('parkingLotSimulatorSave');
-            
-            if (saveData) {
-                try {
-                    const loadedData = JSON.parse(saveData);
-                    
-                    gameState.money = loadedData.money;
-                    gameState.level = loadedData.level;
-                    gameState.completedJobs = loadedData.completedJobs;
-                    gameState.equipmentLevel = loadedData.equipmentLevel;
-                    gameState.businesses = loadedData.businesses;
-                    gameState.upgrades = loadedData.upgrades;
-                    
-                    // Load sound state if it exists
-                    if (loadedData.soundEnabled !== undefined) {
-                        gameState.soundEnabled = loadedData.soundEnabled;
-                        updateSoundIcon();
-                    }
-                    
-                    // Update UI
-                    updateUI();
-                    renderBusinesses();
-                    renderUpgrades();
-                    
-                    alert('Game loaded successfully!');
-                } catch (e) {
-                    alert('Failed to load saved game. Starting fresh.');
-                }
-            } else {
-                alert('No saved game found.');
-            }
-        }
-
-        // Restart the game
-        function restartGame() {
-            if (confirm('Are you sure you want to restart? All progress will be lost.')) {
-                // Reset game state
-                gameState.money = 2500;
-                gameState.level = 1;
-                gameState.completedJobs = 0;
-                gameState.equipmentLevel = 1;
-                gameState.selectedBusiness = null;
-                gameState.stripingCoverage = 0;
-                gameState.sealingCoverage = 0;
-                gameState.potholeCoverage = 0;
-                gameState.sprayParticles = [];
-                gameState.handicapSigns = [];
-                gameState.paintedAreas = [];
-                gameState.lineSegments = [];
-                gameState.potholes = [];
-                gameState.sealedAreas = [];
-                gameState.cracks = [];
-                gameState.timer = 120;
                 gameState.gameActive = false;
-                
-                // Stop timer
-                if (gameState.timerInterval) {
-                    clearInterval(gameState.timerInterval);
-                    gameState.timerInterval = null;
-                }
-                
-                // Stop background music
                 backgroundMusic.pause();
-                
-                // Reinitialize businesses and upgrades
-                gameState.businesses = initializeBusinesses();
-                gameState.upgrades = initializeUpgrades();
-                
-                // Reset player position
-                gameState.player.x = gameCanvas.width / 2;
-                gameState.player.y = gameCanvas.height / 2;
-                
-                // Update UI
-                updateUI();
-                renderBusinesses();
-                renderUpgrades();
-                updateProgressBars();
-                updateTimerDisplay();
-                
-                // Clear canvas
-                drawParkingLot();
-                
-                selectedBusinessEl.textContent = 'Select a Job';
-                
-                alert('Game restarted!');
+                alert("Time's up! Job failed. Select a new job to try again.");
             }
+        }, 1000);
+    }
+
+    function updateTimerDisplay() {
+        const m = Math.floor(gameState.timer / 60);
+        const s = gameState.timer % 60;
+        timerEl.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        timerEl.className   = '';
+        if      (gameState.timer <= 30) timerEl.classList.add('danger');
+        else if (gameState.timer <= 60) timerEl.classList.add('warning');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // GAME LOOP
+    // ─────────────────────────────────────────────────────────────────────────
+    function gameLoop() {
+        if (gameState.gameActive) {
+            drawParkingLot();
+            const { player, mouse } = gameState;
+            const dx = mouse.x - player.x, dy = mouse.y - player.y;
+            const d  = Math.sqrt(dx*dx + dy*dy);
+            if (d > player.speed) {
+                player.x += (dx/d) * player.speed;
+                player.y += (dy/d) * player.speed;
+            } else {
+                player.x = mouse.x; player.y = mouse.y;
+            }
+            const now = Date.now();
+            if (mouse.down && now - gameState.lastPaintTime > gameState.paintInterval) {
+                if (gameState.paintTool === 'sign') placeHandicapSign(player.x + player.size, player.y);
+                else paintAtPosition(player.x + player.size, player.y);
+                gameState.lastPaintTime = now;
+            }
+        } else {
+            drawParkingLot();
+        }
+        requestAnimationFrame(gameLoop);
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // COMPLETE JOB
+    // ─────────────────────────────────────────────────────────────────────────
+    function completeJob() {
+        if (!gameState.selectedBusiness || gameState.selectedBusiness.completed) {
+            alert('Please select an incomplete job first!'); return;
+        }
+        if (gameState.timer <= 0) { alert("Time's up!"); return; }
+
+        let msg = '';
+        if (gameState.potholeCoverage < 100) msg += `• Fix ALL potholes first! (${Math.floor(gameState.potholeCoverage)}% done)\n`;
+        if (gameState.sealingCoverage  < 90) msg += `• Need 90%+ sealing (${Math.floor(gameState.sealingCoverage)}%)\n`;
+        if (gameState.stripingCoverage < 80) msg += `• Need 80%+ striping (${Math.floor(gameState.stripingCoverage)}%)\n`;
+        const hStalls = gameState.stallLayout.filter(s => s.isHandicap).length / 2; // divide by 2 (rows)
+        const uniqueHStalls = [...new Set(gameState.stallLayout.filter(s=>s.isHandicap).map(s=>s.x))].length;
+        if (uniqueHStalls > 0 && gameState.handicapSigns.length < uniqueHStalls)
+            msg += `• Place handicap signs (need ${uniqueHStalls}, have ${gameState.handicapSigns.length})\n`;
+
+        if (msg) { alert("Job not complete:\n\n" + msg); return; }
+
+        clearInterval(gameState.timerInterval);
+        backgroundMusic.pause();
+        gameState.selectedBusiness.completed = true;
+        gameState.completedJobs++;
+        gameState.gameActive = false;
+
+        let reward = gameState.selectedBusiness.reward;
+        if (gameState.stripingCoverage > 95) reward = Math.floor(reward * 1.2);
+        else if (gameState.stripingCoverage > 90) reward = Math.floor(reward * 1.1);
+        reward = Math.floor(reward * (1 + Math.floor(gameState.timer/30) * 0.1));
+        gameState.money += reward;
+        if (gameState.completedJobs % 5 === 0) gameState.level++;
+        updateUI(); renderBusinesses();
+        alert(`Job complete! ${gameState.timer}s remaining.\n\nEarned: $${reward}`);
+        gameState.selectedBusiness = null;
+        selectedBusinessEl.textContent = 'Select a Job';
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // UPGRADES
+    // ─────────────────────────────────────────────────────────────────────────
+    function purchaseUpgrade(upgrade) {
+        if (gameState.money < upgrade.price || upgrade.purchased) return;
+        gameState.money -= upgrade.price;
+        upgrade.purchased = true;
+        applyUpgradeEffect(upgrade);
+        updateUI(); renderUpgrades();
+        alert(`Purchased: ${upgrade.name}`);
+    }
+
+    function applyUpgradeEffect(u) {
+        switch(u.effect) {
+            case 'speed':     gameState.player.speed += 3; gameState.paintInterval *= (u.paintIntervalModifier||0.7); gameState.equipmentLevel++; break;
+            case 'precision': gameState.equipmentLevel++; break;
+            case 'sealing':   gameState.equipmentLevel++; break;
+            case 'pothole':   gameState.equipmentLevel++; break;
+            case 'truck':     gameState.player.speed *= 2; gameState.paintInterval *= (u.paintIntervalModifier||0.3); gameState.level++; gameState.equipmentLevel += 2; break;
+            case 'expansion': gameState.level += 2; break;
+        }
+        equipmentEl.textContent = getEquipmentName(gameState.equipmentLevel);
+    }
+
+    function getEquipmentName(l) {
+        if (l < 3) return 'Basic';
+        if (l < 5) return 'Intermediate';
+        if (l < 7) return 'Professional';
+        return 'Industrial';
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // SAVE / LOAD / RESTART
+    // ─────────────────────────────────────────────────────────────────────────
+    function saveGame() {
+        localStorage.setItem('plsSave', JSON.stringify({
+            money: gameState.money, level: gameState.level,
+            completedJobs: gameState.completedJobs, equipmentLevel: gameState.equipmentLevel,
+            businesses: gameState.businesses, upgrades: gameState.upgrades,
+            soundEnabled: gameState.soundEnabled
+        }));
+        alert('Game saved!');
+    }
+
+    function loadGame() {
+        const raw = localStorage.getItem('plsSave');
+        if (!raw) { alert('No saved game found.'); return; }
+        try {
+            const d = JSON.parse(raw);
+            Object.assign(gameState, { money:d.money, level:d.level, completedJobs:d.completedJobs, equipmentLevel:d.equipmentLevel, businesses:d.businesses, upgrades:d.upgrades });
+            if (d.soundEnabled !== undefined) { gameState.soundEnabled = d.soundEnabled; updateSoundIcon(); }
+            updateUI(); renderBusinesses(); renderUpgrades();
+            alert('Game loaded!');
+        } catch(e) { alert('Failed to load save.'); }
+    }
+
+    function restartGame() {
+        if (!confirm('Restart? All progress will be lost.')) return;
+        if (gameState.timerInterval) clearInterval(gameState.timerInterval);
+        backgroundMusic.pause();
+        Object.assign(gameState, {
+            money:2500, level:1, completedJobs:0, equipmentLevel:1,
+            selectedBusiness:null, stripingCoverage:0, sealingCoverage:0, potholeCoverage:0,
+            sprayParticles:[], handicapSigns:[], lineSegments:[], stallLayout:[], potholes:[], sealedAreas:[], cracks:[],
+            timer:120, gameActive:false, allPotholeFixed:false, timerInterval:null
+        });
+        gameState.businesses = initializeBusinesses();
+        gameState.upgrades   = initializeUpgrades();
+        gameState.player.x   = gameCanvas.width  / 2;
+        gameState.player.y   = gameCanvas.height / 2;
+        updateUI(); renderBusinesses(); renderUpgrades(); updateProgressBars(); updateTimerDisplay();
+        drawParkingLot();
+        selectedBusinessEl.textContent = 'Select a Job';
+        stepNotice.classList.remove('visible');
+        alert('Game restarted!');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // UI RENDER
+    // ─────────────────────────────────────────────────────────────────────────
+    function renderBusinesses() {
+        businessListEl.innerHTML = '';
+        gameState.businesses.forEach(b => {
+            const card = document.createElement('div');
+            card.className = `business-card ${b.completed ? 'completed' : ''} ${gameState.selectedBusiness?.id === b.id ? 'selected' : ''}`;
+            card.innerHTML = `
+                <div class="business-name">${b.name}</div>
+                <div class="business-type">${b.type}</div>
+                <div class="business-reward">
+                    <div class="reward-amount">$${b.reward}</div>
+                    <div class="difficulty ${['easy','medium','hard'][b.difficulty-1]}">${['Easy','Medium','Hard'][b.difficulty-1]}</div>
+                </div>`;
+            card.addEventListener('click', () => selectBusiness(b));
+            businessListEl.appendChild(card);
+        });
+    }
+
+    function renderUpgrades() {
+        upgradesListEl.innerHTML = '';
+        gameState.upgrades.forEach(u => {
+            const card = document.createElement('div');
+            card.className = 'upgrade-card';
+            card.innerHTML = `
+                <div class="upgrade-header">
+                    <div class="upgrade-name">${u.name}</div>
+                    <div class="upgrade-price">$${u.price}</div>
+                </div>
+                <div class="upgrade-desc">${u.description}</div>
+                <button class="upgrade-btn" ${u.purchased || gameState.money < u.price ? 'disabled' : ''}>
+                    ${u.purchased ? 'Purchased' : 'Purchase'}
+                </button>`;
+            if (!u.purchased) card.querySelector('.upgrade-btn').addEventListener('click', () => purchaseUpgrade(u));
+            upgradesListEl.appendChild(card);
+        });
+    }
+
+    function updateUI() {
+        moneyEl.textContent     = '$' + gameState.money.toLocaleString();
+        completedEl.textContent = `${gameState.completedJobs}/30`;
+        levelEl.textContent     = gameState.level;
+        equipmentEl.textContent = getEquipmentName(gameState.equipmentLevel);
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // SOUND CONTROLS
+    // ─────────────────────────────────────────────────────────────────────────
+    function setupSoundControls() {
+        soundToggle.addEventListener('click', () => {
+            gameState.soundEnabled = !gameState.soundEnabled;
+            localStorage.setItem('plsSound', gameState.soundEnabled);
+            updateSoundIcon();
+            if (!gameState.soundEnabled) backgroundMusic.pause();
+            else if (gameState.gameActive) playBackgroundMusic();
+        });
+        const saved = localStorage.getItem('plsSound');
+        if (saved !== null) gameState.soundEnabled = saved === 'true';
+        updateSoundIcon();
+    }
+
+    function updateSoundIcon() {
+        soundToggle.querySelector('i').className = gameState.soundEnabled ? 'fas fa-volume-up' : 'fas fa-volume-mute';
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // EVENT LISTENERS
+    // ─────────────────────────────────────────────────────────────────────────
+    function setupEventListeners() {
+        function getPos(e) {
+            const r = gameCanvas.getBoundingClientRect();
+            if (e.touches) return { x: e.touches[0].clientX - r.left, y: e.touches[0].clientY - r.top };
+            return { x: e.clientX - r.left, y: e.clientY - r.top };
         }
 
-        // Set up event listeners with mobile/tablet support
-        function setupEventListeners() {
-            // Mouse movement on canvas
-            gameCanvas.addEventListener('mousemove', (e) => {
-                const rect = gameCanvas.getBoundingClientRect();
-                gameState.mouse.x = e.clientX - rect.left;
-                gameState.mouse.y = e.clientY - rect.top;
-            });
-            
-            // Touch movement on canvas
-            gameCanvas.addEventListener('touchmove', (e) => {
-                e.preventDefault();
-                const rect = gameCanvas.getBoundingClientRect();
-                gameState.mouse.x = e.touches[0].clientX - rect.left;
-                gameState.mouse.y = e.touches[0].clientY - rect.top;
-            }, {passive: false});
-            
-            // Mouse down for painting
-            gameCanvas.addEventListener('mousedown', (e) => {
-                e.preventDefault();
-                gameState.mouse.down = true;
-                
-                // If sign tool is selected, place a sign immediately on click
-                if (gameState.paintTool === 'sign') {
-                    const rect = gameCanvas.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    placeHandicapSign(x, y);
-                }
-            });
-            
-            gameCanvas.addEventListener('mouseup', () => {
-                gameState.mouse.down = false;
-            });
-            
-            // Touch for painting
-            gameCanvas.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                gameState.mouse.down = true;
-                
-                // Also update position on touch start
-                const rect = gameCanvas.getBoundingClientRect();
-                gameState.mouse.x = e.touches[0].clientX - rect.left;
-                gameState.mouse.y = e.touches[0].clientY - rect.top;
-                
-                // If sign tool is selected, place a sign immediately on touch
-                if (gameState.paintTool === 'sign') {
-                    placeHandicapSign(gameState.mouse.x, gameState.mouse.y);
-                }
-            }, {passive: false});
-            
-            gameCanvas.addEventListener('touchend', () => {
-                gameState.mouse.down = false;
-            });
-            
-            // Paint tool selection
-            toolWhite.addEventListener('click', () => {
-                setActiveTool('white', toolWhite);
-            });
-            
-            toolYellow.addEventListener('click', () => {
-                setActiveTool('yellow', toolYellow);
-            });
-            
-            toolBlue.addEventListener('click', () => {
-                setActiveTool('blue', toolBlue);
-            });
-            
-            toolSeal.addEventListener('click', () => {
-                setActiveTool('seal', toolSeal);
-            });
-            
-            toolPothole.addEventListener('click', () => {
-                setActiveTool('pothole', toolPothole);
-            });
-            
-            toolSign.addEventListener('click', () => {
-                setActiveTool('sign', toolSign);
-            });
-            
-            // Button event listeners
-            completeJobBtn.addEventListener('click', completeJob);
-            saveGameBtn.addEventListener('click', saveGame);
-            restartGameBtn.addEventListener('click', restartGame);
-            
-            // Load game on startup if available
-            window.addEventListener('load', () => {
-                // Auto-load saved game if available
-                if (localStorage.getItem('parkingLotSimulatorSave')) {
-                    if (confirm('A saved game was found. Would you like to load it?')) {
-                        loadGame();
-                    }
-                }
-            });
-            
-            // Prevent context menu on canvas
-            gameCanvas.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
-            });
-        }
+        gameCanvas.addEventListener('mousemove',  e => { const p = getPos(e); gameState.mouse.x = p.x; gameState.mouse.y = p.y; });
+        gameCanvas.addEventListener('touchmove',  e => { e.preventDefault(); const p = getPos(e); gameState.mouse.x = p.x; gameState.mouse.y = p.y; }, { passive:false });
+        gameCanvas.addEventListener('mousedown',  e => { e.preventDefault(); gameState.mouse.down = true; });
+        gameCanvas.addEventListener('mouseup',    ()  => { gameState.mouse.down = false; });
+        gameCanvas.addEventListener('touchstart', e => { e.preventDefault(); gameState.mouse.down = true; const p = getPos(e); gameState.mouse.x = p.x; gameState.mouse.y = p.y; }, { passive:false });
+        gameCanvas.addEventListener('touchend',   ()  => { gameState.mouse.down = false; });
+        gameCanvas.addEventListener('contextmenu', e => e.preventDefault());
 
-        // Set active paint tool
-        function setActiveTool(tool, element) {
-            gameState.paintTool = tool;
-            
-            // Remove selected class from all tools
-            document.querySelectorAll('.paint-tool').forEach(el => {
-                el.classList.remove('selected');
+        const tools = [
+            ['tool-white',  'white'],
+            ['tool-yellow', 'yellow'],
+            ['tool-blue',   'blue'],
+            ['tool-pothole','pothole'],
+            ['tool-seal',   'seal'],
+            ['tool-sign',   'sign']
+        ];
+        tools.forEach(([id, tool]) => {
+            document.getElementById(id).addEventListener('click', () => {
+                if (tool === 'seal' && !gameState.allPotholeFixed) {
+                    stepNotice.classList.add('visible');
+                    return;
+                }
+                gameState.paintTool = tool;
+                document.querySelectorAll('.paint-tool').forEach(el => el.classList.remove('selected'));
+                document.getElementById(id).classList.add('selected');
             });
-            
-            // Add selected class to active tool
-            element.classList.add('selected');
-        }
+        });
 
-        // Initialize the game when the page loads
-        window.addEventListener('DOMContentLoaded', initGame);
+        document.getElementById('completeJob').addEventListener('click', completeJob);
+        document.getElementById('saveGame').addEventListener('click', saveGame);
+        document.getElementById('restartGame').addEventListener('click', restartGame);
+
+        window.addEventListener('load', () => {
+            if (localStorage.getItem('plsSave') && confirm('Load saved game?')) loadGame();
+        });
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // UTILS
+    // ─────────────────────────────────────────────────────────────────────────
+    function dist(x1, y1, x2, y2) { return Math.sqrt((x2-x1)**2 + (y2-y1)**2); }
+
+    function isPointNearLine(px, py, x1, y1, x2, y2, tol) {
+        const A = px-x1, B = py-y1, C = x2-x1, D = y2-y1;
+        const dot = A*C + B*D, lenSq = C*C + D*D;
+        let param = lenSq !== 0 ? dot / lenSq : -1;
+        let xx = param < 0 ? x1 : param > 1 ? x2 : x1 + param*C;
+        let yy = param < 0 ? y1 : param > 1 ? y2 : y1 + param*D;
+        return dist(px, py, xx, yy) <= tol;
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // INIT
+    // ─────────────────────────────────────────────────────────────────────────
+    function initGame() {
+        gameState.canvas = gameCanvas;
+        gameState.ctx    = ctx;
+        resizeCanvas();
+        gameState.businesses = initializeBusinesses();
+        gameState.upgrades   = initializeUpgrades();
+        renderBusinesses();
+        renderUpgrades();
+        setupEventListeners();
+        setupSoundControls();
+        requestAnimationFrame(gameLoop);
+        updateUI();
+        window.addEventListener('resize', resizeCanvas);
+    }
+
+    window.addEventListener('DOMContentLoaded', initGame);
     </script>
 </body>
 </html>
