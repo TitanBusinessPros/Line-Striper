@@ -1,1182 +1,1889 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZTXGY3JS5M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-ZTXGY3JS5M');
-</script>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EZR.Games — Tulsa's Newest and Most Exciting Gaming Platform!</title>
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="https://github.com/TitanBusinessPros/Gameville-/raw/main/Tulsa-games-back.png" as="image">
-    
-    <!-- Favicon (replaced) -->
-    <link rel="icon" type="image/png" href="https://github.com/TitanBusinessPros/EZ-Remodeling/raw/main/EZ-Favicon.png">
-    
-    <!-- ====== FIXED FACEBOOK META TAGS (updated to EZR.Games) ====== -->
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://titanbusinesspros.github.io/Testing-News-Maker/">
-    
-    <!-- Facebook Open Graph Tags -->
-    <meta property="og:title" content="EZR.Games — Tulsa's Newest and Most Exciting Gaming Platform!">
-    <meta property="og:description" content="Welcome to EZR.Games — Tulsa's newest and most exciting gaming platform! Explore a growing collection of fun and addictive games created for players of all ages. Whether you're here to pass the time or chase high scores, you'll find plenty to enjoy. Jump into the action and discover fresh new games added regularly. Thanks for visiting EZR.Games — where Tulsa plays, competes, and has a blast!">
-    
-    <!-- MAIN IMAGE URL -->
-    <meta property="og:image" content="https://titanbusinesspros.github.io/Gameville-/Meta%20Tag.png">
-    <!-- BACKUP IMAGE URL -->
-    <meta property="og:image:url" content="https://raw.githubusercontent.com/TitanBusinessPros/Gameville-/main/Meta%20Tag.png">
-    
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="EZR.Games - Tulsa's Gaming Platform">
-    <meta property="og:image:type" content="image/png">
-    
-    <meta property="og:url" content="https://titanbusinesspros.github.io/Testing-News-Maker/">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="EZR.games">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="EZR.Games — Tulsa's Newest and Most Exciting Gaming Platform!">
-    <meta name="twitter:description" content="Welcome to EZR.Games — Tulsa's newest and most exciting gaming platform! Explore a growing collection of fun and addictive games created for players of all ages. Whether you're here to pass the time or chase high scores, you'll find plenty to enjoy. Jump into the action and discover fresh new games added regularly. Thanks for visiting EZR.Games — where Tulsa plays, competes, and has a blast!">
-    <meta name="twitter:image" content="https://titanbusinesspros.github.io/Gameville-/Meta%20Tag.png">
-    <meta name="twitter:image:alt" content="EZR.Games - Tulsa's Gaming Platform">
-    <meta name="twitter:site" content="@TulsaGames">
-    
-    <!-- Standard Meta Tags (updated description) -->
-    <meta name="description" content="Welcome to EZR.Games — Tulsa's newest and most exciting gaming platform! Explore a growing collection of fun and addictive games created for players of all ages. Whether you're here to pass the time or chase high scores, you'll find plenty to enjoy. Jump into the action and discover fresh new games added regularly. Thanks for visiting EZR.Games — where Tulsa plays, competes, and has a blast!">
-    <meta name="keywords" content="Tulsa games, online games, free games, gaming platform, Oklahoma games, play games">
-    
-    <!-- Font Awesome -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Your Company Name Here - Parking Lot Simulator</title>
+    <link rel="icon" type="image/x-icon" href="https://github.com/TitanBusinessPros/PLS-Games/raw/main/PLS-T-Logo-1.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Hidden image for Facebook -->
-    <style>
-        .facebook-share-image {
-            display: none;
-        }
-    </style>
-    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Background image replaced */
-            background: url('https://github.com/TitanBusinessPros/EZ-Remodeling/raw/main/EZ-BG-1.png') no-repeat center center fixed;
-            background-size: cover;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a3a1a 0%, #2d5a2d 100%);
+            color: #333;
             min-height: 100vh;
-            padding: 20px;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .page-wrapper {
-            max-width: 1800px;
-            margin: 0 auto;
-            min-height: calc(100vh - 40px);
-            display: grid;
-            grid-template-rows: auto auto 1fr auto auto;
-            gap: 20px;
-        }
-
-        /* Header Styles */
-        .site-header {
-            text-align: center;
-            padding: 10px 20px 5px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
         }
-
-        /* Logo Container */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            margin: 15px 0;
-            width: 100%;
-        }
-
-        .logo-side-image {
-            max-width: 200px;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .logo-side-image:hover {
-            transform: scale(1.05);
-        }
-
-        .header-logo {
-            max-width: 600px;
-            height: auto;
-            transition: all 0.5s ease;
-            cursor: pointer;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .header-logo:hover {
-            animation-play-state: paused;
-        }
-
-        /* Header Ad Images */
-        .header-ads-container {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
-        }
-
-        .header-ad-image {
-            width: 200px;
-            height: auto;
-            transition: transform 0.3s ease, filter 0.3s ease;
-            cursor: pointer;
-        }
-
-        .header-ad-image:hover {
-            transform: scale(1.05);
-            filter: brightness(1.1);
-        }
-
-        .header-title {
-            color: #333;
-            font-size: 2.2em;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-            margin: 0;
-        }
-
-        .daily-message {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            color: #333;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            margin-top: 5px;
-            font-size: 1.1em;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .add-logo-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
-            transition: all 0.3s ease;
-            border: 2px solid #22c55e;
-        }
-
-        .add-logo-button:hover {
-            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.6);
-        }
-
-        .add-logo-button:active {
-            transform: translateY(0);
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Footer Styles */
-        .site-footer {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1000px;
+        
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .footer-copyright {
-            font-size: 1em;
-            margin-bottom: 10px;
             flex: 1;
         }
-
-        .footer-contact {
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            gap: 20px;
-            flex: 2;
         }
-
-        .footer-social-link {
-            color: white;
-            font-size: 1.5em;
-            transition: color 0.3s ease;
+        
+        .logo-img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 3px solid #ffcc00;
+            background: linear-gradient(135deg, #2d5a2d 0%, #4a7c4a 100%);
+            padding: 10px;
         }
-
-        .footer-social-link:hover {
-            color: #3b5998;
+        
+        .game-title {
+            color: #ffcc00;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 10px;
+            text-shadow: 1px 1px 0 #1a3a1a;
+            text-align: center;
         }
-
-        .footer-phone, .footer-email {
-            font-size: 1em;
-        }
-
-        /* Top and Bottom ad rows */
-        .ads-row {
+        
+        .game-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
+            gap: 15px;
+            margin-bottom: 15px;
         }
-
-        /* Middle area with left ads, center game, right ads */
-        .middle-row {
-            display: grid;
-            grid-template-columns: auto minmax(0, 1fr) auto;
-            gap: 20px;
-            align-items: stretch;
+        
+        .business-list-container {
+            flex: 1;
+            min-width: 280px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            max-height: 500px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
-
-        .ads-col {
+        
+        .game-screen-container {
+            flex: 2;
+            min-width: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .panel-title {
+            background: linear-gradient(135deg, #2d5a2d 0%, #4a7c4a 100%);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            background: #e9f5e9;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            margin: 3px 0;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2d5a2d;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .business-list {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            overflow-y: auto;
+            flex: 1;
+            padding: 5px;
+        }
+        
+        .business-card {
+            background: #f5f9f5;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #c8e6c8;
+        }
+        
+        .business-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            border-color: #2d5a2d;
+        }
+        
+        .business-card.selected {
+            border-color: #2d5a2d;
+            background: #e9f5e9;
+        }
+        
+        .business-name {
+            font-weight: bold;
+            color: #2d5a2d;
+            margin-bottom: 3px;
+            font-size: 1rem;
+        }
+        
+        .business-type {
+            color: #666;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+        
+        .business-reward {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+        }
+        
+        .reward-amount {
+            font-weight: bold;
+            color: #2d5a2d;
+        }
+        
+        .difficulty {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            background: #ffd8b1;
+            color: #805b00;
+        }
+        
+        .difficulty.easy {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .difficulty.medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .difficulty.hard {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        #gameCanvas {
+            background: #3a3a3a;
+            border-radius: 10px;
+            width: 100%;
+            height: 400px;
+            display: block;
+            cursor: crosshair;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+            touch-action: none;
+        }
+        
+        .game-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 12px;
+            background: #e9f5e9;
+            border-radius: 10px;
+        }
+        
+        .control-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            background: #2d5a2d;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            flex: 1;
+            min-width: 120px;
             justify-content: center;
         }
-
-        .ad-box {
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: block;
-        }
-
-        .ad-box:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
-        }
-
-        .ad-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .center-container {
-            background: rgba(255, 255, 255, 0.98);
-            border: 4px solid #fff;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            overflow-y: auto;
-            height: 100%;
-        }
-
-        .center-title {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 2.5em;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .inner-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .inner-item {
-            background: #fff;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .inner-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .image-container {
-            width: 100%;
-            height: 160px;
-            display: block;
-            overflow: hidden;
-            background: #f5f5f5;
-            position: relative;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .image-container img.loaded {
-            opacity: 1;
-        }
-
-        .image-container:hover img {
-            transform: scale(1.1);
-        }
-
-        .content {
-            padding: 15px;
-        }
-
-        .item-title {
-            color: #333;
-            font-size: 1.2em;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        .item-description {
-            color: #666;
-            line-height: 1.5;
-            font-size: 0.9em;
-        }
-
-        /* Advertise Button Styles */
-        .advertise-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95em;
-            margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
-            transition: all 0.3s ease;
-            border: 2px solid #dc2626;
-        }
-
-        .advertise-button:hover {
-            background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%);
+        
+        .control-btn:hover {
+            background: #1e3e1e;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6);
         }
-
-        .advertise-button:active {
+        
+        .control-btn:active {
             transform: translateY(0);
         }
-
-        /* Loading placeholder */
-        .image-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
+        
+        .control-btn.restart {
+            background: #dc3545;
+        }
+        
+        .control-btn.restart:hover {
+            background: #c82333;
+        }
+        
+        .control-btn.save {
+            background: #17a2b8;
+        }
+        
+        .control-btn.save:hover {
+            background: #138496;
+        }
+        
+        .paint-tools {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-top: 10px;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
+        }
+        
+        .paint-tool {
+            padding: 6px 10px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            flex: 1;
+            min-width: 100px;
+            justify-content: center;
+        }
+        
+        .paint-tool:hover {
+            border-color: #2d5a2d;
+        }
+        
+        .paint-tool.selected {
+            border-color: #2d5a2d;
+            background: #e9f5e9;
         }
 
-        @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+        /* Disabled tool style */
+        .paint-tool.disabled-tool {
+            opacity: 0.45;
+            cursor: not-allowed;
+            border-color: #ccc !important;
+            background: #f0f0f0 !important;
         }
-
-        /* Music control */
-        .music-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
+        
+        .paint-color {
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            border: 1px solid #999;
+        }
+        
+        .white {
+            background: white;
+        }
+        
+        .yellow {
+            background: #ffeb3b;
+        }
+        
+        .blue {
+            background: #2196f3;
+        }
+        
+        .gray {
+            background: #888;
+        }
+        
+        .black {
+            background: #333;
+        }
+        
+        .upgrades-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+        
+        .upgrades-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+        
+        .upgrade-card {
+            background: #f5f9f5;
+            border-radius: 10px;
+            padding: 12px;
+            border: 2px solid #c8e6c8;
+        }
+        
+        .upgrade-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .upgrade-name {
+            font-weight: bold;
+            color: #2d5a2d;
+            font-size: 1rem;
+        }
+        
+        .upgrade-price {
+            font-weight: bold;
+            color: #17a2b8;
+        }
+        
+        .upgrade-desc {
+            color: #666;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+        
+        .upgrade-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            background: #2d5a2d;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        
+        .upgrade-btn:hover {
+            background: #1e3e1e;
+        }
+        
+        .upgrade-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .instructions {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 12px;
+            border-radius: 0 10px 10px 0;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .instructions h3 {
+            color: #856404;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .instructions ul {
+            padding-left: 18px;
+            color: #856404;
+        }
+        
+        .instructions li {
+            margin-bottom: 4px;
+        }
+        
+        .completed {
+            position: relative;
+        }
+        
+        .completed::after {
+            content: "✓";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #28a745;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 0.8rem;
         }
 
-        .music-control:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: scale(1.1);
+        .timer-container {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            z-index: 100;
+        }
+        
+        .timer.warning {
+            color: #ffcc00;
+        }
+        
+        .timer.danger {
+            color: #ff4444;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .job-progress {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .progress-item {
+            flex: 1;
+            min-width: 140px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #ddd;
+            border-radius: 4px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #2d5a2d;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        
+        .progress-fill.sealing {
+            background: #888;
+        }
+        
+        .progress-fill.potholes {
+            background: #555;
         }
 
-        /* Footer additions */
-        .footer-bottom {
+        /* Step requirement notice */
+        .step-notice {
+            display: none;
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #856404;
+            font-weight: bold;
+            text-align: center;
+        }
+        .step-notice.visible {
+            display: block;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #1a3a1a 0%, #2d5a2d 100%);
+            color: white;
+            padding: 20px 15px;
+            margin-top: 20px;
+            border-top: 3px solid #ffcc00;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .company-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffcc00;
+            margin-bottom: 5px;
+        }
+        
+        .company-name a {
+            color: #ffcc00;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .company-name a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact-info a:hover {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            transition: all 0.3s;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links a:hover {
+            color: #2d5a2d;
+            background: white;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            width: 100%;
+            text-align: center;
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
-            width: 100%;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
         }
-
-        .footer-address, .footer-website {
-            margin: 5px 0;
-            font-size: 0.9em;
+        
+        /* Sound Controls */
+        .sound-controls {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-
-        .footer-website {
+        
+        .sound-toggle {
+            background: none;
+            border: none;
             color: white;
-            text-decoration: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background 0.3s;
         }
-
-        .footer-website:hover {
-            text-decoration: underline;
+        
+        .sound-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .logo-container { gap: 20px; }
-            .header-logo { max-width: 500px; }
-            .logo-side-image { max-width: 180px; }
+        
+        @media (max-width: 1024px) {
+            .game-container { flex-direction: column; }
+            .business-list-container, .game-screen-container { min-width: 100%; }
+            .logo-img { max-width: 350px; }
+            #gameCanvas { height: 350px; }
         }
-
-        @media (max-width: 900px) {
-            .page-wrapper { grid-template-rows: auto auto auto; }
-            .middle-row { grid-template-columns: 1fr; }
-            .ads-col { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-            .ad-box { width: 80px; height: 80px; }
-            .center-container { height: auto; max-height: 70vh; }
-            .footer-content { flex-direction: column; gap: 15px; }
-            .footer-contact { flex-direction: column; gap: 10px; }
-            .header-title { font-size: 1.8em; }
-            .daily-message { font-size: 1em; padding: 6px 12px; }
-            .header-ad-image { width: 150px; }
-            .header-ads-container { gap: 20px; }
-            .logo-container { flex-direction: column; gap: 15px; }
-            .header-logo { max-width: 400px; order: 1; }
-            .logo-side-image { max-width: 150px; }
-            .logo-side-image:first-child { order: 2; }
-            .logo-side-image:last-child { order: 3; }
+        
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            #gameCanvas { height: 300px; }
+            .stat-item { min-width: 100px; }
+            .upgrades-list { grid-template-columns: 1fr; }
+            .paint-tools { flex-direction: column; }
+            .paint-tool, .control-btn { min-width: 100%; }
+            .game-controls { flex-direction: column; }
         }
-
-        @media (max-width: 600px) {
-            .add-logo-button { font-size: 0.95em; padding: 10px 20px; }
-            .header-ad-image { width: 120px; }
-            .header-ads-container { gap: 15px; }
-            .header-logo { max-width: 300px; }
-            .logo-side-image { max-width: 120px; }
-            .header-title { font-size: 1.5em; }
+        
+        @media (max-width: 480px) {
+            #gameCanvas { height: 250px; }
+            .logo-img { max-width: 220px; }
+        }
+        
+        @media (hover: none) and (pointer: coarse) {
+            .control-btn:hover, .paint-tool:hover, .business-card:hover { transform: none; }
+            .control-btn:active, .paint-tool:active, .business-card:active { transform: scale(0.98); }
+            .paint-tool { padding: 8px 10px; }
+            .control-btn { padding: 10px 12px; }
         }
     </style>
 </head>
 <body>
-    <!-- HIDDEN IMAGE FOR FACEBOOK -->
-    <div class="facebook-share-image">
-        <img src="https://titanbusinesspros.github.io/Gameville-/Meta%20Tag.png" alt="Tulsa.games Share Image" style="display:none;">
-    </div>
-    
-    <!-- Background Music (mp3 replaced) -->
-    <audio id="background-music" loop>
-        <source src="https://github.com/TitanBusinessPros/EZ-Remodeling/raw/main/EZ%20Remodels%20Anthem.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    
-    <!-- Music Control -->
-    <div class="music-control" id="music-toggle">
-        <i class="fas fa-music"></i>
-    </div>
-
-    <div class="page-wrapper">
-
-        <!-- HEADER SECTION -->
-        <header class="site-header">
-            <!-- Header Ad Images - links replaced with EZ Remodeling link -->
-            <div class="header-ads-container">
-                <a href="https://titanbusinesspros.github.io/EZ-Remodeling/" target="_blank">
-                    <img src="https://github.com/TitanBusinessPros/Gameville-/raw/main/Games-Ad.png" class="header-ad-image" alt="Advertise Here">
-                </a>
-                <a href="https://titanbusinesspros.github.io/EZ-Remodeling/" target="_blank">
-                    <img src="https://github.com/TitanBusinessPros/Gameville-/raw/main/Games-Ad.png" class="header-ad-image" alt="Advertise Here">
-                </a>
-                <a href="https://titanbusinesspros.github.io/EZ-Remodeling/" target="_blank">
-                    <img src="https://github.com/TitanBusinessPros/Gameville-/raw/main/Games-Ad.png" class="header-ad-image" alt="Advertise Here">
-                </a>
-            </div>
-            
-            <!-- Logo Container (images unchanged, but alt text might still say Purcell, but no instruction to replace images) -->
-            <div class="logo-container">
-                <img src="https://github.com/TitanBusinessPros/PLS-Games/raw/main/award-purcell.jpg" class="logo-side-image" alt="Award">
-                <img src="https://github.com/TitanBusinessPros/PLS-Games/raw/main/PLS-Logo-T.png" class="header-logo" id="logo">
-                <img src="https://github.com/TitanBusinessPros/PLS-Games/raw/main/pls-pl.jpg" class="logo-side-image" alt="PLS-PL">
-            </div>
-            
-            <!-- Header title updated: Purcell -> EZ Remodeling -->
-            <h1 class="header-title">Welcome To Tulsa's Newest Gaming Platform brought to you by EZ Remodeling! Check Back Weekly For New Games!</h1>
-            <!-- Add logo button link replaced -->
-            <a href="https://titanbusinesspros.github.io/EZ-Remodeling/" class="add-logo-button" target="_blank">Add Your Logo to the Platform</a>
-            <!-- Daily message updated: Purcell -> EZ Remodeling -->
-            <div class="daily-message">Welcome to Tulsa's gaming hub! 🎮
-You've landed on a local gaming platform built for players right here in Tulsa, OK by EZ Remodeling. Whether you're here to relax, challenge yourself, or explore something new, our growing collection of games is designed for all ages and play styles. From strategy boards and arcade-style challenges to competitive scoreboards and creative game worlds, this is a place where Tulsa comes together to play, compete, and have fun.</div>
-        </header>
-
-        <!-- CENTER: Game gallery -->
-        <div class="middle-row">
-            <div class="center-container">
-                <h1 class="center-title"></h1>
-                <div class="inner-grid">
-                  
-                  <!-- Game items: all "advertise-button" links replaced with EZ Remodeling link -->
-                  <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/ABM-Tulsa/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Audio-Book-Maker/raw/main/AB-Logo.png" alt="Audio Book Website Builder">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Audio Book Website Builder</h2>
-                            <p class="item-description">You can make unlimited audio books that turn into free unlimited audio book websites using links! Really awesome tool once you know how to use it! We will be adding more voices someday soon! Join the Titan Software Guild to learn how to make software just like this!</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Bubble-Popper/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Bubble-Popper/raw/main/BPPP-Logo-2.png" alt="BPPP">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Bubble Pop Pop Poppin</h2>
-                            <p class="item-description">This Bubble Pop Pop Poppin game wass created for all your bubble pop poP pOPpin needs! Complete all 20 stages to unlock all characters for download! Only one download each win.</p>
-                            <a href="https://titanbusinesspros.github.io/EZ-Remodeling/" class="advertise-button" target="_blank">Advertise in this game</a>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Cribbage/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Cribbage/raw/main/CribbageLogo.png" alt="Neon Pinball">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Cribbage</h2>
-                            <p class="item-description">Dive into a wonderful game of Cribbage! This is a two player game you can enjoy with others! Good for mobile and desktop!</p>
-                            <a href="https://titanbusinesspros.github.io/EZ-Remodeling/" class="advertise-button" target="_blank">Advertise in this game</a>
-                        </div>
-                    </div>
-                  
-                  <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/IER-BrokenArrow/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Insect-Eradicator-Royale/raw/main/IER-Logo.png" alt="Insect Eradicator Royale">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Insect Eradicator Royale</h2>
-                            <p class="item-description">Enjoy this tower defense game! Fight to keep those bugs and pest out of your home! This is a one player game that can be played on mobile or desktop!</p>
-                            <a href="https://titanbusinesspros.github.io/EZ-Remodeling/" class="advertise-button" target="_blank">Advertise in this game</a>
-                        </div>
-                    </div>
-                  
-                  <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Neon-Pinball-Tulsa/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Neon-Pinball/raw/main/Neon%20Pinbll%20Logo.png" alt="Neon Pinball">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Neon Pinball</h2>
-                            <p class="item-description">Neon Pinball is a fast-paced arcade experience featuring 10 visually intense stages filled with glowing neon lights and dynamic effects. Each table is packed with reactive bumpers, flashing targets, and smooth animations that respond instantly to every hit. The constant motion, color shifts, and light bursts create strong visual stimulation that keeps players fully engaged.</p>
-                            <a href="https://titanbusinesspros.github.io/EZ-Remodeling/" class="advertise-button" target="_blank">Advertise in this game</a>
-                        </div>
-                    </div>
-                  
-                  <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/WynneWars-Tulsa/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Wynne-Wars/raw/main/WynneWars-Logo.png" alt="Zombie Outbreak Honolulu">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">WynneWars</h2>
-                            <p class="item-description">Welcome to the world of magic and strategy on this one or two player game! We are currently working on this game and adding many exciting levels! Check back soon for official launch!</p>
-                            <a href="https://titanbusinesspros.github.io/EZ-Remodeling/" class="advertise-button" target="_blank">Advertise in this game</a>
-                        </div>
-                    </div>
-                  
-                  <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/ZOH-Tulsa/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Zombie-Outbreak-Honolulu/raw/main/ZOH-Logo%203.png" alt="Zombie Outbreak Honolulu">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Zombie Outbreak Honolulu</h2>
-                            <p class="item-description">Zombie Outbreak Honolulu: Christmas Edition is a ruthless 10-stage survival game with over 10 brutal bosses and a deadly holiday theme. You must kill 1,000 zombies and defeat three bosses in the final stage, earning lives only by beating bosses and starting with just five lives that carry over, so don't expect any mercy. Most players won't survive—think you can?</p>
-                            <a href="https://titanbusinesspros.github.io/EZ-Remodeling/" class="advertise-button" target="_blank">Advertise in this game</a>
-                        </div>
-                    </div>
-                    <!-- All games restored with lazy loading -->
-
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Chess-Game/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Logos/raw/main/Chess%20Logo.png" alt="Chess">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Chess</h2>
-                            <p class="item-description">Test your skills in a challenging game of Chess. You can play with a friend in two-player mode for a classic head-to-head match. If you prefer solo gameplay, the built-in AI is ready to take you on. The game also runs smoothly on mobile, making it easy to play anywhere.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Navy-War1/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Navy-War1/raw/main/Navy%20War-1%20Logo.png" alt="Navy War-1">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Navy War-1</h2>
-                            <p class="item-description">Compete against a challenging AI opponent in this strategic war game. You'll earn one additional submarine every five moves to strengthen your forces. Use your fleet of five jets to strike the enemy and turn the tide of battle. The game is optimized for mobile play, giving you smooth performance on the go.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Air-Hockey/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Air-Hockey/raw/main/Air%20Hockey-Logo2.png" alt="Air Hockey">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Air Hockey</h2>
-                            <p class="item-description">Enjoy a quick and exciting round of Air Hockey in this fast-paced solo game. The controls are simple, making it easy for anyone to jump in and start playing. Each match delivers quick action that keeps you on your toes. It's the perfect game when you want a fun challenge in just a few minutes.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Guide-The-Fly/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Guide-The-Fly/raw/main/Guide%20The%20Fly%20Logo.png" alt="Guide The Fly">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Guide The Fly</h2>
-                            <p class="item-description">Take the fly on an exciting journey toward the light. You'll guide The Fly through twelve unique stages filled with obstacles. Each level becomes more challenging as you progress. Stay focused and help the little fly reach its final destination.</p>
-                        </div>
-                    </div>
-                    
-                     <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/DeepSeaGems/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/DeepSeaGems/raw/main/GemDiverLogo.jpeg" alt="DSGD">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Deep Sea Gem Diver</h2>
-                            <p class="item-description">Dive into the sea on this exciting one player game. This is an endless diver challange game that works on mobile and desktop! This game is easier to play on desktop and can be hard to play on mobile. </p>
-                            <a href="https://titanbusinesspros.github.io/EZ-Remodeling/" class="advertise-button" target="_blank">Advertise in this game</a>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Sudoku-Game/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Sudoku-Game/raw/main/Sudoku-Logo.png" alt="Sudoku">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Sudoku</h2>
-                            <p class="item-description">Test your skills in a classic game of Sudoku as you work through each puzzle. This experience is designed for a single player who enjoys thoughtful challenges. Relax and clear your mind while solving numbers at your own pace. Enjoy the calming background music that plays as you work through every grid.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Neon-Drift/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/SSG-Image/raw/main/Neon%20Drift%20Logo.png" alt="Neon Drift">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Neon Drift</h2>
-                            <p class="item-description">Get lost in the thrilling world of Neon Drift as you race through vibrant environments. Collect glowing orbs to boost your score and keep the momentum going. The game is designed for a single player who loves fast-paced action. Enjoy the neon visuals and addictive gameplay as you drift through every level.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Gravity-Sling/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gravity-Sling/raw/main/Gravity%20Sling%20Logo.png" alt="Gravity Sling">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Gravity Sling</h2>
-                            <p class="item-description">Test your skills in the challenging game of Gravity Sling. Each level will put your math and problem-solving abilities to the test. You'll need to carefully plan every move to succeed. Can you master all the levels and prove your skills?</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Detective/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Detective/raw/main/Detective%20Logo.png" alt="Detective">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Detective</h2>
-                            <p class="item-description">Step into the role of a detective in this engaging murder mystery game. Take detailed notes and carefully interview witnesses to gather clues. Every choice you make can affect how the case unfolds. Multiple endings await, giving you a different experience with each playthrough.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Dodge-Game/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Dodge-Game/raw/main/Dodge-Logo.png" alt="Dodge">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Dodge</h2>
-                            <p class="item-description">Think you have lightning-fast reflexes? Now is your chance to prove it! A plumber's worst nightmare comes to life as flying toilets rain down on you. They keep coming faster and faster, challenging your speed and agility.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Desert-Rattler-/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Desert-Rattler-/raw/main/Desert%20Rattler%20Logo.png" alt="Desert Rattler">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Desert Rattler</h2>
-                            <p class="item-description">Can you reach a score of 120 or higher? This exciting game is designed for a single player. Challenge yourself and see how high you can go. It's optimized for smooth mobile play, so you can enjoy it anywhere.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Match-Time/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Match-Time/raw/main/Match%20Time%20Logo.png" alt="Match Time">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Match Time</h2>
-                            <p class="item-description">Test your skills in this fun and challenging matching game. It's designed for people who love a good puzzle. Sharpen your memory as you try to match all the pieces correctly. The game works great on mobile, making it easy to play anywhere.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Sea-War/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Sea-War/raw/main/SEA%20WAR%20Logo.png" alt="Sea War">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Sea War</h2>
-                            <p class="item-description">This is a sea battle game that's simple and fun to play. You can enjoy it alone in one-player mode or challenge a friend. Each match tests your strategy and timing on the high seas. The game runs smoothly on mobile, making it perfect for play on the go.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Frisbee-Golf/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Frisbee-Golf/raw/main/Frisbee%20Golf%20Logo%202.png" alt="Frisbee Golf">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Frisbee Golf</h2>
-                            <p class="item-description">Are you ready to show off your frisbee golf skills? Play solo or challenge a friend to see who scores the best. The game features over 20 exciting levels to test your accuracy and strategy. Have fun as you aim for the perfect throw on every course.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Checkers-Game/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Logos/raw/main/CheckersLogo.png" alt="Checkers">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Checkers</h2>
-                            <p class="item-description">Test your strategic skills in a classic game of Checkers. You can play against a friend in two-player mode for a competitive match. If you prefer, challenge the AI and see if you can outsmart it. The game offers fun and engaging gameplay for players of all skill levels.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Hearts-Card-Game/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Logos/raw/main/Hearts.png" alt="Hearts">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Hearts</h2>
-                            <p class="item-description">Test your card-playing skills in an exciting game of Hearts. Play solo against the AI and try to outsmart your opponents. Each round challenges your strategy and decision-making abilities. The game is optimized for mobile, so you can enjoy it anywhere.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Bowling-1/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Logos/raw/main/Bowling%20Game%20Logo.png" alt="Bowling">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Bowling</h2>
-                            <p class="item-description">Enjoy a classic bowling experience in this simple game. You can play alone or compete with a friend in two-player mode. Each frame challenges your aim and timing for the perfect strike. The game is optimized for mobile, so you can play anytime, anywhere.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/BlackJack/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Logos/raw/main/Blackjack%20Logo.png" alt="Blackjack">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Blackjack</h2>
-                            <p class="item-description">Enjoy a classic game of Blackjack to pass the time. Test your luck and strategy as you aim for 21. The game is simple and easy to pick up for quick sessions. It's perfect for a few minutes of fun anytime you want.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Kids-Coloring-Fun/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Logos/raw/main/Kids%20Coloring%20Book%20Logo.png" alt="Kids Coloring Book">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Kids Coloring Book</h2>
-                            <p class="item-description">This kids' line art coloring book was created by a kid and is sure to delight young artists. Children can have fun coloring a variety of playful designs. The book works best on a tablet or desktop for the full interactive experience. It's a creative way for kids to enjoy art anytime.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://best-businesses.github.io/Your-Company-Video-Game/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Logos/raw/main/Titan%20Space%20Defense%20Logo.png" alt="Titan Space Defense">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Titan Space Defense</h2>
-                            <p class="item-description">Blast off into an exciting space adventure in this thrilling shooter game. Fight through 15 levels filled with challenging enemies and obstacles. Each level ramps up the intensity, keeping you on your toes. The game is mobile-friendly, so you can play anywhere you go.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://best-businesses.github.io/My-Food-Truck-Game/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Logos/raw/main/My%20Food%20Truck%20Logo.png" alt="My Food Truck">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">My Food Truck</h2>
-                            <p class="item-description">Step into the shoes of a food truck owner in this fun and engaging game. Your goal is simple: get to work and serve as many customers as you can. The game is designed for a single player and works best on a tablet or computer. It may also run on mobile devices if you use desktop mode.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Magical-Word-Search/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Education-Logos/raw/main/Magical%20Word%20Search.png" alt="Magical Word Search">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Magical Word Search</h2>
-                            <p class="item-description">Challenge yourself with this engaging one-player word search game. You can enter up to ten words to search for in each puzzle. It's a fun and interactive way to practice spelling and vocabulary. Perfect for studying or just enjoying a relaxing brain game.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://team-america.github.io/Patriotic-Blockade/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Logos/raw/main/Patriotic%20Blocks%20Logo.png" alt="Patriotic Blocks">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Patriotic Blocks</h2>
-                            <p class="item-description">Enjoy a classic block-stacking challenge in this one-player game. Test your speed and strategy as you fit the pieces together. Each level gets progressively harder, keeping you engaged. It's a fun and addictive way to pass the time.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Luxury-Casino/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Logos/raw/main/Luxury%20Casino-2-Logo.png" alt="Luxury Casino">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Luxury Casino</h2>
-                            <p class="item-description">Try your luck in this exciting one-player slot machine game. Spin the reels and aim for big wins with every play. The game features a reward system that lets you earn coins and prizes. Use your winnings to buy luxury items and upgrade your in-game experience.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Match-3/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Match-3/raw/main/Match-3%20Logo.png" alt="Match 3">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Match 3</h2>
-                            <p class="item-description">Challenge yourself in this fun one-player symbol matching game. Match all the symbols correctly to advance through the levels. The game features groovy background music to keep the experience lively and engaging. It's a relaxing yet stimulating way to pass the time.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Math-Tower-Defense/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Education-Logos/raw/main/Math%20Tower%20Defense.png" alt="Math Tower Defense">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Math Tower Defense</h2>
-                            <p class="item-description">This is an exciting one-player tower defense game available only on the desktop version. Strategically place your towers to stop waves of enemies from advancing. Each level becomes more challenging as new threats appear. Test your planning and reflexes to defend your territory successfully.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Stacking-Checkers/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Logos/raw/main/Stacking%20Checkers%20Logo.png" alt="Stacking Checkers">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Stacking Checkers</h2>
-                            <p class="item-description">Try your hand at this unique stacking checkers game. Challenge yourself to stack and capture pieces strategically. The game offers a fresh twist on the classic checkers experience. It's optimized for mobile play, so you can enjoy it anywhere.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/War-Card-Game/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/War-Card-Game/raw/main/War%20Logo.png" alt="War Card Game">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">War Card Game</h2>
-                            <p class="item-description">Play the classic card game WAR in this fun one-player version. Challenge yourself to see how long you can win against the deck. The game features groovy background music to make each round more enjoyable. It's a simple yet addictive way to pass the time.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Follow-Along/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Follow-Along/raw/main/Follow%20Along%20Logo.png" alt="Follow Along">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Follow Along</h2>
-                            <p class="item-description">Test your memory skills in this fun one-player game. Match pairs and challenge yourself to remember each card's position. The game features groovy background music to make gameplay more enjoyable. It's a relaxing and engaging way to exercise your brain.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Space-Turkey/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Space-Turkey/raw/main/Space%20Turkey%20Game%20Logo.png" alt="Space Turkey">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Space Turkey</h2>
-                            <p class="item-description">Play this thrilling one-player endless runner game and see how far you can go. Dodge obstacles and avoid becoming a turkey dinner as the kitchen table rushes toward you. Timing and quick reflexes are key to surviving each run.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Space-Math-Asteroids-Hard/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Education-Logos/raw/main/Space%20Asteroids.png" alt="Space Math Asteroids">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Space Math Asteroids</h2>
-                            <p class="item-description">Blast off in this one-player space shooter game available only on desktop. Fight through over 20 action-packed levels as you dodge and destroy enemies. Each level challenges you with a basic math question to solve. Combine your shooting skills and math smarts to conquer every stage.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Golf-Game/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Golf-Game/raw/main/Golf%20Game%20Logo.png" alt="Golf Challenge">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Golf Challenge</h2>
-                            <p class="item-description">Enjoy this fun golf game, playable by one or two players. Tee off across 24 challenging holes and test your skills. The game has not been tested on mobile devices, so it's best enjoyed on a computer. Each hole offers a new opportunity for strategy and precision.</p>
-                        </div>
-                    </div>
-              
-                    <div class="inner-item">
-                        <a href="https://titanbusinesspros.github.io/Space-Word-Mission/" class="image-container">
-                            <div class="image-placeholder"></div>
-                            <img loading="lazy" data-src="https://github.com/TitanBusinessPros/Gameville-Logos/raw/main/Space%20Word%20Mission%20Logo.png" alt="Space Word Mission">
-                        </a>
-                        <div class="content">
-                            <h2 class="item-title">Space Word Mission</h2>
-                            <p class="item-description">Challenge yourself with this exciting one-player word search game. Find all the hidden words to test your brain and sharpen your skills. Each correct answer helps prepare your spaceship for takeoff. Can you complete the puzzle and launch your ship into flight?</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- RIGHT COLUMN: ads (removed as per original) -->
-            <div class="ads-col"></div>
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://github.com/TitanBusinessPros/Line-Striper/raw/main/Line-Striping-Logo.png" class="logo-img">
+            <div class="game-title">Parking Lot Maintenance Simulator</div>
         </div>
-
-        <!-- BOTTOM ROW: ads (removed as per original) -->
-        <div class="ads-row"></div>
-
-        <!-- FOOTER SECTION (updated: removed YouTube, new Facebook link, phone, email, website) -->
-        <footer class="site-footer">
-            <div class="footer-content">
-                <div class="footer-copyright">Advertise in our games forever!</div>
-                <div class="footer-contact">
-                    <!-- Facebook link updated, YouTube icon removed -->
-                    <a href="https://www.facebook.com/profile.php?id=100064114029661" class="footer-social-link" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <!-- YouTube link removed -->
-                    <span class="footer-phone">405-464-9273</span>
-                    <span class="footer-email">ezremodels918@gmail.com</span>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="money">$2,500</div>
+                <div class="stat-label">Available Funds</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="completed">0/30</div>
+                <div class="stat-label">Jobs Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="level">1</div>
+                <div class="stat-label">Business Level</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="equipment">Basic</div>
+                <div class="stat-label">Equipment Level</div>
+            </div>
+        </div>
+        
+        <div class="game-container">
+            <div class="business-list-container">
+                <div class="panel-title">
+                    <span><i class="fas fa-building"></i> Tulsa Businesses</span>
+                    <span id="selected-business">Select a Job</span>
                 </div>
-                <div class="footer-bottom">
-                    <div class="footer-address"></div>
-                    <a href="https://titanbusinesspros.github.io/EZ-Remodeling/" class="footer-website" target="_blank">EZ Remodels</a>
+                <div class="business-list" id="businessList"></div>
+            </div>
+            
+            <div class="game-screen-container">
+                <div class="panel-title">
+                    <span><i class="fas fa-paint-roller"></i> Parking Lot Canvas</span>
+                    <span>Time: <span id="timer">02:00</span></span>
+                </div>
+                
+                <div style="position: relative;">
+                    <div class="sound-controls">
+                        <button class="sound-toggle" id="soundToggle">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                    </div>
+                    <canvas id="gameCanvas" width="800" height="400"></canvas>
+                </div>
+
+                <div id="stepNotice" class="step-notice">
+                    ⚠️ Fix all potholes BEFORE applying sealant!
+                </div>
+                
+                <div class="job-progress">
+                    <div class="progress-item">
+                        <div>Striping: <span id="striping-coverage">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="striping-progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div>Potholes: <span id="pothole-coverage">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill potholes" id="pothole-progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div>Sealing: <span id="sealing-coverage">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill sealing" id="sealing-progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-controls">
+                    <div class="paint-tools">
+                        <div class="paint-tool selected" id="tool-white">
+                            <div class="paint-color white"></div>
+                            <span>White Lines</span>
+                        </div>
+                        <div class="paint-tool" id="tool-yellow">
+                            <div class="paint-color yellow"></div>
+                            <span>Yellow Lines</span>
+                        </div>
+                        <div class="paint-tool" id="tool-blue">
+                            <div class="paint-color blue"></div>
+                            <span>Handicap</span>
+                        </div>
+                        <div class="paint-tool" id="tool-pothole">
+                            <div class="paint-color black"></div>
+                            <span>Fix Pothole</span>
+                        </div>
+                        <div class="paint-tool" id="tool-seal">
+                            <div class="paint-color gray"></div>
+                            <span>Sealant</span>
+                        </div>
+                        <div class="paint-tool" id="tool-sign">
+                            <i class="fas fa-sign"></i>
+                            <span>Handicap Sign</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 8px; width: 100%; margin-top: 10px;">
+                        <button class="control-btn" id="completeJob">
+                            <i class="fas fa-check-circle"></i> Complete Job
+                        </button>
+                        <button class="control-btn save" id="saveGame">
+                            <i class="fas fa-save"></i> Save
+                        </button>
+                        <button class="control-btn restart" id="restartGame">
+                            <i class="fas fa-redo"></i> Restart
+                        </button>
+                    </div>
                 </div>
             </div>
-        </footer>
+        </div>
+        
+        <div class="upgrades-container">
+            <div class="panel-title">
+                <span><i class="fas fa-tools"></i> Equipment & Upgrades</span>
+                <span>Upgrade your business to earn more!</span>
+            </div>
+            <div class="upgrades-list" id="upgradesList"></div>
+        </div>
+        
+        <div class="instructions">
+            <h3><i class="fas fa-info-circle"></i> How to Play</h3>
+            <ul>
+                <li><strong>Select a business</strong> to start a 2-minute job</li>
+                <li><strong>Step 1:</strong> Fix all potholes using the <strong>Fix Pothole</strong> tool first!</li>
+                <li><strong>Step 2:</strong> Apply <strong>Sealant</strong> over the entire lot (only available after potholes are fixed)</li>
+                <li><strong>Step 3:</strong> Paint all parking lines — <strong>White</strong> for borders &amp; lanes, <strong>Yellow</strong> for stall dividers, <strong>Blue</strong> for handicap stalls</li>
+                <li><strong>Step 4:</strong> Place <strong>Handicap Signs</strong> near blue handicap spaces</li>
+                <li><strong>Complete all tasks</strong> before time runs out!</li>
+            </ul>
+        </div>
+    </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Image optimization and lazy loading
-        document.addEventListener('DOMContentLoaded', function() {
-            const lazyImages = document.querySelectorAll('img[data-src]');
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.getAttribute('data-src');
-                        img.addEventListener('load', () => {
-                            img.classList.add('loaded');
-                            const placeholder = img.previousElementSibling;
-                            if (placeholder && placeholder.classList.contains('image-placeholder')) {
-                                placeholder.style.display = 'none';
-                            }
-                        });
-                        img.removeAttribute('data-src');
-                        imageObserver.unobserve(img);
-                    }
-                });
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="company-info">
+                <div class="company-name">Your Company Name Here</div>
+                <div class="contact-info">
+                    <a href="Your Phone Number Here"><i class="fas fa-phone"></i> Your Phone Number Here!</a>
+                    <a href="mailto:@gmail.com"><i class="fas fa-envelope"></i> Your Email Here!</a>
+                    <a href="Your Website Here!" target="_blank"><i class="fas fa-globe"></i> Your Website Here</a>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/TitanBusinessPros/" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Your Company Name. All rights reserved. | Parking Lot Simulator Game
+            </div>
+        </div>
+    </footer>
+
+    <audio id="backgroundMusic" loop>
+        <source src="https://github.com/TitanBusinessPros/Line-Striper/raw/main/Puck%20and%20Roll.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="paintSound">
+        <source src="https://assets.mixkit.co/active_storage/sfx/258/258-preview.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sealSound">
+        <source src="https://assets.mixkit.co/active_storage/sfx/247/247-preview.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="potholeSound">
+        <source src="https://assets.mixkit.co/active_storage/sfx/265/265-preview.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="signSound">
+        <source src="https://assets.mixkit.co/active_storage/sfx/285/285-preview.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+    // ─────────────────────────────────────────────────────────────────────────
+    // GAME STATE
+    // ─────────────────────────────────────────────────────────────────────────
+    const gameState = {
+        money: 2500,
+        level: 1,
+        completedJobs: 0,
+        equipmentLevel: 1,
+        selectedBusiness: null,
+        paintTool: 'white',
+        stripingCoverage: 0,
+        sealingCoverage: 0,
+        potholeCoverage: 0,
+        businesses: [],
+        upgrades: [],
+        player: { x: 400, y: 200, size: 18, speed: 5 },
+        canvas: null,
+        ctx: null,
+        mouse: { x: 400, y: 200, down: false },
+        handicapSigns: [],
+        lineSegments: [],
+        stallLayout: [],
+        potholes: [],
+        sealedAreas: [],
+        cracks: [],
+        sprayParticles: [],
+        timer: 120,
+        timerInterval: null,
+        gameActive: false,
+        lastPaintTime: 0,
+        paintInterval: 50,
+        parkingLotBounds: { x: 0, y: 0, width: 0, height: 0 },
+        soundEnabled: true,
+        // Pothole-before-sealant enforcement
+        allPotholeFixed: false
+    };
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // AUDIO
+    // ─────────────────────────────────────────────────────────────────────────
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const paintSound      = document.getElementById('paintSound');
+    const sealSound       = document.getElementById('sealSound');
+    const potholeSound    = document.getElementById('potholeSound');
+    const signSound       = document.getElementById('signSound');
+    const soundToggle     = document.getElementById('soundToggle');
+    const stepNotice      = document.getElementById('stepNotice');
+
+    function playSound(el) {
+        if (!gameState.soundEnabled) return;
+        el.currentTime = 0;
+        el.play().catch(() => {});
+    }
+    function playBackgroundMusic() {
+        if (gameState.soundEnabled && gameState.gameActive) backgroundMusic.play().catch(() => {});
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // BUSINESSES & UPGRADES INIT
+    // ─────────────────────────────────────────────────────────────────────────
+    function initializeBusinesses() {
+        const businessTypes = ['Church','Restaurant','Store','Shopping Mall','Office Building','Hospital',
+                               'School','Apartment Complex','Hotel','Sports Arena','Grocery Store','Movie Theater'];
+        const prefixes = ['Tulsa','Green Country','River','Prairie','Oklahoma','Sooner','Heartland','Frontier'];
+        const suffixes = ['Center','Plaza','Complex','Square','Mall','Hub','Park','Place'];
+        const creativeNames = [
+            "Maple Leaf Diner","Golden Harvest Church","City Lights Plaza","Sunset Strip Mall",
+            "Oakwood Business Center","Cedar Point Shopping","Midtown Market","Uptown Grill & Shops",
+            "Pioneer Square","Heritage Plaza"
+        ];
+        const out = [];
+        for (let i = 0; i < 30; i++) {
+            let name, type = businessTypes[Math.floor(Math.random()*businessTypes.length)];
+            if (i < 10)       name = prefixes[Math.floor(Math.random()*prefixes.length)] + ' ' + type;
+            else if (i < 20)  name = type + ' ' + suffixes[Math.floor(Math.random()*suffixes.length)];
+            else              name = creativeNames[i-20];
+            const diff = Math.floor(Math.random()*3)+1;
+            const base = [800,1500,2500][diff-1];
+            out.push({ id:i, name, type, difficulty:diff, reward: base + Math.floor(Math.random()*500), completed:false });
+        }
+        return out;
+    }
+
+    function initializeUpgrades() {
+        return [
+            { id:1, name:"Better Paint Sprayer",   description:"Increases paint coverage speed by 50%",         price:1000,  purchased:false, effect:"speed",     paintIntervalModifier:0.5 },
+            { id:2, name:"Commercial Line Striper", description:"Paint lines are straighter and more consistent", price:2500,  purchased:false, effect:"precision"  },
+            { id:3, name:"Sealing Machine",         description:"Unlocks parking lot sealing – doubles speed",    price:5000,  purchased:false, effect:"sealing"    },
+            { id:4, name:"Pothole Repair Kit",      description:"Fixes potholes 3× faster",                      price:3000,  purchased:false, effect:"pothole"    },
+            { id:5, name:"Truck-mounted Striper",   description:"Double painting speed and job rewards",          price:15000, purchased:false, effect:"truck",     paintIntervalModifier:0.3, rewardModifier:2 },
+            { id:6, name:"Business Expansion",      description:"Unlocks premium contracts across Oklahoma",      price:25000, purchased:false, effect:"expansion"  }
+        ];
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // DOM REFS
+    // ─────────────────────────────────────────────────────────────────────────
+    const businessListEl     = document.getElementById('businessList');
+    const gameCanvas          = document.getElementById('gameCanvas');
+    const ctx                 = gameCanvas.getContext('2d');
+    const moneyEl             = document.getElementById('money');
+    const completedEl         = document.getElementById('completed');
+    const levelEl             = document.getElementById('level');
+    const equipmentEl         = document.getElementById('equipment');
+    const stripingCoverageEl  = document.getElementById('striping-coverage');
+    const sealingCoverageEl   = document.getElementById('sealing-coverage');
+    const potholeCoverageEl   = document.getElementById('pothole-coverage');
+    const stripingProgressEl  = document.getElementById('striping-progress');
+    const sealingProgressEl   = document.getElementById('sealing-progress');
+    const potholeProgressEl   = document.getElementById('pothole-progress');
+    const selectedBusinessEl  = document.getElementById('selected-business');
+    const upgradesListEl      = document.getElementById('upgradesList');
+    const timerEl             = document.getElementById('timer');
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // CANVAS RESIZE
+    // ─────────────────────────────────────────────────────────────────────────
+    function resizeCanvas() {
+        const w = gameCanvas.parentElement.clientWidth;
+        gameCanvas.width  = w;
+        gameCanvas.height = Math.min(400, w * 0.5);
+        gameState.player.x = gameCanvas.width  / 2;
+        gameState.player.y = gameCanvas.height / 2;
+        if (gameState.selectedBusiness) {
+            generateParkingLotLayout(gameState.selectedBusiness.difficulty);
+            drawParkingLot();
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // REALISTIC PARKING LOT LAYOUT
+    //
+    // Layout per section:
+    //   [ Row A stalls facing down  ]  depth = STALL_D
+    //   [ Drive lane                ]  depth = LANE_W / 2
+    //   [ CENTER DIVIDER LINE       ]  <-- new white line splits the lane
+    //   [ Drive lane                ]  depth = LANE_W / 2
+    //   [ Row B stalls facing up    ]  depth = STALL_D
+    //
+    // This makes every stall the same depth (STALL_D) and the center white
+    // line clearly separates the two opposing rows — exactly like a real lot.
+    // ─────────────────────────────────────────────────────────────────────────
+    function generateParkingLotLayout(difficulty) {
+        gameState.lineSegments = [];
+
+        const cw = gameState.canvas.width;
+        const ch = gameState.canvas.height;
+
+        // How many stalls per row
+        const stallsPerRow = difficulty === 1 ? 6 : difficulty === 2 ? 9 : 12;
+        // Number of double-row sections stacked vertically
+        const sections     = difficulty === 1 ? 1 : difficulty === 2 ? 2 : 2;
+
+        // Raw stall dimensions (9 wide, 18 deep, 24 lane) – scale to fit canvas
+        const STALL_W_RAW  = 9;
+        const STALL_D_RAW  = 18;
+        const LANE_W_RAW   = 24;
+        const BORDER_PAD   = 12; // pixels of outer border padding
+
+        // Total raw width & height
+        const rawW = stallsPerRow * STALL_W_RAW;
+        // Each section = 2 rows of stalls + 1 lane between them
+        const rawH = sections * (2 * STALL_D_RAW + LANE_W_RAW);
+
+        // Available canvas space minus border padding
+        const availW = cw  - 2 * BORDER_PAD - 4;
+        const availH = ch  - 2 * BORDER_PAD - 4;
+
+        const scale  = Math.min(availW / rawW, availH / rawH);
+
+        const STALL_W  = STALL_W_RAW  * scale;
+        const STALL_D  = STALL_D_RAW  * scale;
+        const LANE_W   = LANE_W_RAW   * scale;
+        const SECTION_H = 2 * STALL_D + LANE_W;
+
+        const lotW = stallsPerRow * STALL_W;
+        const lotH = sections * SECTION_H;
+
+        // Center lot on canvas
+        const ox = (cw - lotW) / 2;
+        const oy = (ch - lotH) / 2;
+
+        gameState.parkingLotBounds = { x: ox, y: oy, width: lotW, height: lotH };
+
+        // ── Helper to push a line segment ──────────────────────────────────
+        function seg(x1, y1, x2, y2, reqColor, lineWidth = 4, isBorder = false, isLane = false) {
+            gameState.lineSegments.push({
+                x1, y1, x2, y2,
+                painted: false,
+                color: '#555',
+                requiredColor: reqColor,
+                lineWidth,
+                isBorder,
+                isLane
             });
+        }
 
-            lazyImages.forEach(img => {
-                imageObserver.observe(img);
-            });
+        // ── Outer border (4 sides) – WHITE ─────────────────────────────────
+        seg(ox,        oy,        ox+lotW,   oy,        'white', 6, true);  // top
+        seg(ox+lotW,   oy,        ox+lotW,   oy+lotH,   'white', 6, true);  // right
+        seg(ox+lotW,   oy+lotH,   ox,        oy+lotH,   'white', 6, true);  // bottom
+        seg(ox,        oy+lotH,   ox,        oy,        'white', 6, true);  // left
 
-            const criticalImages = [
-                'https://github.com/TitanBusinessPros/Gameville-/raw/main/OKC-Top-2.png'
-            ];
-            criticalImages.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
-        });
+        // ── Single center divider line across the entire lot – WHITE ───────
+        const lotCenterY = oy + lotH / 2;
+        seg(ox, lotCenterY, ox + lotW, lotCenterY, 'white', 5, false, true);
 
-        // Logo dragging (unchanged)
-        const logo = document.getElementById('logo');
-        let isDragging = false;
-        let offsetX, offsetY;
+        // ── For each section (pair of rows + lane) ─────────────────────────
+        for (let s = 0; s < sections; s++) {
+            const sY = oy + s * SECTION_H;   // top of this section
 
-        logo.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            offsetX = e.clientX - logo.getBoundingClientRect().left;
-            offsetY = e.clientY - logo.getBoundingClientRect().top;
-            logo.style.cursor = 'grabbing';
-        });
+            const rowA_top    = sY;
+            const rowA_bottom = sY + STALL_D;
+            const lane_bottom = sY + STALL_D + LANE_W;
+            const rowB_top    = lane_bottom;
+            const rowB_bottom = rowB_top + STALL_D;
 
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                const x = e.clientX - offsetX;
-                const y = e.clientY - offsetY;
-                const header = document.querySelector('.site-header');
-                const headerRect = header.getBoundingClientRect();
-                const logoRect = logo.getBoundingClientRect();
-                const maxX = headerRect.width - logoRect.width;
-                const maxY = headerRect.height - logoRect.height;
-                const boundedX = Math.max(0, Math.min(x, maxX));
-                const boundedY = Math.max(0, Math.min(y, maxY));
-                logo.style.position = 'absolute';
-                logo.style.left = `${boundedX}px`;
-                logo.style.top = `${boundedY}px`;
-            }
-        });
+            // ── Horizontal boundary lines (WHITE) ──────────────────────────
+            seg(ox, rowA_bottom, ox+lotW, rowA_bottom, 'white', 4, false, true);
+            seg(ox, lane_bottom, ox+lotW, lane_bottom, 'white', 4, false, true);
 
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            logo.style.cursor = 'grab';
-        });
+            // ── Stall divider lines (YELLOW) ───────────────────────────────
+            const handicapCols = difficulty === 1 ? [0, 1] : [0, 1, 2];
 
-        logo.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            const touch = e.touches[0];
-            offsetX = touch.clientX - logo.getBoundingClientRect().left;
-            offsetY = touch.clientY - logo.getBoundingClientRect().top;
-        });
+            for (let col = 0; col <= stallsPerRow; col++) {
+                const x      = ox + col * STALL_W;
+                const isEdge = (col === 0 || col === stallsPerRow);
+                const isHandicap = !isEdge && (col <= handicapCols[handicapCols.length - 1]);
 
-        document.addEventListener('touchmove', (e) => {
-            if (isDragging) {
-                const touch = e.touches[0];
-                const x = touch.clientX - offsetX;
-                const y = touch.clientY - offsetY;
-                const header = document.querySelector('.site-header');
-                const headerRect = header.getBoundingClientRect();
-                const logoRect = logo.getBoundingClientRect();
-                const maxX = headerRect.width - logoRect.width;
-                const maxY = headerRect.height - logoRect.height;
-                const boundedX = Math.max(0, Math.min(x, maxX));
-                const boundedY = Math.max(0, Math.min(y, maxY));
-                logo.style.position = 'absolute';
-                logo.style.left = `${boundedX}px`;
-                logo.style.top = `${boundedY}px`;
-                e.preventDefault();
-            }
-        });
+                // Row A dividers (stalls face down; open end at rowA_bottom)
+                if (!isEdge) {
+                    seg(x, rowA_top, x, rowA_bottom,
+                        isHandicap ? 'blue' : 'yellow', 3);
+                }
 
-        document.addEventListener('touchend', () => {
-            isDragging = false;
-        });
-
-        // Background music (source replaced)
-        const backgroundMusic = document.getElementById('background-music');
-        const musicToggle = document.getElementById('music-toggle');
-        let musicStarted = false;
-
-        // Set the music source (already in HTML, but ensure script matches)
-        backgroundMusic.src = "https://github.com/TitanBusinessPros/EZ-Remodeling/raw/main/EZ%20Remodels%20Anthem.mp3";
-
-        function startMusic() {
-            if (!musicStarted) {
-                backgroundMusic.volume = 0.5;
-                backgroundMusic.play().then(() => {
-                    musicStarted = true;
-                    musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
-                }).catch(error => {
-                    console.log('Audio play failed:', error);
-                });
+                // Row B dividers (stalls face up; open end at rowB_top)
+                if (!isEdge) {
+                    seg(x, rowB_top, x, rowB_bottom,
+                        isHandicap ? 'blue' : 'yellow', 3);
+                }
             }
         }
 
-        document.addEventListener('touchstart', startMusic, { once: true });
-        document.addEventListener('scroll', startMusic, { once: true });
-        document.addEventListener('click', startMusic, { once: true });
+        // Track stall info for handicap sign placement
+        gameState.stallLayout = [];
+        for (let s = 0; s < sections; s++) {
+            const sY = oy + s * SECTION_H;
+            const rowA_top    = sY;
+            const lane_bottom = sY + STALL_D + LANE_W;
+            const rowB_top    = lane_bottom;
+            const rowB_bottom = rowB_top + STALL_D;
 
-        musicToggle.addEventListener('click', function() {
-            if (backgroundMusic.paused) {
-                backgroundMusic.play();
-                musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+            const handicapCount = difficulty === 1 ? 2 : 3;
+            for (let col = 0; col < stallsPerRow; col++) {
+                const isHandicap = col < handicapCount;
+                // Row A
+                gameState.stallLayout.push({
+                    x: ox + col * STALL_W,
+                    y: rowA_top,
+                    width: STALL_W,
+                    depth: STALL_D,
+                    isHandicap,
+                    side: 'top'
+                });
+                // Row B
+                gameState.stallLayout.push({
+                    x: ox + col * STALL_W,
+                    y: rowB_top,
+                    width: STALL_W,
+                    depth: STALL_D,
+                    isHandicap,
+                    side: 'bottom'
+                });
+            }
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // POTHOLES
+    // ─────────────────────────────────────────────────────────────────────────
+    function generatePotholes(difficulty) {
+        gameState.potholes = [];
+        const count  = difficulty * 3 + 2;
+        const bounds = gameState.parkingLotBounds;
+
+        for (let i = 0; i < count; i++) {
+            let x, y, valid = false, tries = 0;
+            while (!valid && tries < 60) {
+                x = bounds.x + 20 + Math.random() * (bounds.width  - 40);
+                y = bounds.y + 20 + Math.random() * (bounds.height - 40);
+                let tooClose = gameState.potholes.some(p => dist(p.x, p.y, x, y) < 40);
+                let onLine   = gameState.lineSegments.some(seg => isPointNearLine(x, y, seg.x1, seg.y1, seg.x2, seg.y2, 18));
+                valid = !tooClose && !onLine;
+                tries++;
+            }
+            if (valid) {
+                gameState.potholes.push({ x, y, size: 10 + Math.random() * 8, fixed: false });
+            }
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // CRACKS
+    // ─────────────────────────────────────────────────────────────────────────
+    function generateCracks(difficulty) {
+        gameState.cracks = [];
+        const count  = difficulty * 5 + 3;
+        const bounds = gameState.parkingLotBounds;
+
+        for (let i = 0; i < count; i++) {
+            let x, y, valid = false, tries = 0;
+            while (!valid && tries < 50) {
+                x = bounds.x + 20 + Math.random() * (bounds.width  - 40);
+                y = bounds.y + 20 + Math.random() * (bounds.height - 40);
+                let tooClose = gameState.cracks.some(c => dist(c.x, c.y, x, y) < 40);
+                let onLine   = gameState.lineSegments.some(seg => isPointNearLine(x, y, seg.x1, seg.y1, seg.x2, seg.y2, 15));
+                valid = !tooClose && !onLine;
+                tries++;
+            }
+            if (!valid) continue;
+
+            const segs = [];
+            let cx = x, cy = y;
+            for (let s = 0; s < Math.floor(Math.random()*3)+2; s++) {
+                const angle  = Math.random() * Math.PI * 2;
+                const length = 15 + Math.random() * 20;
+                const ex = cx + Math.cos(angle) * length;
+                const ey = cy + Math.sin(angle) * length;
+                segs.push({ x1: cx, y1: cy, x2: ex, y2: ey });
+                cx = ex; cy = ey;
+            }
+            gameState.cracks.push({ x, y, segments: segs, fixed: false });
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // DRAW FUNCTIONS
+    // ─────────────────────────────────────────────────────────────────────────
+
+    // Draw asphalt texture (grain noise)
+    let asphaltCanvas = null;
+    function buildAsphaltTexture(w, h) {
+        asphaltCanvas = document.createElement('canvas');
+        asphaltCanvas.width  = w;
+        asphaltCanvas.height = h;
+        const ac = asphaltCanvas.getContext('2d');
+
+        // Base asphalt color
+        ac.fillStyle = '#2e2e2e';
+        ac.fillRect(0, 0, w, h);
+
+        // Subtle aggregate grain
+        for (let i = 0; i < 4000; i++) {
+            const gx = Math.random() * w;
+            const gy = Math.random() * h;
+            const gr = Math.random() * 1.5;
+            const bright = 40 + Math.floor(Math.random() * 30);
+            ac.fillStyle = `rgb(${bright},${bright},${bright})`;
+            ac.beginPath();
+            ac.arc(gx, gy, gr, 0, Math.PI * 2);
+            ac.fill();
+        }
+    }
+
+    function drawParkingLot() {
+        const c   = gameState.ctx;
+        const w   = gameState.canvas.width;
+        const h   = gameState.canvas.height;
+
+        c.clearRect(0, 0, w, h);
+
+        // Background asphalt texture
+        if (!asphaltCanvas || asphaltCanvas.width !== w || asphaltCanvas.height !== h) {
+            buildAsphaltTexture(w, h);
+        }
+        c.drawImage(asphaltCanvas, 0, 0);
+
+        // Draw cracks
+        drawCracks(c);
+
+        // Draw sealed areas
+        gameState.sealedAreas.forEach(a => {
+            c.fillStyle = 'rgba(80,80,80,0.6)';
+            c.beginPath();
+            c.arc(a.x, a.y, a.radius, 0, Math.PI * 2);
+            c.fill();
+        });
+
+        // Draw potholes
+        gameState.potholes.forEach(p => {
+            if (!p.fixed) {
+                // Dark irregular shape
+                c.fillStyle = '#111';
+                c.beginPath();
+                for (let a = 0; a < Math.PI*2; a += 0.4) {
+                    const r = p.size * (0.8 + Math.sin(a * 3 + p.x) * 0.2);
+                    const px = p.x + Math.cos(a) * r;
+                    const py = p.y + Math.sin(a) * r;
+                    a === 0 ? c.moveTo(px, py) : c.lineTo(px, py);
+                }
+                c.closePath();
+                c.fill();
+                // Shadow ring
+                c.strokeStyle = '#333';
+                c.lineWidth = 2;
+                c.stroke();
             } else {
-                backgroundMusic.pause();
-                musicToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                // Patched – slightly lighter circle with hash
+                c.fillStyle = '#4a4a4a';
+                c.beginPath();
+                c.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                c.fill();
+                c.strokeStyle = '#555';
+                c.lineWidth = 1;
+                c.stroke();
             }
         });
+
+        // Draw line segments
+        gameState.lineSegments.forEach(seg => {
+            c.strokeStyle = seg.painted ? getPaintColor(seg.requiredColor) : '#555';
+            c.lineWidth   = seg.painted ? (seg.lineWidth || 3) + 1 : (seg.lineWidth || 3);
+            c.lineCap     = 'square';
+            c.beginPath();
+            c.moveTo(seg.x1, seg.y1);
+            c.lineTo(seg.x2, seg.y2);
+            c.stroke();
+        });
+
+        // Handicap symbols in painted blue stalls
+        drawHandicapSymbols(c);
+
+        // Handicap signs
+        gameState.handicapSigns.forEach(s => drawHandicapSign(c, s.x, s.y));
+
+        // Spray particles
+        drawSprayParticles(c);
+
+        // Player (line striper machine)
+        drawPlayer(c);
+    }
+
+    function drawCracks(c) {
+        gameState.cracks.forEach(crack => {
+            if (crack.fixed) return;
+            c.strokeStyle = '#1a1a1a';
+            c.lineWidth   = 1.5;
+            c.lineCap     = 'round';
+            crack.segments.forEach(sg => {
+                c.beginPath();
+                c.moveTo(sg.x1, sg.y1);
+                c.lineTo(sg.x2, sg.y2);
+                c.stroke();
+            });
+        });
+    }
+
+    function drawHandicapSymbols(c) {
+        if (!gameState.stallLayout || gameState.stallLayout.length === 0) return;
+        gameState.stallLayout.filter(s => s.isHandicap).forEach(stall => {
+            c.fillStyle = 'rgba(33,150,243,0.15)';
+            c.fillRect(stall.x, stall.y, stall.width, stall.depth);
+        });
+    }
+
+    function drawHandicapSign(c, x, y) {
+        // Pole
+        c.strokeStyle = '#666';
+        c.lineWidth   = 2;
+        c.beginPath(); c.moveTo(x, y); c.lineTo(x, y - 28); c.stroke();
+        // Sign body
+        c.fillStyle = '#1565c0';
+        c.beginPath(); c.arc(x, y - 36, 10, 0, Math.PI * 2); c.fill();
+        // Wheelchair icon (simplified)
+        c.fillStyle = 'white';
+        c.beginPath(); c.arc(x, y - 42, 2.5, 0, Math.PI * 2); c.fill();
+        c.fillRect(x - 2, y - 39, 4, 5);
+        c.beginPath();
+        c.arc(x + 1, y - 34, 4, 0, Math.PI);
+        c.strokeStyle = 'white'; c.lineWidth = 1.5; c.stroke();
+    }
+
+    function drawSprayParticles(c) {
+        gameState.sprayParticles.forEach((p, i) => {
+            c.fillStyle = p.color;
+            c.globalAlpha = p.life / p.maxLife;
+            c.beginPath(); c.arc(p.x, p.y, p.size, 0, Math.PI * 2); c.fill();
+            p.x += p.vx; p.y += p.vy;
+            p.size  *= 0.92;
+            p.life--;
+        });
+        c.globalAlpha = 1;
+        gameState.sprayParticles = gameState.sprayParticles.filter(p => p.life > 0 && p.size > 0.3);
+    }
+
+    function drawPlayer(c) {
+        const p = gameState.player;
+        // Machine body
+        c.fillStyle = '#cc2200';
+        c.fillRect(p.x - p.size/2, p.y - p.size/4, p.size, p.size/2);
+        // Wheels
+        c.fillStyle = '#222';
+        [[p.x - p.size/4, p.y + p.size/4], [p.x + p.size/4, p.y + p.size/4]].forEach(([wx,wy]) => {
+            c.beginPath(); c.arc(wx, wy, 4, 0, Math.PI*2); c.fill();
+        });
+        // Hose
+        c.strokeStyle = '#444'; c.lineWidth = 2;
+        c.beginPath(); c.moveTo(p.x + p.size/2, p.y); c.lineTo(p.x + p.size, p.y); c.stroke();
+        // Operator
+        c.fillStyle = '#3a7bd5';
+        c.beginPath(); c.arc(p.x - p.size/2, p.y - p.size/4, 6, 0, Math.PI * 2); c.fill();
+        // Nozzle with current paint color
+        c.fillStyle = getPaintColor(gameState.paintTool);
+        c.beginPath(); c.arc(p.x + p.size, p.y, 5, 0, Math.PI * 2); c.fill();
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // COLOR HELPER
+    // ─────────────────────────────────────────────────────────────────────────
+    function getPaintColor(tool) {
+        return { white:'#ffffff', yellow:'#f5d000', blue:'#2196f3', seal:'#888', pothole:'#444', sign:'#2196f3' }[tool] || '#ffffff';
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // TOOL ENABLE / DISABLE (sealant locked until potholes done)
+    // ─────────────────────────────────────────────────────────────────────────
+    function updateToolAvailability() {
+        const allFixed = gameState.potholes.length === 0 || gameState.potholes.every(p => p.fixed);
+        gameState.allPotholeFixed = allFixed;
+        const sealEl = document.getElementById('tool-seal');
+        if (allFixed) {
+            sealEl.classList.remove('disabled-tool');
+            stepNotice.classList.remove('visible');
+        } else {
+            sealEl.classList.add('disabled-tool');
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // PAINTING
+    // ─────────────────────────────────────────────────────────────────────────
+    function paintAtPosition(x, y) {
+        const tool  = gameState.paintTool;
+        const color = getPaintColor(tool);
+        createSprayParticles(x, y, color);
+
+        if (tool === 'seal') {
+            if (!gameState.allPotholeFixed) {
+                stepNotice.classList.add('visible');
+                return;
+            }
+            applySealant(x, y);
+        } else if (tool === 'pothole') {
+            fixPothole(x, y);
+        } else if (tool === 'sign') {
+            placeHandicapSign(x, y);
+        } else {
+            let painted = false;
+            gameState.lineSegments.forEach(seg => {
+                if (!seg.painted && tool === seg.requiredColor) {
+                    if (isPointNearLine(x, y, seg.x1, seg.y1, seg.x2, seg.y2, 15)) {
+                        seg.painted      = true;
+                        seg.paintedColor = color;
+                        painted          = true;
+                    }
+                }
+            });
+            if (painted) playSound(paintSound);
+        }
+
+        updateProgress();
+    }
+
+    function applySealant(x, y) {
+        let onLine = gameState.lineSegments.some(seg => isPointNearLine(x, y, seg.x1, seg.y1, seg.x2, seg.y2, 5));
+        if (!onLine) {
+            gameState.sealedAreas.push({ x, y, radius: 12 });
+            fixCracks(x, y);
+            playSound(sealSound);
+            if (gameState.sealedAreas.length > 250) gameState.sealedAreas.splice(0, 50);
+        }
+    }
+
+    function fixPothole(x, y) {
+        let fixed = false;
+        gameState.potholes.forEach(p => {
+            if (!p.fixed && dist(p.x, p.y, x, y) < p.size + 8) {
+                p.fixed = true;
+                fixed   = true;
+            }
+        });
+        if (fixed) {
+            playSound(potholeSound);
+            updateToolAvailability();
+        }
+    }
+
+    function fixCracks(x, y) {
+        gameState.cracks.forEach(crack => {
+            if (!crack.fixed) {
+                for (const s of crack.segments) {
+                    if (isPointNearLine(x, y, s.x1, s.y1, s.x2, s.y2, 12)) {
+                        crack.fixed = true;
+                        break;
+                    }
+                }
+            }
+        });
+    }
+
+    function placeHandicapSign(x, y) {
+        const near = gameState.stallLayout.some(s => {
+            if (!s.isHandicap) return false;
+            return dist(s.x + s.width/2, s.y + s.depth/2, x, y) < 55;
+        });
+        if (!near) return;
+        const exists = gameState.handicapSigns.some(s => dist(s.x, s.y, x, y) < 30);
+        if (!exists) {
+            gameState.handicapSigns.push({ x, y });
+            createSprayParticles(x, y, '#2196f3');
+            playSound(signSound);
+        }
+    }
+
+    function createSprayParticles(x, y, color) {
+        for (let i = 0; i < 8; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = 1 + Math.random() * 3;
+            const life  = 12 + Math.floor(Math.random() * 15);
+            gameState.sprayParticles.push({
+                x, y,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                size: 2 + Math.random() * 3,
+                color,
+                life,
+                maxLife: life
+            });
+        }
+        if (gameState.sprayParticles.length > 300) gameState.sprayParticles.splice(0, 100);
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // PROGRESS
+    // ─────────────────────────────────────────────────────────────────────────
+    function updateProgress() {
+        const total   = gameState.lineSegments.length;
+        const painted = gameState.lineSegments.filter(s => s.painted).length;
+        gameState.stripingCoverage = total > 0 ? (painted / total) * 100 : 0;
+
+        const totalP  = gameState.potholes.length;
+        const fixedP  = gameState.potholes.filter(p => p.fixed).length;
+        gameState.potholeCoverage = totalP > 0 ? (fixedP / totalP) * 100 : 100;
+
+        const sealTarget   = 150;
+        const sealProgress = Math.min(gameState.sealedAreas.length / sealTarget, 1) * 100;
+        const totalC  = gameState.cracks.length;
+        const fixedC  = gameState.cracks.filter(c => c.fixed).length;
+        const crackP  = totalC > 0 ? (fixedC / totalC) * 100 : 100;
+        gameState.sealingCoverage = (sealProgress + crackP) / 2;
+
+        updateProgressBars();
+    }
+
+    function updateProgressBars() {
+        stripingCoverageEl.textContent = Math.floor(gameState.stripingCoverage) + '%';
+        sealingCoverageEl.textContent  = Math.floor(gameState.sealingCoverage)  + '%';
+        potholeCoverageEl.textContent  = Math.floor(gameState.potholeCoverage)  + '%';
+        stripingProgressEl.style.width = gameState.stripingCoverage + '%';
+        sealingProgressEl.style.width  = gameState.sealingCoverage  + '%';
+        potholeProgressEl.style.width  = gameState.potholeCoverage  + '%';
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // SELECT BUSINESS / TIMER
+    // ─────────────────────────────────────────────────────────────────────────
+    function selectBusiness(business) {
+        if (gameState.timerInterval) clearInterval(gameState.timerInterval);
+        Object.assign(gameState, {
+            selectedBusiness: business,
+            stripingCoverage: 0, sealingCoverage: 0, potholeCoverage: 0,
+            handicapSigns: [], lineSegments: [], stallLayout: [], potholes: [], sealedAreas: [], cracks: [], sprayParticles: [],
+            timer: 120, gameActive: true, allPotholeFixed: false
+        });
+        stepNotice.classList.remove('visible');
+        generateParkingLotLayout(business.difficulty);
+        generatePotholes(business.difficulty);
+        generateCracks(business.difficulty);
+        updateToolAvailability();
+        drawParkingLot();
+        selectedBusinessEl.textContent = business.name;
+        updateProgressBars();
+        updateTimerDisplay();
+        renderBusinesses();
+        startTimer();
+        playBackgroundMusic();
+    }
+
+    function startTimer() {
+        if (gameState.timerInterval) clearInterval(gameState.timerInterval);
+        gameState.timerInterval = setInterval(() => {
+            gameState.timer--;
+            updateTimerDisplay();
+            if (gameState.timer <= 0) {
+                clearInterval(gameState.timerInterval);
+                gameState.gameActive = false;
+                backgroundMusic.pause();
+                alert("Time's up! Job failed. Select a new job to try again.");
+            }
+        }, 1000);
+    }
+
+    function updateTimerDisplay() {
+        const m = Math.floor(gameState.timer / 60);
+        const s = gameState.timer % 60;
+        timerEl.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        timerEl.className   = '';
+        if      (gameState.timer <= 30) timerEl.classList.add('danger');
+        else if (gameState.timer <= 60) timerEl.classList.add('warning');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // GAME LOOP
+    // ─────────────────────────────────────────────────────────────────────────
+    function gameLoop() {
+        if (gameState.gameActive) {
+            drawParkingLot();
+            const { player, mouse } = gameState;
+            const dx = mouse.x - player.x, dy = mouse.y - player.y;
+            const d  = Math.sqrt(dx*dx + dy*dy);
+            if (d > player.speed) {
+                player.x += (dx/d) * player.speed;
+                player.y += (dy/d) * player.speed;
+            } else {
+                player.x = mouse.x; player.y = mouse.y;
+            }
+            const now = Date.now();
+            if (mouse.down && now - gameState.lastPaintTime > gameState.paintInterval) {
+                if (gameState.paintTool === 'sign') placeHandicapSign(player.x + player.size, player.y);
+                else paintAtPosition(player.x + player.size, player.y);
+                gameState.lastPaintTime = now;
+            }
+        } else {
+            drawParkingLot();
+        }
+        requestAnimationFrame(gameLoop);
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // COMPLETE JOB
+    // ─────────────────────────────────────────────────────────────────────────
+    function completeJob() {
+        if (!gameState.selectedBusiness || gameState.selectedBusiness.completed) {
+            alert('Please select an incomplete job first!'); return;
+        }
+        if (gameState.timer <= 0) { alert("Time's up!"); return; }
+
+        let msg = '';
+        if (gameState.potholeCoverage < 100) msg += `• Fix ALL potholes first! (${Math.floor(gameState.potholeCoverage)}% done)\n`;
+        if (gameState.sealingCoverage  < 90) msg += `• Need 90%+ sealing (${Math.floor(gameState.sealingCoverage)}%)\n`;
+        if (gameState.stripingCoverage < 80) msg += `• Need 80%+ striping (${Math.floor(gameState.stripingCoverage)}%)\n`;
+        const uniqueHStalls = [...new Set(gameState.stallLayout.filter(s=>s.isHandicap).map(s=>s.x))].length;
+        if (uniqueHStalls > 0 && gameState.handicapSigns.length < uniqueHStalls)
+            msg += `• Place handicap signs (need ${uniqueHStalls}, have ${gameState.handicapSigns.length})\n`;
+
+        if (msg) { alert("Job not complete:\n\n" + msg); return; }
+
+        clearInterval(gameState.timerInterval);
+        backgroundMusic.pause();
+        gameState.selectedBusiness.completed = true;
+        gameState.completedJobs++;
+        gameState.gameActive = false;
+
+        let reward = gameState.selectedBusiness.reward;
+        if (gameState.stripingCoverage > 95) reward = Math.floor(reward * 1.2);
+        else if (gameState.stripingCoverage > 90) reward = Math.floor(reward * 1.1);
+        reward = Math.floor(reward * (1 + Math.floor(gameState.timer/30) * 0.1));
+        gameState.money += reward;
+        if (gameState.completedJobs % 5 === 0) gameState.level++;
+        updateUI(); renderBusinesses();
+        alert(`Job complete! ${gameState.timer}s remaining.\n\nEarned: $${reward}`);
+        gameState.selectedBusiness = null;
+        selectedBusinessEl.textContent = 'Select a Job';
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // UPGRADES
+    // ─────────────────────────────────────────────────────────────────────────
+    function purchaseUpgrade(upgrade) {
+        if (gameState.money < upgrade.price || upgrade.purchased) return;
+        gameState.money -= upgrade.price;
+        upgrade.purchased = true;
+        applyUpgradeEffect(upgrade);
+        updateUI(); renderUpgrades();
+        alert(`Purchased: ${upgrade.name}`);
+    }
+
+    function applyUpgradeEffect(u) {
+        switch(u.effect) {
+            case 'speed':     gameState.player.speed += 3; gameState.paintInterval *= (u.paintIntervalModifier||0.7); gameState.equipmentLevel++; break;
+            case 'precision': gameState.equipmentLevel++; break;
+            case 'sealing':   gameState.equipmentLevel++; break;
+            case 'pothole':   gameState.equipmentLevel++; break;
+            case 'truck':     gameState.player.speed *= 2; gameState.paintInterval *= (u.paintIntervalModifier||0.3); gameState.level++; gameState.equipmentLevel += 2; break;
+            case 'expansion': gameState.level += 2; break;
+        }
+        equipmentEl.textContent = getEquipmentName(gameState.equipmentLevel);
+    }
+
+    function getEquipmentName(l) {
+        if (l < 3) return 'Basic';
+        if (l < 5) return 'Intermediate';
+        if (l < 7) return 'Professional';
+        return 'Industrial';
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // SAVE / LOAD / RESTART
+    // ─────────────────────────────────────────────────────────────────────────
+    function saveGame() {
+        localStorage.setItem('plsSave', JSON.stringify({
+            money: gameState.money, level: gameState.level,
+            completedJobs: gameState.completedJobs, equipmentLevel: gameState.equipmentLevel,
+            businesses: gameState.businesses, upgrades: gameState.upgrades,
+            soundEnabled: gameState.soundEnabled
+        }));
+        alert('Game saved!');
+    }
+
+    function loadGame() {
+        const raw = localStorage.getItem('plsSave');
+        if (!raw) { alert('No saved game found.'); return; }
+        try {
+            const d = JSON.parse(raw);
+            Object.assign(gameState, { money:d.money, level:d.level, completedJobs:d.completedJobs, equipmentLevel:d.equipmentLevel, businesses:d.businesses, upgrades:d.upgrades });
+            if (d.soundEnabled !== undefined) { gameState.soundEnabled = d.soundEnabled; updateSoundIcon(); }
+            updateUI(); renderBusinesses(); renderUpgrades();
+            alert('Game loaded!');
+        } catch(e) { alert('Failed to load save.'); }
+    }
+
+    function restartGame() {
+        if (!confirm('Restart? All progress will be lost.')) return;
+        if (gameState.timerInterval) clearInterval(gameState.timerInterval);
+        backgroundMusic.pause();
+        Object.assign(gameState, {
+            money:2500, level:1, completedJobs:0, equipmentLevel:1,
+            selectedBusiness:null, stripingCoverage:0, sealingCoverage:0, potholeCoverage:0,
+            sprayParticles:[], handicapSigns:[], lineSegments:[], stallLayout:[], potholes:[], sealedAreas:[], cracks:[],
+            timer:120, gameActive:false, allPotholeFixed:false, timerInterval:null
+        });
+        gameState.businesses = initializeBusinesses();
+        gameState.upgrades   = initializeUpgrades();
+        gameState.player.x   = gameCanvas.width  / 2;
+        gameState.player.y   = gameCanvas.height / 2;
+        updateUI(); renderBusinesses(); renderUpgrades(); updateProgressBars(); updateTimerDisplay();
+        drawParkingLot();
+        selectedBusinessEl.textContent = 'Select a Job';
+        stepNotice.classList.remove('visible');
+        alert('Game restarted!');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // UI RENDER
+    // ─────────────────────────────────────────────────────────────────────────
+    function renderBusinesses() {
+        businessListEl.innerHTML = '';
+        gameState.businesses.forEach(b => {
+            const card = document.createElement('div');
+            card.className = `business-card ${b.completed ? 'completed' : ''} ${gameState.selectedBusiness?.id === b.id ? 'selected' : ''}`;
+            card.innerHTML = `
+                <div class="business-name">${b.name}</div>
+                <div class="business-type">${b.type}</div>
+                <div class="business-reward">
+                    <div class="reward-amount">$${b.reward}</div>
+                    <div class="difficulty ${['easy','medium','hard'][b.difficulty-1]}">${['Easy','Medium','Hard'][b.difficulty-1]}</div>
+                </div>`;
+            card.addEventListener('click', () => selectBusiness(b));
+            businessListEl.appendChild(card);
+        });
+    }
+
+    function renderUpgrades() {
+        upgradesListEl.innerHTML = '';
+        gameState.upgrades.forEach(u => {
+            const card = document.createElement('div');
+            card.className = 'upgrade-card';
+            card.innerHTML = `
+                <div class="upgrade-header">
+                    <div class="upgrade-name">${u.name}</div>
+                    <div class="upgrade-price">$${u.price}</div>
+                </div>
+                <div class="upgrade-desc">${u.description}</div>
+                <button class="upgrade-btn" ${u.purchased || gameState.money < u.price ? 'disabled' : ''}>
+                    ${u.purchased ? 'Purchased' : 'Purchase'}
+                </button>`;
+            if (!u.purchased) card.querySelector('.upgrade-btn').addEventListener('click', () => purchaseUpgrade(u));
+            upgradesListEl.appendChild(card);
+        });
+    }
+
+    function updateUI() {
+        moneyEl.textContent     = '$' + gameState.money.toLocaleString();
+        completedEl.textContent = `${gameState.completedJobs}/30`;
+        levelEl.textContent     = gameState.level;
+        equipmentEl.textContent = getEquipmentName(gameState.equipmentLevel);
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // SOUND CONTROLS
+    // ─────────────────────────────────────────────────────────────────────────
+    function setupSoundControls() {
+        soundToggle.addEventListener('click', () => {
+            gameState.soundEnabled = !gameState.soundEnabled;
+            localStorage.setItem('plsSound', gameState.soundEnabled);
+            updateSoundIcon();
+            if (!gameState.soundEnabled) backgroundMusic.pause();
+            else if (gameState.gameActive) playBackgroundMusic();
+        });
+        const saved = localStorage.getItem('plsSound');
+        if (saved !== null) gameState.soundEnabled = saved === 'true';
+        updateSoundIcon();
+    }
+
+    function updateSoundIcon() {
+        soundToggle.querySelector('i').className = gameState.soundEnabled ? 'fas fa-volume-up' : 'fas fa-volume-mute';
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // EVENT LISTENERS
+    // ─────────────────────────────────────────────────────────────────────────
+    function setupEventListeners() {
+        function getPos(e) {
+            const r = gameCanvas.getBoundingClientRect();
+            if (e.touches) return { x: e.touches[0].clientX - r.left, y: e.touches[0].clientY - r.top };
+            return { x: e.clientX - r.left, y: e.clientY - r.top };
+        }
+
+        gameCanvas.addEventListener('mousemove',  e => { const p = getPos(e); gameState.mouse.x = p.x; gameState.mouse.y = p.y; });
+        gameCanvas.addEventListener('touchmove',  e => { e.preventDefault(); const p = getPos(e); gameState.mouse.x = p.x; gameState.mouse.y = p.y; }, { passive:false });
+        gameCanvas.addEventListener('mousedown',  e => { e.preventDefault(); gameState.mouse.down = true; });
+        gameCanvas.addEventListener('mouseup',    ()  => { gameState.mouse.down = false; });
+        gameCanvas.addEventListener('touchstart', e => { e.preventDefault(); gameState.mouse.down = true; const p = getPos(e); gameState.mouse.x = p.x; gameState.mouse.y = p.y; }, { passive:false });
+        gameCanvas.addEventListener('touchend',   ()  => { gameState.mouse.down = false; });
+        gameCanvas.addEventListener('contextmenu', e => e.preventDefault());
+
+        const tools = [
+            ['tool-white',  'white'],
+            ['tool-yellow', 'yellow'],
+            ['tool-blue',   'blue'],
+            ['tool-pothole','pothole'],
+            ['tool-seal',   'seal'],
+            ['tool-sign',   'sign']
+        ];
+        tools.forEach(([id, tool]) => {
+            document.getElementById(id).addEventListener('click', () => {
+                if (tool === 'seal' && !gameState.allPotholeFixed) {
+                    stepNotice.classList.add('visible');
+                    return;
+                }
+                gameState.paintTool = tool;
+                document.querySelectorAll('.paint-tool').forEach(el => el.classList.remove('selected'));
+                document.getElementById(id).classList.add('selected');
+            });
+        });
+
+        document.getElementById('completeJob').addEventListener('click', completeJob);
+        document.getElementById('saveGame').addEventListener('click', saveGame);
+        document.getElementById('restartGame').addEventListener('click', restartGame);
+
+        window.addEventListener('load', () => {
+            if (localStorage.getItem('plsSave') && confirm('Load saved game?')) loadGame();
+        });
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // UTILS
+    // ─────────────────────────────────────────────────────────────────────────
+    function dist(x1, y1, x2, y2) { return Math.sqrt((x2-x1)**2 + (y2-y1)**2); }
+
+    function isPointNearLine(px, py, x1, y1, x2, y2, tol) {
+        const A = px-x1, B = py-y1, C = x2-x1, D = y2-y1;
+        const dot = A*C + B*D, lenSq = C*C + D*D;
+        let param = lenSq !== 0 ? dot / lenSq : -1;
+        let xx = param < 0 ? x1 : param > 1 ? x2 : x1 + param*C;
+        let yy = param < 0 ? y1 : param > 1 ? y2 : y1 + param*D;
+        return dist(px, py, xx, yy) <= tol;
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // INIT
+    // ─────────────────────────────────────────────────────────────────────────
+    function initGame() {
+        gameState.canvas = gameCanvas;
+        gameState.ctx    = ctx;
+        resizeCanvas();
+        gameState.businesses = initializeBusinesses();
+        gameState.upgrades   = initializeUpgrades();
+        renderBusinesses();
+        renderUpgrades();
+        setupEventListeners();
+        setupSoundControls();
+        requestAnimationFrame(gameLoop);
+        updateUI();
+        window.addEventListener('resize', resizeCanvas);
+    }
+
+    window.addEventListener('DOMContentLoaded', initGame);
     </script>
 </body>
 </html>
