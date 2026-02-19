@@ -1007,10 +1007,16 @@
 
     // ─────────────────────────────────────────────────────────────────────────
     // REALISTIC PARKING LOT LAYOUT
-    // A real lot: asphalt rectangle → outer white border → row(s) of stalls
-    // separated by yellow divider lines only (no box per stall).
-    // Stall proportions: ~9 ft wide × 18 ft deep  → ratio ~1:2
-    // Lane between rows:  ~24 ft  → ratio ~2.7× stall width
+    //
+    // Layout per section:
+    //   [ Row A stalls facing down  ]  depth = STALL_D
+    //   [ Drive lane                ]  depth = LANE_W / 2
+    //   [ CENTER DIVIDER LINE       ]  <-- new white line splits the lane
+    //   [ Drive lane                ]  depth = LANE_W / 2
+    //   [ Row B stalls facing up    ]  depth = STALL_D
+    //
+    // This makes every stall the same depth (STALL_D) and the center white
+    // line clearly separates the two opposing rows — exactly like a real lot.
     // ─────────────────────────────────────────────────────────────────────────
     function generateParkingLotLayout(difficulty) {
         gameState.lineSegments = [];
@@ -1040,9 +1046,9 @@
 
         const scale  = Math.min(availW / rawW, availH / rawH);
 
-        const STALL_W = STALL_W_RAW  * scale;
-        const STALL_D = STALL_D_RAW  * scale;
-        const LANE_W  = LANE_W_RAW   * scale;
+        const STALL_W  = STALL_W_RAW  * scale;
+        const STALL_D  = STALL_D_RAW  * scale;
+        const LANE_W   = LANE_W_RAW   * scale;
         const SECTION_H = 2 * STALL_D + LANE_W;
 
         const lotW = stallsPerRow * STALL_W;
@@ -1073,66 +1079,54 @@
         seg(ox+lotW,   oy+lotH,   ox,        oy+lotH,   'white', 6, true);  // bottom
         seg(ox,        oy+lotH,   ox,        oy,        'white', 6, true);  // left
 
+        // ── Single center divider line across the entire lot – WHITE ───────
+        const lotCenterY = oy + lotH / 2;
+        seg(ox, lotCenterY, ox + lotW, lotCenterY, 'white', 5, false, true);
+
         // ── For each section (pair of rows + lane) ─────────────────────────
         for (let s = 0; s < sections; s++) {
             const sY = oy + s * SECTION_H;   // top of this section
 
-            // Row A top line (shared with outer border for section 0)
-            // Row A bottom line = top of lane
             const rowA_top    = sY;
             const rowA_bottom = sY + STALL_D;
-            const lane_top    = rowA_bottom;
-            const lane_bottom = lane_top + LANE_W;
+            const lane_bottom = sY + STALL_D + LANE_W;
             const rowB_top    = lane_bottom;
             const rowB_bottom = rowB_top + STALL_D;
 
-            // ── Horizontal lines bounding the stall rows (WHITE) ───────────
-            // Row A bottom / lane top
+            // ── Horizontal boundary lines (WHITE) ──────────────────────────
             seg(ox, rowA_bottom, ox+lotW, rowA_bottom, 'white', 4, false, true);
-            // Lane bottom / Row B top
             seg(ox, lane_bottom, ox+lotW, lane_bottom, 'white', 4, false, true);
 
             // ── Stall divider lines (YELLOW) ───────────────────────────────
-            // Real parking lots use only vertical dividers between stalls.
-            // No lines at the open end (cars drive in/out).
-            // Also, first and last column line are the outer border – skip painting them yellow.
+            const handicapCols = difficulty === 1 ? [0, 1] : [0, 1, 2];
+
             for (let col = 0; col <= stallsPerRow; col++) {
-                const x = ox + col * STALL_W;
+                const x      = ox + col * STALL_W;
                 const isEdge = (col === 0 || col === stallsPerRow);
+                const isHandicap = !isEdge && (col <= handicapCols[handicapCols.length - 1]);
 
-                // Determine if this column is a handicap stall edge
-                // Handicap stalls: first 1 or 2 stalls per row per side
-                const handicapCols = difficulty === 1 ? [0, 1] : difficulty === 2 ? [0, 1, 2] : [0, 1, 2];
-                const isHandicap = !isEdge && (col <= handicapCols[handicapCols.length-1]);
-
-                // Row A dividers (top row – stalls face downward; open end at bottom)
+                // Row A dividers (stalls face down; open end at rowA_bottom)
                 if (!isEdge) {
                     seg(x, rowA_top, x, rowA_bottom,
                         isHandicap ? 'blue' : 'yellow', 3);
                 }
 
-                // Row B dividers (bottom row – stalls face upward; open end at top)
+                // Row B dividers (stalls face up; open end at rowB_top)
                 if (!isEdge) {
                     seg(x, rowB_top, x, rowB_bottom,
                         isHandicap ? 'blue' : 'yellow', 3);
                 }
             }
-
-            // ── Horizontal line at top of Row A for stall boxes (not outer border) ──
-            // In real lots, the stall "box" has a back line across the full row.
-            // Row A: back line = top (= outer border already), open end = bottom near lane. ✓
-            // Row B: back line = bottom (= section bottom / outer border). ✓
-            // Both already handled by outer border or lane lines. Good.
-
         }
 
         // Track stall info for handicap sign placement
         gameState.stallLayout = [];
         for (let s = 0; s < sections; s++) {
             const sY = oy + s * SECTION_H;
-            const rowA_top = sY, rowA_bottom = sY + STALL_D;
+            const rowA_top    = sY;
             const lane_bottom = sY + STALL_D + LANE_W;
-            const rowB_top = lane_bottom, rowB_bottom = rowB_top + STALL_D;
+            const rowB_top    = lane_bottom;
+            const rowB_bottom = rowB_top + STALL_D;
 
             const handicapCount = difficulty === 1 ? 2 : 3;
             for (let col = 0; col < stallsPerRow; col++) {
@@ -1643,7 +1637,6 @@
         if (gameState.potholeCoverage < 100) msg += `• Fix ALL potholes first! (${Math.floor(gameState.potholeCoverage)}% done)\n`;
         if (gameState.sealingCoverage  < 90) msg += `• Need 90%+ sealing (${Math.floor(gameState.sealingCoverage)}%)\n`;
         if (gameState.stripingCoverage < 80) msg += `• Need 80%+ striping (${Math.floor(gameState.stripingCoverage)}%)\n`;
-        const hStalls = gameState.stallLayout.filter(s => s.isHandicap).length / 2; // divide by 2 (rows)
         const uniqueHStalls = [...new Set(gameState.stallLayout.filter(s=>s.isHandicap).map(s=>s.x))].length;
         if (uniqueHStalls > 0 && gameState.handicapSigns.length < uniqueHStalls)
             msg += `• Place handicap signs (need ${uniqueHStalls}, have ${gameState.handicapSigns.length})\n`;
